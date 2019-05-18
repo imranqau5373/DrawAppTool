@@ -147,6 +147,7 @@ namespace BFN.Web.Controllers
         [Route("getCustomerPayments")]
         public IHttpActionResult GetCustomerPayments(int CustomerId)
         {
+
             try
             {
                 var Payments = (from payment in _PaymentService.GetAll().ToList()
