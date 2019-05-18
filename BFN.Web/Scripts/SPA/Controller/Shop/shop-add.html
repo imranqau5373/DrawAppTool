@@ -1,0 +1,825 @@
+﻿<div ng-controller="ChainUserCtrl">
+    <div ng-controller="ShopContactPersonCtrl">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">
+                <a href="Home/shop">Shops</a>
+            </li>
+            <li class="breadcrumb-item active">Add new shop</li>
+        </ol>
+
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs" role="tablist" style="display:none;">
+                            <li class="nav-item">
+                                <a class="nav-link" id="shopPart" data-toggle="tab" data-target="#shop" role="tab" aria-controls="shop">Shop information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="ohPart" data-toggle="tab" data-target="#opening-hours" role="tab" aria-controls="opening-hours" style="pointer-events:none;"> Opening hours</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="dlInfoPart" data-toggle="tab" data-target="#delivery-info" role="tab" aria-controls="delivery-info" style="pointer-events:none;"> Delivery Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="shopAdminPart" data-toggle="tab" data-target="#admins" role="tab" aria-controls="admins" style="pointer-events:none;">Shop admins</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="cpPart" data-toggle="tab" data-target="#cp" role="tab" aria-controls="cp" style="pointer-events:none;">Contact Person</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="shop" role="tabpanel">
+                                <form name="shopform" ng-submit="addShop()">
+                                    <div class="col-sm-12 nopadding">
+                                        <div class="card">
+                                            <div class="card-block col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Company</label>
+                                                    <input type="text" class="form-control" id="CompanyName" placeholder="Enter company name" required ng-model="newShop.CompanyName" ng-disabled="getCompName">
+                                                </div>
+                                                <input type="text" ng-show="false" id="CompanyId" ng-model="newShop.CompanyId" />
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter shop name" ng-model="newShop.ShopName" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <input type="text" class="form-control" placeholder="Enter complete address" ng-model="newShop.ShopAddress" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="chain-address-2">Address 2</label>
+                                                    <span class="badge badge-default badge-pill float-right">Optional</span>
+                                                    <input type="text" class="form-control" id="chain-address-2" placeholder="Enter address details" ng-model="newShop.ShopAddress2">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col">
+                                                        <label for="chain-postal">Postal code</label>
+                                                        <input type="text" class="form-control" id="chain-postal" placeholder="Enter postal code" ng-model="newShop.ShopPostCode" required>
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label for="chain-city">City</label>
+                                                        <input type="text" class="form-control" id="chain-city" placeholder="Enter city" ng-model="newShop.ShopCityName" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Owner Name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter shop owner name" ng-model="newShop.OwnerName" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Owner's Email</label>
+                                                    <input type="email" class="form-control" placeholder="Enter shop owner email address" ng-model="newShop.OwnerEmail" required>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col">
+                                                        <label>Gross</label>
+                                                        <input type="text" class="form-control" placeholder="Enter gross" ng-model="newShop.Gross" required>
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label>Category</label>
+                                                        <input type="text" class="form-control" id="CategoryName" placeholder="Enter category" ng-model="newShop.CategoryName" required>
+                                                    </div>
+                                                    <input type="text" ng-show="false" id="ShopFrellationsNummerCategoryId" ng-model="newShop.ShopFrellationsNummerCategoryId" />
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col">
+                                                        <label>EAN</label>
+                                                        <span class="badge badge-default badge-pill float-right">Optional</span>
+                                                        <input type="text" pattern="\d{13,13}" title="13 digits only" class="form-control" placeholder="Enter EAN" ng-model="newShop.ShopEAN">
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label>CARDEX</label>
+                                                        <span class="badge badge-default badge-pill float-right">Optional</span>
+                                                        <input type="text" class="form-control" placeholder="Enter CARDEX" ng-model="newShop.ShopCARDEX">
+                                                    </div>
+                                                    <!--<div class="form-group col">
+                                                        <label>Frellationsnummer</label>
+                                                        <input type="text" class="form-control" placeholder="Enter Frellationsnummer" ng-model="newShop.ShopFrellationsNummer">
+                                                    </div>-->
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group col">
+                                                        <label>Inauguration date</label>
+                                                        <input type="date" class="form-control" placeholder="Enter shop inauguration date" ng-model="newShop.InagurationDate">
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label>Termination date</label>
+                                                        <input type="date" class="form-control" placeholder="Enter shop termination date" ng-model="newShop.TerminatinonDate">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <ul class="steps">
+                                                    <li class="active">1</li>
+                                                    <li>2</li>
+                                                    <li>3</li>
+                                                    <li>4</li>
+                                                    <li>5</li>
+                                                    <li>6</li>
+                                                </ul>
+                                                <button type="submit" class="btn btn-sm btn-primary float-right">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="opening-hours" role="tabpanel">
+                                <form name="shopform" ng-submit="addOpenHours()">
+                                    <div class="col-sm-12 nopadding">
+                                        <div class="card">
+                                            <div class="card-block col-sm-6 custom-template">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon fixed-addon">
+                                                        Days
+                                                    </span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control" placeholder="Opening Hour" disabled>
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control" placeholder="Closing Hour" disabled>
+                                                </div>
+
+                                                <div class="input-group">
+                                                    <span class="input-group-addon fixed-addon">
+                                                        Mon
+                                                    </span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.monStart">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.monEnd">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon fixed-addon">
+                                                        Tue
+                                                    </span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.tueStart">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.tueEnd">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon fixed-addon">
+                                                        Wed
+                                                    </span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.wedStart">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.wedEnd">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon fixed-addon">
+                                                        Thu
+                                                    </span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.thuStart">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.thuEnd">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon fixed-addon">
+                                                        Fri
+                                                    </span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.friStart">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.friEnd">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon fixed-addon">
+                                                        Sat
+                                                    </span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.satStart">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.satEnd">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon fixed-addon">
+                                                        Sun
+                                                    </span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.sunStart">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.sunEnd">
+                                                </div>
+
+                                            </div>
+                                            <div class="card-footer">
+                                                <ul class="steps">
+                                                    <li>1</li>
+                                                    <li class="active">2</li>
+                                                    <li>3</li>
+                                                    <li>4</li>
+                                                    <li>5</li>
+                                                    <li>6</li>
+                                                </ul>
+                                                <input type="hidden" ng-model="nextShop.ShopId" class="form-control" />
+                                                <button type="submit" class="btn btn-sm btn-primary float-right">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="subscription-info" role="tabpanel">
+                                <form name="shopform" ng-submit="addSubscriptionInfo()">
+                                    <div class="col-sm-12 nopadding">
+                                        <div class="card">
+                                            <div class="card-block col-md-4">
+                                                <h6 class="mb-3">Subscriptions</h6>
+                                                <div class="input-group form-group mb-0">
+                                                    <div class="input-group-addon">
+                                                        <input class="form-check-input" type="checkbox" id="dagblade"  ng-model="shopSubscriptionInfo.DailyNewsPaper" ng-checked="shopSubscriptionInfo.DailyNewsPaper">
+                                                        <label for="dagblade">Dagblade</label>
+                                                    </div>
+                                                    <select class="form-control" ng-model="shopSubscriptionInfo.NewsPaperDeliveryOptionId"  ng-disabled="!shopSubscriptionInfo.DailyNewsPaper" required>
+                                                        <option value="" selected>Choose delivery option</option>
+                                                        <option value="1">All year</option>
+                                                        <option value="2">Only weekends, max 120 days</option>
+                                                        <option value="3">Only summer, max 150 days</option>
+                                                        <option value="4">All year + magazines and books from BK</option>
+                                                        <option value="5">Only weekends, max 120 days + magazines and books from BK</option>
+                                                        <option value="6">Only summer, max 150 days + magazines and books from BK</option>
+                                                        <option value="7">All year only magazines and books from BK</option>
+                                                        <option value="8">Only weekend only magazines and books from BK</option>
+                                                    </select>
+                                                </div>
+                                                <div class="list-group form-group">
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input" type="checkbox" ng-model="shopSubscriptionInfo.Magazines"> Ugeblade
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input" type="checkbox" ng-model="shopSubscriptionInfo.Publisher"> Forlag
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input" type="checkbox" ng-model="shopSubscriptionInfo.ForeignNewspapers"> Udenlandske aviser
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input" type="checkbox" ng-model="shopSubscriptionInfo.ForeignWeeklyMagazines"> Udenlandske ugeblade
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input" type="checkbox" ng-model="shopSubscriptionInfo.ForeignPublishers"> Udenlandske forlag
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <ul class="steps">
+                                                    <li>1</li>
+                                                    <li>2</li>
+                                                    <li class="active">3</li>
+                                                    <li>4</li>
+                                                    <li>5</li>
+                                                    <li>6</li>
+                                                </ul>
+                                                <button type="submit" class="btn btn-sm btn-primary float-right">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="delivery-info" role="tabpanel">
+                                <form name="shopform" ng-submit="addDeliveryInfo()">
+                                    <div class="col-sm-12 nopadding">
+                                        <div class="card">
+                                            <div class="card-block col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="cp-name">Information</label>
+                                                    <textarea id="di-details" class="form-control" ng-model="addDeliveryInfoModel.ShopInformation" placeholder="Enter delivery information"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cp-name">Code/Lock info</label>
+                                                    <textarea id="di-lock" class="form-control" ng-model="addDeliveryInfoModel.ShopCodeLockInfo" placeholder="Enter Code/Lock information"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <ul class="steps">
+                                                    <li>1</li>
+                                                    <li>2</li>
+                                                    <li>3</li>
+                                                    <li class="active">4</li>
+                                                    <li>5</li>
+                                                    <li>6</li>
+                                                </ul>
+                                                <button type="submit" class="btn btn-sm btn-primary float-right">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="admins" role="tabpanel">
+                                <div class="col-sm-12 nopadding">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong>Shop Admins</strong>
+                                            <button type="button" class="btn btn-outline-primary mb-2 float-right" ng-click="clickAddUserDialog()" data-toggle="modal" data-target="#addChainAdmin">
+                                                <i class="icon-plus"></i> Add shop admin
+                                            </button>
+                                        </div>
+                                        <div class="card-block">
+                                            
+                                            <button type="button" id="edit-admin" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#editChainAdmin" style="display:none"><i class="icon-plus"></i> Add chain admin</button>
+                                            <button type="button" id="view-company-admin" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#viewChainAdmin" style="display:none"><i class="icon-plus"></i> Add chain admin</button>
+                                            <table class="table table-bordered table-striped" data-toggle="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="dropdown">
+                                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchName!==''}"></i> Name
+                                                                </a>
+                                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Name' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Name' && !pagingInfo.reverse}"></i>
+                                                                <ul class="dropdown-menu filter">
+                                                                    <li ng-click="sort('Name',false)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li ng-click="sort('Name',true)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchName===''}">
+                                                                        <!-- disabled-->
+                                                                        <a data-toggle="#" ng-click="clearSearch(1)">
+                                                                            <i class="icon-ban"></i> Clear filters
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item">
+                                                                        <label>Search</label>
+                                                                        <form ng-submit="search(1)">
+                                                                            <div class="input-group form-group mb-0">
+
+                                                                                <input type="text" class="form-control" ng-model="SearchModel.searchName">
+                                                                                <button class="input-group-addon" type="submit">
+                                                                                    <i class="icon-magnifier"></i>
+                                                                                </button>
+
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="dropdown">
+                                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchUserAddress!==''}"></i> Address
+                                                                </a>
+                                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Address' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Address' && !pagingInfo.reverse}"></i>
+                                                                <ul class="dropdown-menu filter">
+                                                                    <li ng-click="sort('Address',false)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li ng-click="sort('Address',true)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchUserAddress===''}">
+                                                                        <!-- disabled-->
+                                                                        <a data-toggle="#" ng-click="clearSearch(2)">
+                                                                            <i class="icon-ban"></i> Clear filters
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item">
+                                                                        <label>Search</label>
+                                                                        <form ng-submit="search(2)">
+                                                                            <div class="input-group form-group mb-0">
+                                                                                <input type="text" class="form-control" ng-model="SearchModel.searchUserAddress">
+                                                                                <button class="input-group-addon" type="submit">
+                                                                                    <i class="icon-magnifier"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="dropdown">
+                                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.serachUserPhoneNo!==''}"></i> Contact No
+                                                                </a>
+                                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='PhoneNumber' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='PhoneNumber' && !pagingInfo.reverse}"></i>
+                                                                <ul class="dropdown-menu filter">
+                                                                    <li ng-click="sort('PhoneNumber',false)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li ng-click="sort('PhoneNumber',true)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.serachUserPhoneNo===''}">
+                                                                        <!-- disabled-->
+                                                                        <a data-toggle="#" ng-click="clearSearch(3)">
+                                                                            <i class="icon-ban"></i> Clear filters
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item">
+                                                                        <label>Search</label>
+                                                                        <form ng-submit="search(3)">
+                                                                            <div class="input-group form-group mb-0">
+                                                                                <input type="text" class="form-control" ng-model="SearchModel.serachUserPhoneNo">
+                                                                                <button class="input-group-addon" type="submit">
+                                                                                    <i class="icon-magnifier"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="dropdown">
+                                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.serachUserEmail!==''}"></i> Email
+                                                                </a>
+                                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Email' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Email' && !pagingInfo.reverse}"></i>
+                                                                <ul class="dropdown-menu filter">
+                                                                    <li ng-click="sort('Email',false)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li ng-click="sort('Email',true)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.serachUserEmail===''}">
+                                                                        <!-- disabled-->
+                                                                        <a data-toggle="#" ng-click="clearSearch(4)">
+                                                                            <i class="icon-ban"></i> Clear filters
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item">
+                                                                        <label>Search</label>
+                                                                        <form ng-submit="search(4)">
+                                                                            <div class="input-group form-group mb-0">
+                                                                                <input type="text" class="form-control" ng-model="SearchModel.serachUserEmail">
+                                                                                <button class="input-group-addon" type="submit">
+                                                                                    <i class="icon-magnifier"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr dir-paginate="user in Users| itemsPerPage:pagingInfo.itemsPerPage" total-items="pagingInfo.UsertotalItems" pagination-id="chainUserPaging"
+                                                        ng-class="{ 'disabled' : user.IsActive == false }">
+                                                        <td>{{user.Name}} </td>
+                                                        <td>{{user.Address}}</td>
+                                                        <td>{{user.PhoneNumber}}</td>
+                                                        <td>{{user.Email}}</td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <i class="icon-options-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <!--<a class="dropdown-item" data-target="" ng-click="viewChainAdmin(user.Id)">View Chain Admin details</a>-->
+                                                                    <a class="dropdown-item" ng-show="user.IsActive" data-target="" ng-click="editChainAdmin(user.Id)">Edit user info</a>
+                                                                    <a class="dropdown-item" ng-show="user.IsActive" ng-click="deleteChainUser(user.Id)">Deactivate user</a>
+                                                                    <a class="dropdown-item" ng-show="!user.IsActive" ng-click="activateChainUser(user.Id)">Activate user</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="hide-if-no-paging text-center">
+                                                <nav class="table-pagination">
+                                                    <dir-pagination-controls max-size="5"
+                                                                             direction-links="true"
+                                                                             boundary-links="false"
+                                                                             on-page-change="selectUserPage(newPageNumber)" pagination-id="chainUserPaging"></dir-pagination-controls>
+                                                    <div class="result-summary" ng-show="pagingInfo.UsertotalItems > 0">
+                                                        <span id="current-start">{{pagingInfo.startUserPageRecordNumber}}</span> to
+                                                        <span id="current-end">{{pagingInfo.endPageUserRecordNumber}}</span> of
+                                                        <span id="total-result">{{pagingInfo.UsertotalItems}}</span> results.
+                                                    </div>
+                                                    <div class="result-summary" ng-show="pagingInfo.UsertotalItems == 0">
+                                                        No Record Found.
+                                                    </div>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <ul class="steps">
+                                                <li>1</li>
+                                                <li>2</li>
+                                                <li>3</li>
+                                                <li>4</li>
+                                                <li class="active">5</li>
+                                                <li>6</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-sm btn-primary float-right" ng-click="contactPersonTabOpen();">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="cp" role="tabpanel">
+                                <div class="col-sm-12 nopadding">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong>Contact Persons</strong>
+
+                                            <button type="button" id="add-company-admin" ng-click="setAddHeading()" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#addContactPerson"><i class="icon-plus"></i>  Add contact person</button>
+                                            <button type="button" id="view-contact-person" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#addContactPerson" style="display:none"><i class="icon-plus"></i> Add chain admin</button>
+                                            <button type="button" id="view-company-admin" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#viewChainAdmin" style="display:none"><i class="icon-plus"></i> Add chain admin</button>
+
+                                        </div>
+                                        <div class="card-block">
+
+                                            <table class="table table-bordered table-striped" data-toggle="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="dropdown">
+                                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-filter" ng-class="{'active':SearchCPModel.searchContactPersonName!==''}"></i> Name
+                                                                </a>
+                                                                <i class="fa" ng-class="{'fa-sort-asc':shopContactPagingInfo.sortBy=='ContactPersonName' && shopContactPagingInfo.reverse,'fa-sort-desc':shopContactPagingInfo.sortBy=='ContactPersonName' && !shopContactPagingInfo.reverse}"></i>
+                                                                <ul class="dropdown-menu filter">
+                                                                    <li ng-click="sortCP('ContactPersonName',false)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li ng-click="sortCP('ContactPersonName',true)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item" ng-class="{'disabled':SearchCPModel.searchContactPersonName===''}">
+                                                                        <!-- disabled-->
+                                                                        <a data-toggle="#" ng-click="clearContactPersonSearch(1)">
+                                                                            <i class="icon-ban"></i> Clear filters
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item">
+                                                                        <label>Search</label>
+                                                                        <form ng-submit="searchShopContactPerson(1)">
+                                                                            <div class="input-group form-group mb-0">
+
+                                                                                <input type="text" class="form-control" ng-model="SearchCPModel.searchContactPersonName">
+                                                                                <button class="input-group-addon" type="submit">
+                                                                                    <i class="icon-magnifier"></i>
+                                                                                </button>
+
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="dropdown">
+                                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-filter" ng-class="{'active':SearchCPModel.searchContactPersonAddress!==''}"></i> Address
+                                                                </a>
+                                                                <i class="fa" ng-class="{'fa-sort-asc':shopContactPagingInfo.sortBy=='ContactPersonAddress' && shopContactPagingInfo.reverse,'fa-sort-desc':shopContactPagingInfo.sortBy=='ContactPersonAddress' && !shopContactPagingInfo.reverse}"></i>
+                                                                <ul class="dropdown-menu filter">
+                                                                    <li ng-click="sortCP('ContactPersonAddress',false)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li ng-click="sortCP('ContactPersonAddress',true)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item" ng-class="{'disabled':SearchCPModel.searchContactPersonAddress===''}">
+                                                                        <!-- disabled-->
+                                                                        <a data-toggle="#" ng-click="clearContactPersonSearch(2)">
+                                                                            <i class="icon-ban"></i> Clear filters
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item">
+                                                                        <label>Search</label>
+                                                                        <form ng-submit="searchShopContactPerson(2)">
+                                                                            <div class="input-group form-group mb-0">
+                                                                                <input type="text" class="form-control" ng-model="SearchCPModel.searchContactPersonAddress">
+                                                                                <button class="input-group-addon" type="submit">
+                                                                                    <i class="icon-magnifier"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="dropdown">
+                                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-filter" ng-class="{'active':SearchCPModel.searchContactPersonNumber!==''}"></i> Contact No
+                                                                </a>
+                                                                <i class="fa" ng-class="{'fa-sort-asc':shopContactPagingInfo.sortBy=='ContactPersonNumber' && shopContactPagingInfo.reverse,'fa-sort-desc':shopContactPagingInfo.sortBy=='ContactPersonNumber' && !shopContactPagingInfo.reverse}"></i>
+                                                                <ul class="dropdown-menu filter">
+                                                                    <li ng-click="sortCP('ContactPersonNumber',false)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li ng-click="sortCP('ContactPersonNumber',true)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item" ng-class="{'disabled':SearchCPModel.searchContactPersonNumber===''}">
+                                                                        <!-- disabled-->
+                                                                        <a data-toggle="#" ng-click="clearContactPersonSearch(3)">
+                                                                            <i class="icon-ban"></i> Clear filters
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item">
+                                                                        <label>Search</label>
+                                                                        <form ng-submit="searchShopContactPerson(3)">
+                                                                            <div class="input-group form-group mb-0">
+                                                                                <input type="text" class="form-control" ng-model="SearchCPModel.searchContactPersonNumber">
+                                                                                <button class="input-group-addon" type="submit">
+                                                                                    <i class="icon-magnifier"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="dropdown">
+                                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-filter" ng-class="{'active':SearchCPModel.searchContactPersonEmail!==''}"></i> Email
+                                                                </a>
+                                                                <i class="fa" ng-class="{'fa-sort-asc':shopContactPagingInfo.sortBy=='ContactPersonEmail' && shopContactPagingInfo.reverse,'fa-sort-desc':shopContactPagingInfo.sortBy=='ContactPersonEmail' && !shopContactPagingInfo.reverse}"></i>
+                                                                <ul class="dropdown-menu filter">
+                                                                    <li ng-click="sortCP('ContactPersonEmail',false)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li ng-click="sortCP('ContactPersonEmail',true)" class="dropdown-item">
+                                                                        <a data-toggle="#">
+                                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item" ng-class="{'disabled':SearchCPModel.searchContactPersonEmail===''}">
+                                                                        <!-- disabled-->
+                                                                        <a data-toggle="#" ng-click="clearContactPersonSearch(4)">
+                                                                            <i class="icon-ban"></i> Clear filters
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="dropdown-item">
+                                                                        <label>Search</label>
+                                                                        <form ng-submit="searchShopContactPerson(4)">
+                                                                            <div class="input-group form-group mb-0">
+                                                                                <input type="text" class="form-control" ng-model="SearchCPModel.searchContactPersonEmail">
+                                                                                <button class="input-group-addon" type="submit">
+                                                                                    <i class="icon-magnifier"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr dir-paginate="cp in viewContactPerson| itemsPerPage:shopContactPagingInfo.itemsPerPage" total-items="shopContactPagingInfo.totalItems" pagination-id="shopContactPersonPaging"
+                                                        ng-class="{ 'disabled' : cp.IsActive == false ||  viewShop.IsActive == false}">
+                                                        <td>{{cp.ContactPersonName}}</td>
+                                                        <td>{{cp.ContactPersonAddress}}</td>
+                                                        <td>{{cp.ContactPersonNumber}}</td>
+                                                        <td>{{cp.ContactPersonEmail}}</td>
+                                                        <td class="text-center">
+                                                            <div class="dropdown">
+                                                                <i class="icon-options-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item" data-target="" ng-show="cp.IsActive" ng-click="viewShopContactPerson(cp.Id)">Edit user info</a>
+                                                                    <a class="dropdown-item" data-target="" ng-show="cp.IsActive" ng-click="deactiveShopContactPerson(cp.Id)">Deactivate user</a>
+                                                                    <a class="dropdown-item" data-target="" ng-show="!cp.IsActive" ng-click="activeShopContactPerson(cp.Id)">Activate user</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="hide-if-no-paging text-center">
+                                                <nav class="table-pagination">
+                                                    <dir-pagination-controls max-size="5"
+                                                                             direction-links="true"
+                                                                             boundary-links="false"
+                                                                             on-page-change="selectCPPage(newPageNumber)" pagination-id="shopContactPersonPaging"></dir-pagination-controls>
+                                                    <div class="result-summary" ng-show="shopContactPagingInfo.totalItems > 0">
+                                                        <span id="current-start">{{shopContactPagingInfo.startPageRecordNumber}}</span> to
+                                                        <span id="current-end">{{shopContactPagingInfo.endPageRecordNumber}}</span> of
+                                                        <span id="total-result">{{shopContactPagingInfo.totalItems}}</span> results.
+                                                    </div>
+                                                    <div class="result-summary" ng-show="shopContactPagingInfo.totalItems == 0">
+                                                        No Record Found.
+                                                    </div>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <ul class="steps">
+                                                <li>1</li>
+                                                <li>2</li>
+                                                <li>3</li>
+                                                <li>4</li>
+                                                <li>5</li>
+                                                <li class="active">6</li>
+                                            </ul>
+                                            <a class="btn btn-sm btn-primary float-right" href="" ng-click="btnSaveShop()">Save</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.conainer -->
+        <!-- Add/Edit Modal start -->
+        <contact-add></contact-add>
+    </div>
+    <user-add></user-add>
+    <user-edit></user-edit>
+
+    <user-view></user-view>
+
+
+    <deactive></deactive>
+    <active></active>
+
+
+</div>
+
+    <script type="text/javascript">
+      /*$(document).ready(function () {
+          getAllCompaniesNames();
+
+      })
+        //$(window).load(function () {
+        $(window).on('load', function(){
+            getAllCompaniesNames();
+        })
+      function getAllCompaniesNames() {
+          var url = location.href;
+
+          var id = url.substring(url.lastIndexOf('/') + 1);
+          var val = url.substring(url.lastIndexOf('/') - 2);
+          var apiUrl = "";
+          if (id > 0 && val.indexOf("c") <= 0) {
+              apiUrl = "api/Company/getAllChainCompanies/?id=" + id;
+          } else if (val.indexOf("c") > 0 && id > 0) {
+              apiUrl = "api/Company/getCompany/?id=" + id;              
+          } else {
+              apiUrl = "api/Company/getAllCompaniesNames";
+          }
+          $.get(apiUrl, function (data) {
+              var options = {
+                  data: data,
+                  getValue: "CompanyName",
+
+                  list: {
+                      match: {
+                          enabled: true
+                      },
+                      onSelectItemEvent: function () {
+                          var value = $("#CompanyName").getSelectedItemData().Id;
+
+                          $("#CompanyId").val(value).trigger("change");
+                      }
+
+                  }
+              };
+
+              $("#CompanyName").easyAutocomplete(options);
+          });
+      }
+
+      function getUrlParameter(sParam) {
+          var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+              sURLVariables = sPageURL.split('&'),
+              sParameterName,
+              i;
+
+          for (i = 0; i < sURLVariables.length; i++) {
+              sParameterName = sURLVariables[i].split('=');
+
+              if (sParameterName[0] === sParam) {
+                  return sParameterName[1] === undefined ? true : sParameterName[1];
+              }
+          }
+      };
+      */
+        
+    </script>

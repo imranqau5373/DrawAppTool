@@ -1,0 +1,50 @@
+﻿    
+
+
+
+<div class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 login-card">
+                <div class="text-center"><img src="/Content/img/logo.svg" class="mt-3 mb-3 logo"></div>
+                <div class="card">
+                    <div class="card-block" cg-busy="myPromise">
+                        <h3>Login</h3>
+                        <p class="text-muted">Sign In to your account</p>
+                        <form name="loginForm" ng-controller="LoginCtrl" ng-submit="userLogin()">
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon">
+                                    <i class="icon-user"></i>
+                                </span>
+                                <input type="text" ng-model="loginData.Email" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="input-group mb-4">
+                                <span class="input-group-addon">
+                                    <i class="icon-lock"></i>
+                                </span>
+                                <input type="password" ng-model="loginData.Password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary px-4">Login</button>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

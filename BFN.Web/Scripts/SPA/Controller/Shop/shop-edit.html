@@ -1,0 +1,212 @@
+﻿<!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="Home/shop">Shops</a>
+    </li>
+    <li class="breadcrumb-item active">Edit shop</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs" role="tablist" style="display:none;">
+                    <li class="nav-item active">
+                        <a class="nav-link" id="shopPart" data-toggle="tab" data-target="#shop" role="tab" aria-controls="shop">Shop information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="ohPart" data-toggle="tab" data-target="#opening-hours" role="tab" aria-controls="opening-hours" style="pointer-events:none;"> Opening hours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="dlInfoPart" data-toggle="tab" data-target="#delivery-info" role="tab" aria-controls="delivery-info" style="pointer-events:none;"> Delivery Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="shopAdminPart" data-toggle="tab" data-target="#admins" role="tab" aria-controls="admins" style="pointer-events:none;">Shop admins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="cpPart" data-toggle="tab" data-target="#cp" role="tab" aria-controls="cp" style="pointer-events:none;">Contact Person</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="shop" role="tabpanel">
+                        <form name="shopform" ng-submit="saveShop()">
+                            <div class="col-sm-12 nopadding">
+                                <div class="card">
+                                    <div class="card-block col-sm-6">
+                                        <div class="form-group">
+                                            <label>Company</label>
+                                            <input type="text" class="form-control" id="CompanyName" placeholder="Enter company name" required ng-model="editShop.CompanyName" ng-blur="VerifyCompanyName()">
+                                        </div>
+                                        <input type="text" id="CompanyId" ng-show="false" ng-model="editShop.CompanyId" />
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" placeholder="Enter shop name" ng-model="editShop.ShopName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" placeholder="Enter complete address" ng-model="editShop.ShopAddress" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="chain-address-2">Address 2</label>
+                                            <span class="badge badge-default badge-pill float-right">Optional</span>
+                                            <input type="text" class="form-control" id="chain-address-2" placeholder="Enter address details" ng-model="editShop.ShopAddress2">
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label for="chain-postal">Postal code</label>
+                                                <input type="text" class="form-control" id="chain-postal" placeholder="Enter postal code" ng-model="editShop.ShopPostCode" required>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label for="chain-city">City</label>
+                                                <input type="text" class="form-control" id="chain-city" placeholder="Enter city" ng-model="editShop.ShopCityName" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Owner Name</label>
+                                            <input type="text" class="form-control" placeholder="Enter shop owner name" ng-model="editShop.OwnerName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Owner's Email</label>
+                                            <input type="email" class="form-control" placeholder="Enter shop owner email address" ng-model="editShop.OwnerEmail" required>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label>Gross</label>
+                                                <input type="text" class="form-control" placeholder="Enter gross" ng-model="editShop.Gross" required>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label>Category</label>
+                                                <input type="text" class="form-control" id="CategoryName" placeholder="Enter category" ng-model="editShop.CategoryName" required>
+                                            </div>
+                                            <input type="text" ng-show="false" id="ShopFrellationsNummerCategoryId" ng-model="editShop.ShopFrellationsNummerCategoryId" />
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label>EAN</label>
+                                                <span class="badge badge-default badge-pill float-right">Optional</span>
+                                                <input type="text" pattern="\d{13,13}" title="13 digits only" class="form-control" placeholder="Enter EAN" ng-model="editShop.ShopEAN">
+                                            </div>
+                                            <div class="form-group col">
+                                                <label>CARDEX</label>
+                                                <span class="badge badge-default badge-pill float-right">Optional</span>
+                                                <input type="text" class="form-control" placeholder="Enter CARDEX" ng-model="editShop.ShopCARDEX">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label>Inauguration date</label>
+                                                <input type="date" class="form-control" placeholder="Enter shop inauguration date" ng-model="editShop.InagurationDate">
+                                            </div>
+                                            <div class="form-group col">
+                                                <label>Termination date</label>
+                                                <input type="date" class="form-control" placeholder="Enter shop termination date" ng-model="editShop.TerminatinonDate">
+                                            </div>
+                                        </div>     
+                                                   </div>
+                                    <div class="card-footer">
+                                        <ul class="steps">
+                                            <li class="active">1</li>
+                                            <li>2</li>
+                                        </ul>
+                                        <button type="submit" class="btn btn-sm btn-primary float-right">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="delivery-info" role="tabpanel">
+                        <form name="shopform" ng-submit="addDeliveryInfo()">
+                            <div class="col-sm-12 nopadding">
+                                <div class="card">
+                                    <div class="card-block col-sm-6">
+                                        <div class="form-group">
+                                            <label for="cp-name">Information</label>
+                                            <textarea id="di-details" class="form-control" ng-model="editShop.ShopInformation" placeholder="Enter delivery information"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cp-name">Code/Lock info</label>
+                                            <textarea id="di-lock" class="form-control" ng-model="editShop.ShopCodeLockInfo" placeholder="Enter Code/Lock information"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <ul class="steps">
+                                            <li>1</li>
+                                            <li class="active">2</li>
+                                        </ul>
+                                        <button type="submit" class="btn btn-sm btn-primary float-right">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.conainer -->
+<!-- Add/Edit Modal start -->
+<!-- Add/Edit Modal End -->
+<!-- Add/Edit Modal start -->
+<!-- Add/Edit Modal End -->
+<!--<script src="../../../../Content/js/remodal.js"></script>-->
+
+
+<script type="text/javascript">
+      $(document).ready(function () {
+          getAllCompaniesNames();
+
+      })
+      function getAllCompaniesNames() {
+          var url = location.href;
+          //var id = url.substring(url.lastIndexOf('/') + 1);
+          var apiUrl = "";
+          //if (id > 0) {
+          //    apiUrl = "api/Company/getAllChainCompanies/?id=" + id;
+          //} else {
+              apiUrl = "api/Company/getAllCompaniesNames";
+          //}
+          $.get(apiUrl, function (data) {
+              var options = {
+                  data: data,
+                  getValue: "CompanyName",
+
+                  list: {
+                      maxNumberOfElements: 12,
+                      match: {
+                          enabled: true
+                      },
+                      onSelectItemEvent: function () {
+                          var value = $("#CompanyName").getSelectedItemData().Id;
+
+                          $("#CompanyId").val(value).trigger("change");
+                      }
+
+                  }
+              };
+
+              $("#CompanyName").easyAutocomplete(options);
+          });
+      }
+
+      function getUrlParameter(sParam) {
+          var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+              sURLVariables = sPageURL.split('&'),
+              sParameterName,
+              i;
+
+          for (i = 0; i < sURLVariables.length; i++) {
+              sParameterName = sURLVariables[i].split('=');
+
+              if (sParameterName[0] === sParam) {
+                  return sParameterName[1] === undefined ? true : sParameterName[1];
+              }
+          }
+      };
+
+      
+</script>

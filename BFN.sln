@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFN.Model", "BFN.Model\BFN.Model.csproj", "{D0FE92A3-E747-44A3-972D-1D3136EC3C13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFN.Repository", "BFN.Repository\BFN.Repository.csproj", "{6E5F6C2F-429C-4988-A16D-920CB220119F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFN.Service", "BFN.Service\BFN.Service.csproj", "{D74863B0-1530-4A06-BA72-B14A2490DDA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFN.Web", "BFN.Web\BFN.Web.csproj", "{D5C5BF2F-47BE-4A46-9BCB-89ED2045D86C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFN.Web.Tests", "BFN.Web.Tests\BFN.Web.Tests.csproj", "{424A17EF-C5D4-4C33-8059-A0D5D5E4FE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFN-Handover.Service", "BFN-Handover.Service\BFN-Handover.Service.csproj", "{D5FBD69E-1B06-4537-BB0C-BE4281F99251}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0FE92A3-E747-44A3-972D-1D3136EC3C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0FE92A3-E747-44A3-972D-1D3136EC3C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0FE92A3-E747-44A3-972D-1D3136EC3C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0FE92A3-E747-44A3-972D-1D3136EC3C13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E5F6C2F-429C-4988-A16D-920CB220119F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E5F6C2F-429C-4988-A16D-920CB220119F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E5F6C2F-429C-4988-A16D-920CB220119F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E5F6C2F-429C-4988-A16D-920CB220119F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D74863B0-1530-4A06-BA72-B14A2490DDA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D74863B0-1530-4A06-BA72-B14A2490DDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D74863B0-1530-4A06-BA72-B14A2490DDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D74863B0-1530-4A06-BA72-B14A2490DDA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5C5BF2F-47BE-4A46-9BCB-89ED2045D86C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5C5BF2F-47BE-4A46-9BCB-89ED2045D86C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5C5BF2F-47BE-4A46-9BCB-89ED2045D86C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5C5BF2F-47BE-4A46-9BCB-89ED2045D86C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{424A17EF-C5D4-4C33-8059-A0D5D5E4FE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{424A17EF-C5D4-4C33-8059-A0D5D5E4FE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{424A17EF-C5D4-4C33-8059-A0D5D5E4FE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{424A17EF-C5D4-4C33-8059-A0D5D5E4FE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FBD69E-1B06-4537-BB0C-BE4281F99251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FBD69E-1B06-4537-BB0C-BE4281F99251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FBD69E-1B06-4537-BB0C-BE4281F99251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FBD69E-1B06-4537-BB0C-BE4281F99251}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.222.35:8081/tfs/bfnweb
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BFN.Model\\BFN.Model.csproj
+		SccProjectName1 = BFN.Model
+		SccLocalPath1 = BFN.Model
+		SccProjectUniqueName2 = BFN.Repository\\BFN.Repository.csproj
+		SccProjectName2 = BFN.Repository
+		SccLocalPath2 = BFN.Repository
+		SccProjectUniqueName3 = BFN.Web\\BFN.Web.csproj
+		SccProjectName3 = BFN.Web
+		SccLocalPath3 = BFN.Web
+		SccProjectUniqueName4 = BFN.Service\\BFN.Service.csproj
+		SccProjectName4 = BFN.Service
+		SccLocalPath4 = BFN.Service
+		SccProjectUniqueName5 = BFN.Web.Tests\\BFN.Web.Tests.csproj
+		SccProjectName5 = BFN.Web.Tests
+		SccLocalPath5 = BFN.Web.Tests
+		SccProjectUniqueName6 = BFN-Handover.Service\\BFN-Handover.Service.csproj
+		SccProjectName6 = BFN-Handover.Service
+		SccLocalPath6 = BFN-Handover.Service
+	EndGlobalSection
+EndGlobal

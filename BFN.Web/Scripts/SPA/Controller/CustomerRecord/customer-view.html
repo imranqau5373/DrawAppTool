@@ -1,0 +1,130 @@
+﻿<div>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Customer</li>
+        <li class="breadcrumb-item active">{{viewCustomer.CustomerName}}</li>
+
+    </ol>
+
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+
+                <div class="col-sm-12 grid-view">
+
+                    <!-- Company Setup Tab -->
+                    <div class="card card-lg">
+                        <div class="card-header">
+                            <strong>Customer Information</strong>
+                            <a href="Home/CommiteView/{{viewCustomer.CommiteId}}/EditMember/{{viewCustomer.Id}}" class="btn btn-outline-primary float-right">
+                                <i class="icon-pencil"></i> Edit Customer Info
+                            </a>
+                        </div>
+                        <div class="card-block row">
+                            <div class="form-group col-3">
+                                <label for="cvr">Customer Name</label>
+                                <h4>{{viewCustomer.CustomerName}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company">Customer Serial No</label>
+                                <h4>{{viewCustomer.CustomerSerialNo}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Customer ID Card No</label>
+                                <h4>{{viewCustomer.CustomerIdCardNo}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Customer Father Name</label>
+                                <h4>{{viewCustomer.CustomerFather}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Customer Father Name</label>
+                                <h4>{{viewCustomer.CustomerFather}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Customer Address</label>
+                                <h4>{{viewCustomer.CustomerAddress}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Customer Details</label>
+                                <h4>{{viewCustomer.CustomerDetails}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Evidence Name</label>
+                                <h4>{{viewCustomer.EvidenceName}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Evidence Father Name</label>
+                                <h4>{{viewCustomer.EvidenceFatherName}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Evidence ID Card No</label>
+                                <h4>{{viewCustomer.EvidenceIdCardNo}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Evidence Details</label>
+                                <h4>{{viewCustomer.EvidenceDetails}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Evidence Address</label>
+                                <h4>{{viewCustomer.EvidenceAddress}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Evidence Phone No</label>
+                                <h4>{{viewCustomer.EvidencePhoneNo}}</h4>
+                            </div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="card card-lg">
+                        <div class="card-header">
+                            <strong>Customer Payments</strong>
+                        </div>
+                        <div class="card-block" cg-busy="myPromise">
+
+                            <table class="table table-bordered table-striped " data-toggle="table">
+                                <thead>
+                                    <tr>
+                                        <th data-sortable="true">Serial Number</th>
+                                        <th data-sortable="true">Customer Name</th>
+                                        <th data-sortable="true">Commite Name</th>
+                                        <th data-sortable="true">Commite Month</th>
+                                        <th data-sortable="true">Recived Amount</th>
+                                        <th data-sortable="true"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--<tr ng-repeat="chain in listAllChains">-->
+                                    <tr ng-repeat="payments in listAllPayments">
+                                        <td>{{payments.CustomerSerialNo}} </td>
+                                        <td>{{payments.CustomerName}}</td>
+                                        <td>{{payments.CommiteName}}</td>
+                                        <td>{{payments.CommiteMonth}}</td>
+                                        <td>{{payments.RecivedAmount}}</td>
+
+                                        <td class="text-center">
+                                            <a href="/Home/viewPayments/{{payments.Id}}" title="View payment details"><i class="icon-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

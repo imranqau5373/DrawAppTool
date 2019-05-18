@@ -1,0 +1,29 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app="BFN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>BFN</title>
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="~/Content/css/toastr.css" rel="stylesheet" />
+    <link href="~/Content/css/vendors/easy-autocomplete.css" rel="stylesheet" />
+    <link href="~/Content/css/remodal.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<body class="app header-fixed sidebar-fixed" ng-controller="rootCtrl">
+    @RenderBody()
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/BFNScript")
+    @Scripts.Render("~/Content/js")
+
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="BFN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>BFN</title>
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="~/Content/css/toastr.css" rel="stylesheet" />
+    <link href="~/Content/css/vendors/easy-autocomplete.css" rel="stylesheet" />
+    <link href="~/Content/css/vendors/angular-busy.css" rel="stylesheet" />
+    <link href="~/Content/css/vendors/loading-bar.css" rel="stylesheet" />
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+    <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/app.js"></script>
+    
+ 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/BFNScript")
+
+    <base href="/">
+</head>
+<body class="app header-fixed sidebar-fixed" ng-controller="rootCtrl">
+    <header class="app-header navbar" ng-show="islogin">
+        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">☰</button>
+        <a class="navbar-brand" href=""></a>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right notification-menu">
+                    <li class="dropdown-item">
+                        <a href="notifications.html">Netto Rådhuspladsen requests attachment to Netto A/S</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href="notifications.html">Kvickly Nexø added to Kvickly</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href="notifications.html">View all</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item pl-2 pr-4 dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="d-md-down-none">{{user}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" ng-click="logout()" href="">
+                        <i class="icon-logout"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </header>
+
+    <div class="app-body" ng-click="getClass()">
+        <div class="sidebar" ng-show="islogin">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#!/chainIndex"><i class="icon-bag"></i> Chains</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/companyIndex"><i class="icon-bag"></i> Companies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/shop"><i class="icon-basket-loaded"></i> Shops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href=""><i class="icon-people"></i> Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="icon-docs"></i> Reports
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div ng-view class="main">
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var url = window.location;
+        $('.sidebar-nav .nav').find('.active').removeClass('active');
+        $('.sidebar-nav .nav li a').each(function () {
+            if (this.href == url) {
+                $(this).parent().addClass('active');
+            }
+        });
+        $('.nav-item a').click(function () {
+            $(this).parent().addClass('active').siblings().removeClass('active')
+        })
+    });
+      
+</script>

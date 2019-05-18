@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+@include font-face("Roboto", "Roboto-Thin",       $font-weight-thin,       normal);
+@include font-face("Roboto", "Roboto-Light",      $font-weight-light,      normal);
+@include font-face("Roboto", "Roboto-Regular",    $font-weight-regular,    normal);
+@include font-face("Roboto", "Roboto-Medium",     $font-weight-medium,     normal);
+@include font-face("Roboto", "Roboto-Bold",       $font-weight-bold,       normal);
+@include font-face("Roboto", "Roboto-Black",      $font-weight-black,      normal);
+
+html {
+    font-size: 87.5%;
+	min-height: 100%;
+}
+
+body {
+    position: relative;
+    left: 0; // for Webkit based browsers
+    overflow-x: hidden;
+	background: bfn-theme-color(secondary);
+	min-height: 100vh;
+	padding-bottom: px2rem(260);
+	
+	@include media-breakpoint-up(md){
+		padding-bottom: px2rem(150);
+	}
+}
+
+
+
+
+

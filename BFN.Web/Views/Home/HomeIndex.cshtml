@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="BFN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>BFN</title>
+    @*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>*@
+    
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="~/Content/css/toastr.css" rel="stylesheet" />
+    <link href="~/Content/css/vendors/easy-autocomplete.css" rel="stylesheet" />
+    <link href="~/Content/css/vendors/angular-busy.css" rel="stylesheet" />
+    <link href="~/Content/css/vendors/loading-bar.css" rel="stylesheet" />
+
+
+
+  
+    <script src="~/Content/layout/js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/layout/js/vendor/popper.min.js"></script>
+    <script src="~/Content/layout/js/vendor/bootstrap.min.js">
+        //due to this bootstrap file login popup is not showing.
+
+        </script>
+    <script src="~/Content/js/jquery.maskedinput.js"></script>
+    
+    <script src="~/Content/js/FooTable.js"></script>
+    
+    @*@Scripts.Render("~/bundles/fontFiles")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/BFNScript")
+    <script src="~/Content/js/app.js"></script>
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <base href="/" />
+</head>
+<body>
+
+    <div ui-view></div>
+</body>
+</html>
+
+
+
+

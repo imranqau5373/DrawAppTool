@@ -1,0 +1,289 @@
+﻿
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="/Home/userIndex">Users</a>
+    </li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card"  ng-controller="ChainUserCtrl">
+
+
+                    <div class="card-header">
+                        <strong>Users</strong>
+                        <small class="text-muted mx-2">[{{filterApplied.length}} filter applied]</small>
+                        <a href="/Home/addUser" class="btn btn-primary float-right"><i class="icon-plus"></i> Add User</a>
+                    </div>
+                    <div class="card-block" cg-busy="myPromise">
+                        <table class="table table-bordered table-striped" data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-filter" ng-class="{'active':SearchModel.searchName!==''}"></i> Name
+                                            </a>
+                                            <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Name' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Name' && !pagingInfo.reverse}"></i>
+                                            <ul class="dropdown-menu filter">
+                                                <li ng-click="sort('Name',false)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                    </a>
+                                                </li>
+                                                <li ng-click="sort('Name',true)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchName===''}">
+                                                    <!-- disabled-->
+                                                    <a data-toggle="#" ng-click="clearSearch(1)">
+                                                        <i class="icon-ban"></i> Clear filters
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <label>Search</label>
+                                                    <form ng-submit="search(1)">
+                                                        <div class="input-group form-group mb-0">
+
+                                                            <input type="text" class="form-control" ng-model="SearchModel.searchName">
+                                                            <button class="input-group-addon" type="submit">
+                                                                <i class="icon-magnifier"></i>
+                                                            </button>
+
+                                                        </div>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-filter" ng-class="{'active':SearchModel.searchUserAddress!==''}"></i> Address
+                                            </a>
+                                            <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Address' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Address' && !pagingInfo.reverse}"></i>
+                                            <ul class="dropdown-menu filter">
+                                                <li ng-click="sort('Address',false)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                    </a>
+                                                </li>
+                                                <li ng-click="sort('Address',true)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchUserAddress===''}">
+                                                    <!-- disabled-->
+                                                    <a data-toggle="#" ng-click="clearSearch(2)">
+                                                        <i class="icon-ban"></i> Clear filters
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <label>Search</label>
+                                                    <form ng-submit="search(2)">
+                                                        <div class="input-group form-group mb-0">
+                                                            <input type="text" class="form-control" ng-model="SearchModel.searchUserAddress">
+                                                            <button class="input-group-addon" type="submit">
+                                                                <i class="icon-magnifier"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-filter" ng-class="{'active':SearchModel.serachUserPhoneNo!==''}"></i> Contact No
+                                            </a>
+                                            <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='PhoneNumber' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='PhoneNumber' && !pagingInfo.reverse}"></i>
+                                            <ul class="dropdown-menu filter">
+                                                <li ng-click="sort('PhoneNumber',false)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                    </a>
+                                                </li>
+                                                <li ng-click="sort('PhoneNumber',true)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item" ng-class="{'disabled':SearchModel.serachUserPhoneNo===''}">
+                                                    <!-- disabled-->
+                                                    <a data-toggle="#" ng-click="clearSearch(3)">
+                                                        <i class="icon-ban"></i> Clear filters
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <label>Search</label>
+                                                    <form ng-submit="search(3)">
+                                                        <div class="input-group form-group mb-0">
+                                                            <input type="text" class="form-control" ng-model="SearchModel.serachUserPhoneNo">
+                                                            <button class="input-group-addon" type="submit">
+                                                                <i class="icon-magnifier"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-filter" ng-class="{'active':SearchModel.serachUserEmail!==''}"></i> Email
+                                            </a>
+                                            <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Email' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Email' && !pagingInfo.reverse}"></i>
+                                            <ul class="dropdown-menu filter">
+                                                <li ng-click="sort('Email',false)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                    </a>
+                                                </li>
+                                                <li ng-click="sort('Email',true)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item" ng-class="{'disabled':SearchModel.serachUserEmail===''}">
+                                                    <!-- disabled-->
+                                                    <a data-toggle="#" ng-click="clearSearch(4)">
+                                                        <i class="icon-ban"></i> Clear filters
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <label>Search</label>
+                                                    <form ng-submit="search(4)">
+                                                        <div class="input-group form-group mb-0">
+                                                            <input type="text" class="form-control" ng-model="SearchModel.serachUserEmail">
+                                                            <button class="input-group-addon" type="submit">
+                                                                <i class="icon-magnifier"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-filter" ng-class="{'active':SearchModel.serachUserExp!==''}"></i> Expertise
+                                            </a>
+                                            <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='ExpertiseName' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='ExpertiseName' && !pagingInfo.reverse}"></i>
+                                            <ul class="dropdown-menu filter">
+                                                <li ng-click="sort('ExpertiseName',false)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                    </a>
+                                                </li>
+                                                <li ng-click="sort('ExpertiseName',true)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item" ng-class="{'disabled':SearchModel.serachUserExp===''}">
+                                                    <!-- disabled-->
+                                                    <a data-toggle="#" ng-click="clearSearch(5)">
+                                                        <i class="icon-ban"></i> Clear filters
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <label>Search</label>
+                                                    <form ng-submit="search(5)">
+                                                        <div class="input-group form-group mb-0">
+                                                            <input type="text" class="form-control" ng-model="SearchModel.serachUserExp">
+                                                            <button class="input-group-addon" type="submit">
+                                                                <i class="icon-magnifier"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-filter" ng-class="{'active':SearchModel.serachUserRole!==''}"></i> Role
+                                            </a>
+                                            <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='RoleName' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='RoleName' && !pagingInfo.reverse}"></i>
+                                            <ul class="dropdown-menu filter">
+                                                <li ng-click="sort('RoleName',false)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                    </a>
+                                                </li>
+                                                <li ng-click="sort('RoleName',true)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item" ng-class="{'disabled':SearchModel.serachUserRole===''}">
+                                                    <!-- disabled-->
+                                                    <a data-toggle="#" ng-click="clearSearch(6)">
+                                                        <i class="icon-ban"></i> Clear filters
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <label>Search</label>
+                                                    <form ng-submit="search(6)">
+                                                        <div class="input-group form-group mb-0">
+                                                            <input type="text" class="form-control" ng-model="SearchModel.serachUserRole">
+                                                            <button class="input-group-addon" type="submit">
+                                                                <i class="icon-magnifier"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="user in Users| itemsPerPage:pagingInfo.itemsPerPage" total-items="pagingInfo.UsertotalItems" pagination-id="chainUserPaging"
+                                    ng-class="{ 'disabled' : user.IsActive == false }">
+                                    <td>{{user.Name}} </td>
+                                    <td>{{user.Address}}</td>
+                                    <td>{{user.PhoneNumber}}</td>
+                                    <td>{{user.Email}}</td>
+                                    <td>{{user.ExpertiseName}}</td>
+                                    <td>{{user.RoleName}}</td>
+                                    <td class="text-center">
+                                        <a href="/Home/viewUser/{{user.Id}}">
+                                            <i class="icon-eye" title="View details"></i>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="hide-if-no-paging text-center">
+                            <nav class="table-pagination">
+                                <dir-pagination-controls max-size="10"
+                                                         direction-links="true"
+                                                         boundary-links="false"
+                                                         on-page-change="selectUserPage(newPageNumber)" pagination-id="chainUserPaging"></dir-pagination-controls>
+                                <div class="result-summary">
+                                    <span id="current-start">{{pagingInfo.startUserPageRecordNumber}}</span> to
+                                    <span id="current-end">{{pagingInfo.endPageUserRecordNumber}}</span> of
+                                    <span id="total-result">{{pagingInfo.UsertotalItems}}</span> results.
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

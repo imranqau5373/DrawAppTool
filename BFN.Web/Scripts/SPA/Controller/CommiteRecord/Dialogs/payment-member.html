@@ -1,0 +1,71 @@
+﻿<div class="modal fade" id="addPayment" role="dialog">
+    <div class="modal-dialog" style="max-width: 700px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form name="shopHandover" ng-submit="setMember()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+
+                <div class="modal-header">
+
+                    <h1>Select Member</h1>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="closePaymentMember()">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="col-sm-12 nopadding">
+                        <div class="form-group">
+                            <label>Commite Member</label>
+                            <small class="form-text text-muted mt-0 mb-2"> Search for member name or serial number. </small>
+                            <div class="input-group form-group">
+                                <input type="text" ng-model="member.searchText" class="form-control" placeholder="Enter keywords to search">
+                                <button type="button" class="input-group-addon text-center btn-primary" ng-click="searchMember(member.searchText)">
+                                    <i class="icon-magnifier m-0"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-striped my-4" data-toggle="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th data-breakpoints="xs">Serial Number</th>
+                                <th data-breakpoints="xs">Customer Name</th>
+                                <th data-breakpoints="xs">ID Card No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="customerRec in listAllCustomers | itemsPerPage:CustomerpagingInfo.itemsPerPage" total-items="CustomerpagingInfo.totalItems">
+                                <td class="text-center">
+                                    <input type="radio" name="handover" value="{{customerRec.Id}}" ng-model="member.FK_MemberId">
+                                </td>
+                                <td>{{customerRec.CustomerSerialNo}} </td>
+                                <td>{{customerRec.CustomerName}}
+                                    <input type="hidden" value="{{customerRec.CustomerName}}"  ng-model="member.CustomerName" />
+                                </td>
+                                <td>{{customerRec.CustomerIdCardNo}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="hide-if-no-paging text-center">
+                        <nav class="table-pagination">
+                            <dir-pagination-controls max-size="10"
+                                                     direction-links="true"
+                                                     boundary-links="false"
+                                                     on-page-change="selectPage(newPageNumber)"></dir-pagination-controls>
+                            <div class="result-summary" ng-show="!CustomerpagingInfo.totalItems == 0">
+                                <span id="current-start">{{CustomerpagingInfo.startPageRecordNumber}}</span> to
+                                <span id="current-end">{{CustomerpagingInfo.endPageRecordNumber}}</span> of
+                                <span id="total-result">{{CustomerpagingInfo.totalItems}}</span> results.
+                            </div>
+                            <div class="result-summary" ng-show="CustomerpagingInfo.totalItems == 0">
+                                No Record Found.
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="modal-footer"><button type="submit" class="btn btn-primary float-right">Select Member</button></div>
+            </form>
+        </div>
+    </div>
+</div>

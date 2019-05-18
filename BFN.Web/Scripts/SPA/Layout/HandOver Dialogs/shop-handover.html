@@ -1,0 +1,78 @@
+﻿<div class="modal fade" id="shopHandover" role="dialog">
+    <div class="modal-dialog" style="max-width: 700px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form name="shopHandover" ng-submit="handoverShop()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+
+                <div class="modal-header">
+
+                    <h1>Handover shop</h1>
+                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                </div>
+
+                <div class="modal-body">
+   
+                        <div class="col-sm-12 nopadding">
+                            <div class="form-group">
+                                <label>Company</label>
+                                <small class="form-text text-muted mt-0 mb-2"> Search for company name or company admin's email address. </small>
+                                <div class="input-group form-group">
+                                    <input type="text" ng-model="handover.searchText" class="form-control" placeholder="Enter keywords to search">
+                                    <button type="button" class="input-group-addon text-center btn-primary" ng-click="searchCompany(handover.searchText)">
+                                        <i class="icon-magnifier m-0"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <label>Date of handover</label>
+                                <input type="date"  ng-model="handover.HandOverDate" class="form-control" required>
+                            </div>
+                            <!--  -->
+                            <table class="table table-bordered table-striped my-4" data-toggle="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th data-breakpoints="xs">CVR</th>
+                                        <th data-breakpoints="xs">Company Name</th>
+                                        <th data-breakpoints="xs">Chain</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="company in listAllCompanies | itemsPerPage:HandoverpagingInfo.itemsPerPage" total-items="HandoverpagingInfo.totalItems"
+                                        ng-class="{ 'disabled' : company.IsActive == false }">
+                                        <td class="text-center">
+                                            <input type="radio" name="handover" value="{{company.Id}}" ng-model="handover.companyId">
+                                        </td>
+                                        <td>{{company.CompanyCVR}} </td>
+                                        <td>{{company.CompanyName}}</td>
+                                        <td>{{company.ChainName}}</td>
+              
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="hide-if-no-paging text-center">
+                                <nav class="table-pagination">
+                                    <dir-pagination-controls max-size="10"
+                                                             direction-links="true"
+                                                             boundary-links="false"
+                                                             on-page-change="selectPage(newPageNumber)"></dir-pagination-controls>
+                                    <div class="result-summary" ng-show="!HandoverpagingInfo.totalItems == 0">
+                                        <span id="current-start">{{HandoverpagingInfo.startPageRecordNumber}}</span> to
+                                        <span id="current-end">{{HandoverpagingInfo.endPageRecordNumber}}</span> of
+                                        <span id="total-result">{{HandoverpagingInfo.totalItems}}</span> results.
+                                    </div>
+                                    <div class="result-summary" ng-show="HandoverpagingInfo.totalItems == 0">
+                                        No Record Found.
+                                    </div>
+                                </nav>
+                            </div>
+                            <!--  -->
+                        </div>
+    
+                </div>
+                <div class="modal-footer"><button type="submit" class="btn btn-primary float-right">Handover</button></div>
+            </form>
+        </div>
+    </div>
+</div>

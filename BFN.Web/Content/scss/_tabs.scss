@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+.bfn-tabs{
+	.nav-tabs{
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		
+		@include media-breakpoint-up(md){
+			position: sticky;
+			top: px2rem(89);
+			z-index: 10;
+		}
+		
+		.nav-item{
+			flex: 1 0 50%;
+			text-align: center;
+			font-size: px2rem(14);
+			//font-weight: $font-weight-medium;
+			box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.05);
+			background: bfn-theme-color(white);
+			
+			@include media-breakpoint-up(md){
+				flex: 1 0 20%;
+			}
+			
+			a{
+				color: bfn-theme-color(text);
+				text-decoration: none;
+				padding: px2rem(18) 0;
+				border: 0;
+				border-radius: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+				
+				&.active{
+					background: bfn-theme-color();
+					color: bfn-theme-color(white);
+					
+					&:hover{
+						background: darken(bfn-theme-color(),5);
+						color: bfn-theme-color(white);
+					}
+				}
+				
+				&:hover{
+					background: bfn-theme-color(secondary);
+					color: bfn-theme-color(text);
+				}
+			}
+		}		
+	}
+	
+	.tab-pane{
+		
+		.content-block{
+			display: flex;
+			justify-content: center;
+			padding: px2rem(35) px2rem(10);
+			
+			.sidebar{
+				display: flex;
+				flex-direction: row;
+				
+				@include media-breakpoint-up(md){
+					flex-direction: column;
+					
+					/* .icon-block{
+						padding: 0 px2rem(35) px2rem(100) ;
+					} */
+					
+				}
+				
+				
+			}
+			
+			.icon-block{
+				text-align: center;
+				padding: px2rem(35);
+				flex: 0 0 50%;
+				line-height: 1.15;
+				height: auto;
+				min-height: px2rem(125);
+				
+				@include media-breakpoint-up(md){
+					flex: 1 0 15%;
+					padding: 0 px2rem(35) px2rem(35) ;
+				}
+				
+				a{
+					text-decoration: none;
+					color: bfn-theme-color(text);
+					font-size: px2rem(12);
+				}
+				
+				svg{
+					width: px2rem(60);
+					height: px2rem(60);
+					display: block;
+					margin: 0 auto;
+					fill: bfn-theme-color();
+					font-size: px2rem(7);
+				}
+			}
+			
+			h1{
+				text-transform: uppercase;
+				font-size: px2rem(18);
+				font-weight: $font-weight-bold;
+				margin-bottom: px2rem(35);
+			}
+			
+			.contact-form{
+				padding: px2rem(25) 0;
+				
+				input{
+					border-radius: 0;
+					height: px2rem(37);
+				}
+				
+				textarea{
+					border-radius: 0;
+					height: px2rem(115);
+				}
+				
+				.btn{
+					margin-top: px2rem(25);
+				}
+			}
+			
+		}
+		
+	}
+}

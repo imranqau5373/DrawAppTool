@@ -1,0 +1,88 @@
+﻿<div class="modal fade" id="viewDefaultTemplate" role="dialog">
+    <div class="modal-dialog" style="max-width: 700px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form name="newAdmin" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+                    <div class="modal-header">
+
+                        <h2>
+                            {{defaultTimeTemplate.TemplateName}}
+                            <small class="text-muted">[Active]</small>
+                        </h2>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+
+
+                <div class="modal-body">
+                    <div class="card-block">
+                        <div class="col-sm-12 nopadding">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <h4>{{defaultTimeTemplate.TemplateDescription}}</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 nopadding">
+                            <div class="form-group">
+                                <label for="season-start">Seasonal schedule starts from</label>
+                                <h4>{{defaultTimeTemplate.TemplateDateFrom}}</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="form-group">
+                                <label for="season-end">Seasonal schedule ends at</label>
+                                <h4>{{defaultTimeTemplate.TemplateDateTo}}</h4>
+                            </div>
+                        </div>
+                        <div ng-show="!defaultTimeTemplate.IsHoliday">
+                            <div class="input-group">
+                                <span class="input-group-addon">Mon</span>
+                                <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.monStart" disabled />
+                                <span class="input-group-addon">:</span>
+                                <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.monEnd" disabled />
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Tue</span>
+                                <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.tueStart" disabled>
+                                <span class="input-group-addon">:</span>
+                                <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.tueEnd" disabled>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Wed</span>
+                                <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.wedStart" disabled>
+                                <span class="input-group-addon">:</span>
+                                <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.wedEnd" disabled>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Thu</span>
+                                <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.thuStart" disabled>
+                                <span class="input-group-addon">:</span>
+                                <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.thuEnd" disabled>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Fri</span>
+                                <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.friStart" disabled>
+                                <span class="input-group-addon">:</span>
+                                <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.friEnd" disabled>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Sat</span>
+                                <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.satStart" disabled>
+                                <span class="input-group-addon">:</span>
+                                <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.satEnd" disabled>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Sun</span>
+                                <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.sunStart" disabled>
+                                <span class="input-group-addon">:</span>
+                                <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.sunEnd" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

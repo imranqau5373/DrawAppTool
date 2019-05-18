@@ -1,0 +1,39 @@
+﻿<div class="modal fade" id="addPayment" role="dialog">
+    <div class="modal-dialog" style="max-width: 700px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form name="shopHandover" ng-submit="addPayment()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+
+                <div class="modal-header">
+
+                    <h1>Add Payment</h1>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="closePaymentMember()">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="col-sm-12 nopadding">
+
+                        <div class="form-group">
+                            <label>Commite Month</label>
+                            <select class="form-control" ng-model="newPayment.FK_InstallmentId"
+                                    ng-options="installment.Id as installment.InstallmentNumber for installment in installmentRecord"
+                                    required>
+                                <option value="">Choose Number</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="company-name">Recivied Amount</label>
+                            <input type="number" class="form-control" ng-model="newPayment.PaidAmount" placeholder="Enter commite amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company-name">Installment Details</label>
+                            <input type="text" class="form-control" ng-model="newPayment.InstallmentDetails" placeholder="Enter installment details">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button type="submit" class="btn btn-primary float-right">Save</button></div>
+            </form>
+        </div>
+    </div>
+</div>

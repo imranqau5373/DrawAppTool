@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e5d11e88f3ad4b9da55d2f354fc2ad20" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="BFN.Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BFN.Model.AspNetUserLogin" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BFN.Model.ShopContactPerson" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BFN.Model.sysdiagram" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="BFN.Model.ShopTimeTemplateHour" Width="1.875" PointX="14" PointY="1.125" />
+        <EntityTypeShape EntityType="BFN.Model.ShopTimeTemplateHistory" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="BFN.Model.CompanyUser" Width="1.5" PointX="10" PointY="6.375" />
+        <EntityTypeShape EntityType="BFN.Model.ShopUser" Width="1.5" PointX="7" PointY="12.875" />
+        <EntityTypeShape EntityType="BFN.Model.CompanyHistory" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BFN.Model.ShopContactPersonHistory" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="BFN.Model.ShopTimeTemplateHoursHistory" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BFN.Model.UserExpertise" Width="1.5" PointX="2.5" PointY="24.625" />
+        <EntityTypeShape EntityType="BFN.Model.AspNetRole" Width="1.5" PointX="13.75" PointY="20.375" />
+        <EntityTypeShape EntityType="BFN.Model.AspNetUserClaim" Width="1.5" PointX="4.875" PointY="3.5" />
+        <EntityTypeShape EntityType="BFN.Model.AspNetUser" Width="1.5" PointX="16" PointY="20.375" />
+        <AssociationConnector Association="BFN.Model.FK_AspNetUserClaims_AspNetUsers" />
+        <AssociationConnector Association="BFN.Model.FK_AspNetUsers_UserExpertise" />
+        <AssociationConnector Association="BFN.Model.FK_CompanyUser_AspNetUsers" />
+        <AssociationConnector Association="BFN.Model.FK_ShopUser_AspNetUsers" />
+        <AssociationConnector Association="BFN.Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="BFN.Model.ShopTimeTemplate" Width="1.5" PointX="5.25" PointY="19.375" />
+        <AssociationConnector Association="BFN.Model.FK_ShopTimeTemplateHours_ShopTimeTemplate" />
+        <EntityTypeShape EntityType="BFN.Model.ContactPerson" Width="1.5" PointX="4.75" PointY="25.75" />
+        <AssociationConnector Association="BFN.Model.FK_ContactPerson_UserExpertise" />
+        <AssociationConnector Association="BFN.Model.FK_ShopContactPerson_ContactPerson" />
+        <EntityTypeShape EntityType="BFN.Model.ContactPersonHistory" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="BFN.Model.Category" Width="1.5" PointX="0.75" PointY="27.375" />
+        <EntityTypeShape EntityType="BFN.Model.CityPostCode" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BFN.Model.DeliveryOption" Width="1.5" PointX="0.75" PointY="21" />
+        <EntityTypeShape EntityType="BFN.Model.ShopHistory" Width="1.5" PointX="13.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BFN.Model.ShopCompanyHandOverHistory" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BFN.Model.Shop" Width="1.5" PointX="7" PointY="24.75" />
+        <AssociationConnector Association="BFN.Model.FK_Shop_Categories" />
+        <AssociationConnector Association="BFN.Model.FK_Shop_DeliveryOptions" />
+        <AssociationConnector Association="BFN.Model.FK_ShopContactPerson_Shop" />
+        <AssociationConnector Association="BFN.Model.FK_ShopTimeTemplate_Shop" />
+        <AssociationConnector Association="BFN.Model.FK_ShopUser_Shop" />
+        <EntityTypeShape EntityType="BFN.Model.Company" Width="1.5" PointX="15.375" PointY="5.125" />
+        <EntityTypeShape EntityType="BFN.Model.ShopCompanyHandOver" Width="1.5" PointX="18.625" PointY="17.5" />
+        <AssociationConnector Association="BFN.Model.FK_Company_Company" />
+        <AssociationConnector Association="BFN.Model.FK_CompanyUser_Company" />
+        <AssociationConnector Association="BFN.Model.FK_Shop_Company" />
+        <AssociationConnector Association="BFN.Model.FK_ShopCompanyHandOver_Company" />
+        <AssociationConnector Association="BFN.Model.FK_ShopCompanyHandOver_Shop" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

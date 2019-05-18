@@ -1,0 +1,1960 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BFN.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ExpertiseId" Type="int" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="200" />
+          <Property Name="PostCode" Type="int" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CityPostCodes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyCVR" Type="bigint" Nullable="false" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CompanyBankAccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="BankAccountConsent" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+          <Property Name="Dealer" Type="int" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="IsChain" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyAddress2" Type="nvarchar" MaxLength="200" />
+          <Property Name="CompanyPostCode" Type="int" />
+          <Property Name="CompanyCityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CompanyHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyCVR" Type="bigint" Nullable="false" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CompanyBankAccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="BankAccountConsent" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+          <Property Name="Dealer" Type="int" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="IsChain" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyAddress2" Type="nvarchar" MaxLength="200" />
+          <Property Name="CompanyPostCode" Type="int" />
+          <Property Name="CompanyCityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CompanyUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsChain" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactPersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactPersonAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContactPersonEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPersonNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="ExpertiseId" Type="int" />
+          <Property Name="ContactPersonAddress2" Type="nvarchar" MaxLength="200" />
+          <Property Name="ContactPersonPostCode" Type="int" />
+          <Property Name="ContactPersonCityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ContactPersonHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactPersonId" Type="int" Nullable="false" />
+          <Property Name="ContactPersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactPersonAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContactPersonEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPersonNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="ExpertiseId" Type="int" />
+          <Property Name="ContactPersonAddress2" Type="nvarchar" MaxLength="200" />
+          <Property Name="ContactPersonPostCode" Type="int" />
+          <Property Name="ContactPersonCityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DeliveryOptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryOptionName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShopAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ShopEAN" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShopCARDEX" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShopFrellationsNummerCategoryId" Type="int" />
+          <Property Name="ShopInformation" Type="nvarchar" MaxLength="200" />
+          <Property Name="ShopCodeLockInfo" Type="nvarchar" MaxLength="200" />
+          <Property Name="ShopBFNNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="PreviousShopId" Type="int" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" Nullable="false" />
+          <Property Name="InagurationDate" Type="datetime" />
+          <Property Name="TerminatinonDate" Type="datetime" />
+          <Property Name="Gross" Type="nvarchar" MaxLength="200" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OwnerEmail" Type="nvarchar" MaxLength="150" />
+          <Property Name="ShopAddress2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShopPostCode" Type="int" />
+          <Property Name="ShopCityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DailyNewsPaper" Type="bit" Nullable="false" />
+          <Property Name="Magazines" Type="bit" Nullable="false" />
+          <Property Name="Publisher" Type="bit" Nullable="false" />
+          <Property Name="ForeignNewspapers" Type="bit" Nullable="false" />
+          <Property Name="ForeignWeeklyMagazines" Type="bit" Nullable="false" />
+          <Property Name="ForeignPublishers" Type="bit" Nullable="false" />
+          <Property Name="NewsPaperDeliveryOptionId" Type="int" />
+          <Property Name="ccif" Type="int" />
+        </EntityType>
+        <EntityType Name="ShopCompanyHandOver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HandOverDate" Type="date" Nullable="false" />
+          <Property Name="CurrentShopId" Type="int" />
+          <Property Name="CurrentCompanyId" Type="int" />
+          <Property Name="NextChainId" Type="int" Nullable="false" />
+          <Property Name="NextCompanyId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="15" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="ShopCompanyHandOverHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HandOverId" Type="int" Nullable="false" />
+          <Property Name="HandOverDate" Type="date" Nullable="false" />
+          <Property Name="CurrentShopId" Type="int" Nullable="false" />
+          <Property Name="CurrentCompanyId" Type="int" Nullable="false" />
+          <Property Name="NextChainId" Type="int" Nullable="false" />
+          <Property Name="NextCompanyId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="15" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="ShopContactPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="ContactPersonId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShopContactPersonHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopContactPersonId" Type="int" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="ContactPersonId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShopHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="ShopName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShopAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ShopEAN" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShopCARDEX" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShopFrellationsNummerCategoryId" Type="int" />
+          <Property Name="ShopInformation" Type="nvarchar" MaxLength="200" />
+          <Property Name="ShopCodeLockInfo" Type="nvarchar" MaxLength="200" />
+          <Property Name="ShopBFNNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="PreviousShopId" Type="int" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" Nullable="false" />
+          <Property Name="InagurationDate" Type="datetime" />
+          <Property Name="TerminatinonDate" Type="datetime" />
+          <Property Name="Gross" Type="nvarchar" MaxLength="200" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OwnerEmail" Type="nvarchar" MaxLength="150" />
+          <Property Name="ShopAddress2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShopPostCode" Type="int" />
+          <Property Name="ShopCityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DailyNewsPaper" Type="bit" Nullable="false" />
+          <Property Name="Magazines" Type="bit" Nullable="false" />
+          <Property Name="Publisher" Type="bit" Nullable="false" />
+          <Property Name="ForeignNewspapers" Type="bit" Nullable="false" />
+          <Property Name="ForeignWeeklyMagazines" Type="bit" Nullable="false" />
+          <Property Name="ForeignPublishers" Type="bit" Nullable="false" />
+          <Property Name="NewsPaperDeliveryOptionId" Type="int" />
+          <Property Name="ccif" Type="int" />
+          <Property Name="ShopEventId" Type="int" />
+        </EntityType>
+        <EntityType Name="ShopTimeTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TemplateDescription" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TemplateDateFrom" Type="datetime" Nullable="false" />
+          <Property Name="TemplateDateTo" Type="datetime" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="IsHoliday" Type="bit" />
+        </EntityType>
+        <EntityType Name="ShopTimeTemplateHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopTimeTemplateId" Type="int" Nullable="false" />
+          <Property Name="TemplateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TemplateDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="TemplateDateFrom" Type="date" Nullable="false" />
+          <Property Name="TemplateDateTo" Type="date" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="IsHoliday" Type="bit" />
+        </EntityType>
+        <EntityType Name="ShopTimeTemplateHours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateId" Type="int" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="OpenTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CloseTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShopTimeTemplateHoursHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopTimeTemplateHoursId" Type="int" Nullable="false" />
+          <Property Name="TemplateId" Type="int" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="OpenTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CloseTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShopUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserExpertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpertyTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AspNetUserClaims_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_UserExpertise">
+          <End Role="UserExpertise" Type="Self.UserExpertise" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserExpertise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="ExpertiseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Company1" Type="Self.Company" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyUser_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="CompanyUser" Type="Self.CompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyUser_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyUser" Type="Self.CompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyUser">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactPerson_UserExpertise">
+          <End Role="UserExpertise" Type="Self.UserExpertise" Multiplicity="0..1" />
+          <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserExpertise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContactPerson">
+              <PropertyRef Name="ExpertiseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shop_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="ShopFrellationsNummerCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shop_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shop_DeliveryOptions">
+          <End Role="DeliveryOptions" Type="Self.DeliveryOptions" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryOptions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="NewsPaperDeliveryOptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopCompanyHandOver_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="ShopCompanyHandOver" Type="Self.ShopCompanyHandOver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopCompanyHandOver">
+              <PropertyRef Name="CurrentCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopCompanyHandOver_Shop">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="ShopCompanyHandOver" Type="Self.ShopCompanyHandOver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopCompanyHandOver">
+              <PropertyRef Name="CurrentShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopContactPerson_ContactPerson">
+          <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="1" />
+          <End Role="ShopContactPerson" Type="Self.ShopContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactPerson">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopContactPerson">
+              <PropertyRef Name="ContactPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopContactPerson_Shop">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+          <End Role="ShopContactPerson" Type="Self.ShopContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopContactPerson">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopTimeTemplate_Shop">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+          <End Role="ShopTimeTemplate" Type="Self.ShopTimeTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopTimeTemplate">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopTimeTemplateHours_ShopTimeTemplate">
+          <End Role="ShopTimeTemplate" Type="Self.ShopTimeTemplate" Multiplicity="1" />
+          <End Role="ShopTimeTemplateHours" Type="Self.ShopTimeTemplateHours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShopTimeTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopTimeTemplateHours">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopUser_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ShopUser" Type="Self.ShopUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopUser_Shop">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+          <End Role="ShopUser" Type="Self.ShopUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopUser">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BFNModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityPostCodes" EntityType="Self.CityPostCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyHistory" EntityType="Self.CompanyHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyUser" EntityType="Self.CompanyUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactPerson" EntityType="Self.ContactPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactPersonHistory" EntityType="Self.ContactPersonHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryOptions" EntityType="Self.DeliveryOptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopCompanyHandOver" EntityType="Self.ShopCompanyHandOver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopCompanyHandOverHistory" EntityType="Self.ShopCompanyHandOverHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopContactPerson" EntityType="Self.ShopContactPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopContactPersonHistory" EntityType="Self.ShopContactPersonHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopHistory" EntityType="Self.ShopHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopTimeTemplate" EntityType="Self.ShopTimeTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopTimeTemplateHistory" EntityType="Self.ShopTimeTemplateHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopTimeTemplateHours" EntityType="Self.ShopTimeTemplateHours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopTimeTemplateHoursHistory" EntityType="Self.ShopTimeTemplateHoursHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopUser" EntityType="Self.ShopUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserExpertise" EntityType="Self.UserExpertise" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="Self.FK_AspNetUserClaims_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_UserExpertise" Association="Self.FK_AspNetUsers_UserExpertise">
+            <End Role="UserExpertise" EntitySet="UserExpertise" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Company" Association="Self.FK_Company_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Company1" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyUser_AspNetUsers" Association="Self.FK_CompanyUser_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CompanyUser" EntitySet="CompanyUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyUser_Company" Association="Self.FK_CompanyUser_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyUser" EntitySet="CompanyUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactPerson_UserExpertise" Association="Self.FK_ContactPerson_UserExpertise">
+            <End Role="UserExpertise" EntitySet="UserExpertise" />
+            <End Role="ContactPerson" EntitySet="ContactPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shop_Categories" Association="Self.FK_Shop_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shop_Company" Association="Self.FK_Shop_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shop_DeliveryOptions" Association="Self.FK_Shop_DeliveryOptions">
+            <End Role="DeliveryOptions" EntitySet="DeliveryOptions" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopCompanyHandOver_Company" Association="Self.FK_ShopCompanyHandOver_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="ShopCompanyHandOver" EntitySet="ShopCompanyHandOver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopCompanyHandOver_Shop" Association="Self.FK_ShopCompanyHandOver_Shop">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="ShopCompanyHandOver" EntitySet="ShopCompanyHandOver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopContactPerson_ContactPerson" Association="Self.FK_ShopContactPerson_ContactPerson">
+            <End Role="ContactPerson" EntitySet="ContactPerson" />
+            <End Role="ShopContactPerson" EntitySet="ShopContactPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopContactPerson_Shop" Association="Self.FK_ShopContactPerson_Shop">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="ShopContactPerson" EntitySet="ShopContactPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopTimeTemplate_Shop" Association="Self.FK_ShopTimeTemplate_Shop">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="ShopTimeTemplate" EntitySet="ShopTimeTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopTimeTemplateHours_ShopTimeTemplate" Association="Self.FK_ShopTimeTemplateHours_ShopTimeTemplate">
+            <End Role="ShopTimeTemplate" EntitySet="ShopTimeTemplate" />
+            <End Role="ShopTimeTemplateHours" EntitySet="ShopTimeTemplateHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopUser_AspNetUsers" Association="Self.FK_ShopUser_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ShopUser" EntitySet="ShopUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopUser_Shop" Association="Self.FK_ShopUser_Shop">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="ShopUser" EntitySet="ShopUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BFN.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BFNEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="ShopContactPersons" EntityType="BFN.Model.ShopContactPerson" />
+          <EntitySet Name="sysdiagrams" EntityType="BFN.Model.sysdiagram" />
+          <EntitySet Name="ShopTimeTemplateHours" EntityType="BFN.Model.ShopTimeTemplateHour" />
+          <EntitySet Name="ShopTimeTemplateHistories" EntityType="BFN.Model.ShopTimeTemplateHistory" />
+          <EntitySet Name="CompanyUsers" EntityType="BFN.Model.CompanyUser" />
+          <EntitySet Name="ShopUsers" EntityType="BFN.Model.ShopUser" />
+          <EntitySet Name="CompanyHistories" EntityType="BFN.Model.CompanyHistory" />
+          <EntitySet Name="ShopContactPersonHistories" EntityType="BFN.Model.ShopContactPersonHistory" />
+          <EntitySet Name="ShopTimeTemplateHoursHistories" EntityType="BFN.Model.ShopTimeTemplateHoursHistory" />
+          <EntitySet Name="UserExpertises" EntityType="BFN.Model.UserExpertise" />
+          <EntitySet Name="AspNetRoles" EntityType="BFN.Model.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="BFN.Model.AspNetUserClaim" />
+          <EntitySet Name="AspNetUsers" EntityType="BFN.Model.AspNetUser" />
+          <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="BFN.Model.FK_AspNetUserClaims_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_UserExpertise" Association="BFN.Model.FK_AspNetUsers_UserExpertise">
+            <End Role="UserExpertise" EntitySet="UserExpertises" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyUser_AspNetUsers" Association="BFN.Model.FK_CompanyUser_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="CompanyUser" EntitySet="CompanyUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopUser_AspNetUsers" Association="BFN.Model.FK_ShopUser_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="ShopUser" EntitySet="ShopUsers" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="BFN.Model.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="ShopTimeTemplates" EntityType="BFN.Model.ShopTimeTemplate" />
+          <AssociationSet Name="FK_ShopTimeTemplateHours_ShopTimeTemplate" Association="BFN.Model.FK_ShopTimeTemplateHours_ShopTimeTemplate">
+            <End Role="ShopTimeTemplate" EntitySet="ShopTimeTemplates" />
+            <End Role="ShopTimeTemplateHour" EntitySet="ShopTimeTemplateHours" />
+          </AssociationSet>
+          <EntitySet Name="ContactPersons" EntityType="BFN.Model.ContactPerson" />
+          <AssociationSet Name="FK_ContactPerson_UserExpertise" Association="BFN.Model.FK_ContactPerson_UserExpertise">
+            <End Role="UserExpertise" EntitySet="UserExpertises" />
+            <End Role="ContactPerson" EntitySet="ContactPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopContactPerson_ContactPerson" Association="BFN.Model.FK_ShopContactPerson_ContactPerson">
+            <End Role="ContactPerson" EntitySet="ContactPersons" />
+            <End Role="ShopContactPerson" EntitySet="ShopContactPersons" />
+          </AssociationSet>
+          <EntitySet Name="ContactPersonHistories" EntityType="BFN.Model.ContactPersonHistory" />
+          <EntitySet Name="Categories" EntityType="BFN.Model.Category" />
+          <EntitySet Name="CityPostCodes" EntityType="BFN.Model.CityPostCode" />
+          <EntitySet Name="DeliveryOptions" EntityType="BFN.Model.DeliveryOption" />
+          <EntitySet Name="ShopHistories" EntityType="BFN.Model.ShopHistory" />
+          <EntitySet Name="ShopCompanyHandOverHistories" EntityType="BFN.Model.ShopCompanyHandOverHistory" />
+          <EntitySet Name="Shops" EntityType="BFN.Model.Shop" />
+          <AssociationSet Name="FK_Shop_Categories" Association="BFN.Model.FK_Shop_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Shop" EntitySet="Shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shop_DeliveryOptions" Association="BFN.Model.FK_Shop_DeliveryOptions">
+            <End Role="DeliveryOption" EntitySet="DeliveryOptions" />
+            <End Role="Shop" EntitySet="Shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopContactPerson_Shop" Association="BFN.Model.FK_ShopContactPerson_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="ShopContactPerson" EntitySet="ShopContactPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopTimeTemplate_Shop" Association="BFN.Model.FK_ShopTimeTemplate_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="ShopTimeTemplate" EntitySet="ShopTimeTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopUser_Shop" Association="BFN.Model.FK_ShopUser_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="ShopUser" EntitySet="ShopUsers" />
+          </AssociationSet>
+          <EntitySet Name="Companies" EntityType="BFN.Model.Company" />
+          <EntitySet Name="ShopCompanyHandOvers" EntityType="BFN.Model.ShopCompanyHandOver" />
+          <AssociationSet Name="FK_Company_Company" Association="BFN.Model.FK_Company_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Company1" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyUser_Company" Association="BFN.Model.FK_CompanyUser_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyUser" EntitySet="CompanyUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shop_Company" Association="BFN.Model.FK_Shop_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Shop" EntitySet="Shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopCompanyHandOver_Company" Association="BFN.Model.FK_ShopCompanyHandOver_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="ShopCompanyHandOver" EntitySet="ShopCompanyHandOvers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShopCompanyHandOver_Shop" Association="BFN.Model.FK_ShopCompanyHandOver_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="ShopCompanyHandOver" EntitySet="ShopCompanyHandOvers" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ShopContactPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="ContactPersonId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContactPerson" Relationship="BFN.Model.FK_ShopContactPerson_ContactPerson" FromRole="ShopContactPerson" ToRole="ContactPerson" />
+          <NavigationProperty Name="Shop" Relationship="BFN.Model.FK_ShopContactPerson_Shop" FromRole="ShopContactPerson" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ShopTimeTemplateHour">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateId" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="OpenTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CloseTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ShopTimeTemplate" Relationship="BFN.Model.FK_ShopTimeTemplateHours_ShopTimeTemplate" FromRole="ShopTimeTemplateHour" ToRole="ShopTimeTemplate" />
+        </EntityType>
+        <EntityType Name="ShopTimeTemplateHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopTimeTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="TemplateName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateDateFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TemplateDateTo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="IsHoliday" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="CompanyUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsChain" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="BFN.Model.FK_CompanyUser_AspNetUsers" FromRole="CompanyUser" ToRole="AspNetUser" />
+          <NavigationProperty Name="Company" Relationship="BFN.Model.FK_CompanyUser_Company" FromRole="CompanyUser" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="ShopUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="BFN.Model.FK_ShopUser_AspNetUsers" FromRole="ShopUser" ToRole="AspNetUser" />
+          <NavigationProperty Name="Shop" Relationship="BFN.Model.FK_ShopUser_Shop" FromRole="ShopUser" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="CompanyHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyCVR" Type="Int64" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyBankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BankAccountConsent" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Dealer" Type="Int32" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="IsChain" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyPostCode" Type="Int32" />
+          <Property Name="CompanyCityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ShopContactPersonHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopContactPersonId" Type="Int32" Nullable="false" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="ContactPersonId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShopTimeTemplateHoursHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopTimeTemplateHoursId" Type="Int32" Nullable="false" />
+          <Property Name="TemplateId" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="OpenTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CloseTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserExpertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpertyTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="BFN.Model.FK_AspNetUsers_UserExpertise" FromRole="UserExpertise" ToRole="AspNetUser" />
+          <NavigationProperty Name="ContactPersons" Relationship="BFN.Model.FK_ContactPerson_UserExpertise" FromRole="UserExpertise" ToRole="ContactPerson" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="BFN.Model.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="BFN.Model.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ExpertiseId" Type="Int32" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="BFN.Model.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="UserExpertise" Relationship="BFN.Model.FK_AspNetUsers_UserExpertise" FromRole="AspNetUser" ToRole="UserExpertise" />
+          <NavigationProperty Name="CompanyUsers" Relationship="BFN.Model.FK_CompanyUser_AspNetUsers" FromRole="AspNetUser" ToRole="CompanyUser" />
+          <NavigationProperty Name="ShopUsers" Relationship="BFN.Model.FK_ShopUser_AspNetUsers" FromRole="AspNetUser" ToRole="ShopUser" />
+          <NavigationProperty Name="AspNetRoles" Relationship="BFN.Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <Property Name="Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PostCode" Type="Int32" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_AspNetUserClaims_AspNetUsers">
+          <End Type="BFN.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="BFN.Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_UserExpertise">
+          <End Type="BFN.Model.UserExpertise" Role="UserExpertise" Multiplicity="0..1" />
+          <End Type="BFN.Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserExpertise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUser">
+              <PropertyRef Name="ExpertiseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyUser_AspNetUsers">
+          <End Type="BFN.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="BFN.Model.CompanyUser" Role="CompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopUser_AspNetUsers">
+          <End Type="BFN.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="BFN.Model.ShopUser" Role="ShopUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="BFN.Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="BFN.Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ShopTimeTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateDescription" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateDateFrom" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TemplateDateTo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <NavigationProperty Name="ShopTimeTemplateHours" Relationship="BFN.Model.FK_ShopTimeTemplateHours_ShopTimeTemplate" FromRole="ShopTimeTemplate" ToRole="ShopTimeTemplateHour" />
+          <Property Name="IsHoliday" Type="Boolean" />
+          <NavigationProperty Name="Shop" Relationship="BFN.Model.FK_ShopTimeTemplate_Shop" FromRole="ShopTimeTemplate" ToRole="Shop" />
+        </EntityType>
+        <Association Name="FK_ShopTimeTemplateHours_ShopTimeTemplate">
+          <End Type="BFN.Model.ShopTimeTemplate" Role="ShopTimeTemplate" Multiplicity="1" />
+          <End Type="BFN.Model.ShopTimeTemplateHour" Role="ShopTimeTemplateHour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShopTimeTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopTimeTemplateHour">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContactPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactPersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExpertiseId" Type="Int32" />
+          <NavigationProperty Name="UserExpertise" Relationship="BFN.Model.FK_ContactPerson_UserExpertise" FromRole="ContactPerson" ToRole="UserExpertise" />
+          <NavigationProperty Name="ShopContactPersons" Relationship="BFN.Model.FK_ShopContactPerson_ContactPerson" FromRole="ContactPerson" ToRole="ShopContactPerson" />
+          <Property Name="ContactPersonAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonPostCode" Type="Int32" />
+          <Property Name="ContactPersonCityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ContactPerson_UserExpertise">
+          <End Type="BFN.Model.UserExpertise" Role="UserExpertise" Multiplicity="0..1" />
+          <End Type="BFN.Model.ContactPerson" Role="ContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserExpertise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContactPerson">
+              <PropertyRef Name="ExpertiseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopContactPerson_ContactPerson">
+          <End Type="BFN.Model.ContactPerson" Role="ContactPerson" Multiplicity="1" />
+          <End Type="BFN.Model.ShopContactPerson" Role="ShopContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactPerson">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopContactPerson">
+              <PropertyRef Name="ContactPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContactPersonHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactPersonId" Type="Int32" Nullable="false" />
+          <Property Name="ContactPersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExpertiseId" Type="Int32" />
+          <Property Name="ContactPersonAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonPostCode" Type="Int32" />
+          <Property Name="ContactPersonCityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shops" Relationship="BFN.Model.FK_Shop_Categories" FromRole="Category" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="CityPostCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DeliveryOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryOptionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shops" Relationship="BFN.Model.FK_Shop_DeliveryOptions" FromRole="DeliveryOption" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="ShopHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="ShopName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShopAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ShopEAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShopCARDEX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShopFrellationsNummerCategoryId" Type="Int32" />
+          <Property Name="ShopInformation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ShopCodeLockInfo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ShopBFNNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PreviousShopId" Type="Int32" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="InagurationDate" Type="DateTime" Precision="3" />
+          <Property Name="TerminatinonDate" Type="DateTime" Precision="3" />
+          <Property Name="Gross" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ShopAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShopPostCode" Type="Int32" />
+          <Property Name="ShopCityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DailyNewsPaper" Type="Boolean" Nullable="false" />
+          <Property Name="Magazines" Type="Boolean" Nullable="false" />
+          <Property Name="Publisher" Type="Boolean" Nullable="false" />
+          <Property Name="ForeignNewspapers" Type="Boolean" Nullable="false" />
+          <Property Name="ForeignWeeklyMagazines" Type="Boolean" Nullable="false" />
+          <Property Name="ForeignPublishers" Type="Boolean" Nullable="false" />
+          <Property Name="NewsPaperDeliveryOptionId" Type="Int32" />
+          <Property Name="ccif" Type="Int32" />
+          <Property Name="ShopEventId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ShopCompanyHandOverHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HandOverId" Type="Int32" Nullable="false" />
+          <Property Name="HandOverDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentShopId" Type="Int32" Nullable="false" />
+          <Property Name="CurrentCompanyId" Type="Int32" Nullable="false" />
+          <Property Name="NextChainId" Type="Int32" Nullable="false" />
+          <Property Name="NextCompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShopAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ShopEAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShopCARDEX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShopFrellationsNummerCategoryId" Type="Int32" />
+          <Property Name="ShopInformation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ShopCodeLockInfo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ShopBFNNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PreviousShopId" Type="Int32" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="InagurationDate" Type="DateTime" Precision="3" />
+          <Property Name="TerminatinonDate" Type="DateTime" Precision="3" />
+          <Property Name="Gross" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ShopAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShopPostCode" Type="Int32" />
+          <Property Name="ShopCityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DailyNewsPaper" Type="Boolean" Nullable="false" />
+          <Property Name="Magazines" Type="Boolean" Nullable="false" />
+          <Property Name="Publisher" Type="Boolean" Nullable="false" />
+          <Property Name="ForeignNewspapers" Type="Boolean" Nullable="false" />
+          <Property Name="ForeignWeeklyMagazines" Type="Boolean" Nullable="false" />
+          <Property Name="ForeignPublishers" Type="Boolean" Nullable="false" />
+          <Property Name="NewsPaperDeliveryOptionId" Type="Int32" />
+          <Property Name="ccif" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="BFN.Model.FK_Shop_Categories" FromRole="Shop" ToRole="Category" />
+          <NavigationProperty Name="DeliveryOption" Relationship="BFN.Model.FK_Shop_DeliveryOptions" FromRole="Shop" ToRole="DeliveryOption" />
+          <NavigationProperty Name="ShopContactPersons" Relationship="BFN.Model.FK_ShopContactPerson_Shop" FromRole="Shop" ToRole="ShopContactPerson" />
+          <NavigationProperty Name="ShopTimeTemplates" Relationship="BFN.Model.FK_ShopTimeTemplate_Shop" FromRole="Shop" ToRole="ShopTimeTemplate" />
+          <NavigationProperty Name="ShopUsers" Relationship="BFN.Model.FK_ShopUser_Shop" FromRole="Shop" ToRole="ShopUser" />
+          <NavigationProperty Name="Company" Relationship="BFN.Model.FK_Shop_Company" FromRole="Shop" ToRole="Company" />
+          <NavigationProperty Name="ShopCompanyHandOvers" Relationship="BFN.Model.FK_ShopCompanyHandOver_Shop" FromRole="Shop" ToRole="ShopCompanyHandOver" />
+        </EntityType>
+        <Association Name="FK_Shop_Categories">
+          <End Type="BFN.Model.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="BFN.Model.Shop" Role="Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="ShopFrellationsNummerCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shop_DeliveryOptions">
+          <End Type="BFN.Model.DeliveryOption" Role="DeliveryOption" Multiplicity="0..1" />
+          <End Type="BFN.Model.Shop" Role="Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryOption">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="NewsPaperDeliveryOptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopContactPerson_Shop">
+          <End Type="BFN.Model.Shop" Role="Shop" Multiplicity="1" />
+          <End Type="BFN.Model.ShopContactPerson" Role="ShopContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopContactPerson">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopTimeTemplate_Shop">
+          <End Type="BFN.Model.Shop" Role="Shop" Multiplicity="1" />
+          <End Type="BFN.Model.ShopTimeTemplate" Role="ShopTimeTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopTimeTemplate">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopUser_Shop">
+          <End Type="BFN.Model.Shop" Role="Shop" Multiplicity="1" />
+          <End Type="BFN.Model.ShopUser" Role="ShopUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopUser">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyCVR" Type="Int64" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyBankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BankAccountConsent" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Dealer" Type="Int32" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="IsChain" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyPostCode" Type="Int32" />
+          <Property Name="CompanyCityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company1" Relationship="BFN.Model.FK_Company_Company" FromRole="Company" ToRole="Company1" />
+          <NavigationProperty Name="Company2" Relationship="BFN.Model.FK_Company_Company" FromRole="Company1" ToRole="Company" />
+          <NavigationProperty Name="CompanyUsers" Relationship="BFN.Model.FK_CompanyUser_Company" FromRole="Company" ToRole="CompanyUser" />
+          <NavigationProperty Name="Shops" Relationship="BFN.Model.FK_Shop_Company" FromRole="Company" ToRole="Shop" />
+          <NavigationProperty Name="ShopCompanyHandOvers" Relationship="BFN.Model.FK_ShopCompanyHandOver_Company" FromRole="Company" ToRole="ShopCompanyHandOver" />
+        </EntityType>
+        <EntityType Name="ShopCompanyHandOver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HandOverDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentShopId" Type="Int32" />
+          <Property Name="CurrentCompanyId" Type="Int32" />
+          <Property Name="NextChainId" Type="Int32" Nullable="false" />
+          <Property Name="NextCompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="BFN.Model.FK_ShopCompanyHandOver_Company" FromRole="ShopCompanyHandOver" ToRole="Company" />
+          <NavigationProperty Name="Shop" Relationship="BFN.Model.FK_ShopCompanyHandOver_Shop" FromRole="ShopCompanyHandOver" ToRole="Shop" />
+        </EntityType>
+        <Association Name="FK_Company_Company">
+          <End Type="BFN.Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="BFN.Model.Company" Role="Company1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyUser_Company">
+          <End Type="BFN.Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="BFN.Model.CompanyUser" Role="CompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyUser">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shop_Company">
+          <End Type="BFN.Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="BFN.Model.Shop" Role="Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopCompanyHandOver_Company">
+          <End Type="BFN.Model.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="BFN.Model.ShopCompanyHandOver" Role="ShopCompanyHandOver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopCompanyHandOver">
+              <PropertyRef Name="CurrentCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShopCompanyHandOver_Shop">
+          <End Type="BFN.Model.Shop" Role="Shop" Multiplicity="0..1" />
+          <End Type="BFN.Model.ShopCompanyHandOver" Role="ShopCompanyHandOver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopCompanyHandOver">
+              <PropertyRef Name="CurrentShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BFNModelStoreContainer" CdmEntityContainer="BFNEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="BFN.Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="BFN.Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopContactPersons">
+            <EntityTypeMapping TypeName="BFN.Model.ShopContactPerson">
+              <MappingFragment StoreEntitySet="ShopContactPerson">
+                <ScalarProperty Name="ContactPersonId" ColumnName="ContactPersonId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BFN.Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopTimeTemplateHours">
+            <EntityTypeMapping TypeName="BFN.Model.ShopTimeTemplateHour">
+              <MappingFragment StoreEntitySet="ShopTimeTemplateHours">
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopTimeTemplateHistories">
+            <EntityTypeMapping TypeName="BFN.Model.ShopTimeTemplateHistory">
+              <MappingFragment StoreEntitySet="ShopTimeTemplateHistory">
+                <ScalarProperty Name="IsHoliday" ColumnName="IsHoliday" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="TemplateDateTo" ColumnName="TemplateDateTo" />
+                <ScalarProperty Name="TemplateDateFrom" ColumnName="TemplateDateFrom" />
+                <ScalarProperty Name="TemplateDescription" ColumnName="TemplateDescription" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="ShopTimeTemplateId" ColumnName="ShopTimeTemplateId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyUsers">
+            <EntityTypeMapping TypeName="BFN.Model.CompanyUser">
+              <MappingFragment StoreEntitySet="CompanyUser">
+                <ScalarProperty Name="IsChain" ColumnName="IsChain" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopUsers">
+            <EntityTypeMapping TypeName="BFN.Model.ShopUser">
+              <MappingFragment StoreEntitySet="ShopUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyHistories">
+            <EntityTypeMapping TypeName="BFN.Model.CompanyHistory">
+              <MappingFragment StoreEntitySet="CompanyHistory">
+                <ScalarProperty Name="CompanyCityName" ColumnName="CompanyCityName" />
+                <ScalarProperty Name="CompanyPostCode" ColumnName="CompanyPostCode" />
+                <ScalarProperty Name="CompanyAddress2" ColumnName="CompanyAddress2" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsChain" ColumnName="IsChain" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Dealer" ColumnName="Dealer" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="BankAccountConsent" ColumnName="BankAccountConsent" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="CompanyBankAccountNo" ColumnName="CompanyBankAccountNo" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyCVR" ColumnName="CompanyCVR" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopContactPersonHistories">
+            <EntityTypeMapping TypeName="BFN.Model.ShopContactPersonHistory">
+              <MappingFragment StoreEntitySet="ShopContactPersonHistory">
+                <ScalarProperty Name="ContactPersonId" ColumnName="ContactPersonId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ShopContactPersonId" ColumnName="ShopContactPersonId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopTimeTemplateHoursHistories">
+            <EntityTypeMapping TypeName="BFN.Model.ShopTimeTemplateHoursHistory">
+              <MappingFragment StoreEntitySet="ShopTimeTemplateHoursHistory">
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="ShopTimeTemplateHoursId" ColumnName="ShopTimeTemplateHoursId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserExpertises">
+            <EntityTypeMapping TypeName="BFN.Model.UserExpertise">
+              <MappingFragment StoreEntitySet="UserExpertise">
+                <ScalarProperty Name="ExpertyTitle" ColumnName="ExpertyTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="BFN.Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="BFN.Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="BFN.Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="ExpertiseId" ColumnName="ExpertiseId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="BFN.Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="ShopTimeTemplates">
+            <EntityTypeMapping TypeName="BFN.Model.ShopTimeTemplate">
+              <MappingFragment StoreEntitySet="ShopTimeTemplate">
+                <ScalarProperty Name="IsHoliday" ColumnName="IsHoliday" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="TemplateDateTo" ColumnName="TemplateDateTo" />
+                <ScalarProperty Name="TemplateDateFrom" ColumnName="TemplateDateFrom" />
+                <ScalarProperty Name="TemplateDescription" ColumnName="TemplateDescription" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactPersons">
+            <EntityTypeMapping TypeName="BFN.Model.ContactPerson">
+              <MappingFragment StoreEntitySet="ContactPerson">
+                <ScalarProperty Name="ContactPersonCityName" ColumnName="ContactPersonCityName" />
+                <ScalarProperty Name="ContactPersonPostCode" ColumnName="ContactPersonPostCode" />
+                <ScalarProperty Name="ContactPersonAddress2" ColumnName="ContactPersonAddress2" />
+                <ScalarProperty Name="ExpertiseId" ColumnName="ExpertiseId" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ContactPersonNumber" ColumnName="ContactPersonNumber" />
+                <ScalarProperty Name="ContactPersonEmail" ColumnName="ContactPersonEmail" />
+                <ScalarProperty Name="ContactPersonAddress" ColumnName="ContactPersonAddress" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactPersonHistories">
+            <EntityTypeMapping TypeName="BFN.Model.ContactPersonHistory">
+              <MappingFragment StoreEntitySet="ContactPersonHistory">
+                <ScalarProperty Name="ContactPersonCityName" ColumnName="ContactPersonCityName" />
+                <ScalarProperty Name="ContactPersonPostCode" ColumnName="ContactPersonPostCode" />
+                <ScalarProperty Name="ContactPersonAddress2" ColumnName="ContactPersonAddress2" />
+                <ScalarProperty Name="ExpertiseId" ColumnName="ExpertiseId" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ContactPersonNumber" ColumnName="ContactPersonNumber" />
+                <ScalarProperty Name="ContactPersonEmail" ColumnName="ContactPersonEmail" />
+                <ScalarProperty Name="ContactPersonAddress" ColumnName="ContactPersonAddress" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="ContactPersonId" ColumnName="ContactPersonId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BFN.Model.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityPostCodes">
+            <EntityTypeMapping TypeName="BFN.Model.CityPostCode">
+              <MappingFragment StoreEntitySet="CityPostCodes">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="PostNumber" ColumnName="PostNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryOptions">
+            <EntityTypeMapping TypeName="BFN.Model.DeliveryOption">
+              <MappingFragment StoreEntitySet="DeliveryOptions">
+                <ScalarProperty Name="DeliveryOptionName" ColumnName="DeliveryOptionName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopHistories">
+            <EntityTypeMapping TypeName="BFN.Model.ShopHistory">
+              <MappingFragment StoreEntitySet="ShopHistory">
+                <ScalarProperty Name="ShopEventId" ColumnName="ShopEventId" />
+                <ScalarProperty Name="ccif" ColumnName="ccif" />
+                <ScalarProperty Name="NewsPaperDeliveryOptionId" ColumnName="NewsPaperDeliveryOptionId" />
+                <ScalarProperty Name="ForeignPublishers" ColumnName="ForeignPublishers" />
+                <ScalarProperty Name="ForeignWeeklyMagazines" ColumnName="ForeignWeeklyMagazines" />
+                <ScalarProperty Name="ForeignNewspapers" ColumnName="ForeignNewspapers" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Magazines" ColumnName="Magazines" />
+                <ScalarProperty Name="DailyNewsPaper" ColumnName="DailyNewsPaper" />
+                <ScalarProperty Name="ShopCityName" ColumnName="ShopCityName" />
+                <ScalarProperty Name="ShopPostCode" ColumnName="ShopPostCode" />
+                <ScalarProperty Name="ShopAddress2" ColumnName="ShopAddress2" />
+                <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="Gross" ColumnName="Gross" />
+                <ScalarProperty Name="TerminatinonDate" ColumnName="TerminatinonDate" />
+                <ScalarProperty Name="InagurationDate" ColumnName="InagurationDate" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="PreviousShopId" ColumnName="PreviousShopId" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ShopBFNNumber" ColumnName="ShopBFNNumber" />
+                <ScalarProperty Name="ShopCodeLockInfo" ColumnName="ShopCodeLockInfo" />
+                <ScalarProperty Name="ShopInformation" ColumnName="ShopInformation" />
+                <ScalarProperty Name="ShopFrellationsNummerCategoryId" ColumnName="ShopFrellationsNummerCategoryId" />
+                <ScalarProperty Name="ShopCARDEX" ColumnName="ShopCARDEX" />
+                <ScalarProperty Name="ShopEAN" ColumnName="ShopEAN" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopCompanyHandOverHistories">
+            <EntityTypeMapping TypeName="BFN.Model.ShopCompanyHandOverHistory">
+              <MappingFragment StoreEntitySet="ShopCompanyHandOverHistory">
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NextCompanyId" ColumnName="NextCompanyId" />
+                <ScalarProperty Name="NextChainId" ColumnName="NextChainId" />
+                <ScalarProperty Name="CurrentCompanyId" ColumnName="CurrentCompanyId" />
+                <ScalarProperty Name="CurrentShopId" ColumnName="CurrentShopId" />
+                <ScalarProperty Name="HandOverDate" ColumnName="HandOverDate" />
+                <ScalarProperty Name="HandOverId" ColumnName="HandOverId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="BFN.Model.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="ccif" ColumnName="ccif" />
+                <ScalarProperty Name="NewsPaperDeliveryOptionId" ColumnName="NewsPaperDeliveryOptionId" />
+                <ScalarProperty Name="ForeignPublishers" ColumnName="ForeignPublishers" />
+                <ScalarProperty Name="ForeignWeeklyMagazines" ColumnName="ForeignWeeklyMagazines" />
+                <ScalarProperty Name="ForeignNewspapers" ColumnName="ForeignNewspapers" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Magazines" ColumnName="Magazines" />
+                <ScalarProperty Name="DailyNewsPaper" ColumnName="DailyNewsPaper" />
+                <ScalarProperty Name="ShopCityName" ColumnName="ShopCityName" />
+                <ScalarProperty Name="ShopPostCode" ColumnName="ShopPostCode" />
+                <ScalarProperty Name="ShopAddress2" ColumnName="ShopAddress2" />
+                <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="Gross" ColumnName="Gross" />
+                <ScalarProperty Name="TerminatinonDate" ColumnName="TerminatinonDate" />
+                <ScalarProperty Name="InagurationDate" ColumnName="InagurationDate" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="PreviousShopId" ColumnName="PreviousShopId" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ShopBFNNumber" ColumnName="ShopBFNNumber" />
+                <ScalarProperty Name="ShopCodeLockInfo" ColumnName="ShopCodeLockInfo" />
+                <ScalarProperty Name="ShopInformation" ColumnName="ShopInformation" />
+                <ScalarProperty Name="ShopFrellationsNummerCategoryId" ColumnName="ShopFrellationsNummerCategoryId" />
+                <ScalarProperty Name="ShopCARDEX" ColumnName="ShopCARDEX" />
+                <ScalarProperty Name="ShopEAN" ColumnName="ShopEAN" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="BFN.Model.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyCityName" ColumnName="CompanyCityName" />
+                <ScalarProperty Name="CompanyPostCode" ColumnName="CompanyPostCode" />
+                <ScalarProperty Name="CompanyAddress2" ColumnName="CompanyAddress2" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsChain" ColumnName="IsChain" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Dealer" ColumnName="Dealer" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="BankAccountConsent" ColumnName="BankAccountConsent" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="CompanyBankAccountNo" ColumnName="CompanyBankAccountNo" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyCVR" ColumnName="CompanyCVR" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopCompanyHandOvers">
+            <EntityTypeMapping TypeName="BFN.Model.ShopCompanyHandOver">
+              <MappingFragment StoreEntitySet="ShopCompanyHandOver">
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NextCompanyId" ColumnName="NextCompanyId" />
+                <ScalarProperty Name="NextChainId" ColumnName="NextChainId" />
+                <ScalarProperty Name="CurrentCompanyId" ColumnName="CurrentCompanyId" />
+                <ScalarProperty Name="CurrentShopId" ColumnName="CurrentShopId" />
+                <ScalarProperty Name="HandOverDate" ColumnName="HandOverDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

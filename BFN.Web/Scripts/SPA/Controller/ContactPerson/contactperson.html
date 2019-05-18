@@ -1,0 +1,149 @@
+﻿<!-- Breadcrumb -->
+
+
+<!--<div class="app-body" ng-show="islogin" ng-click="getClass()">
+     <side-bar></side-bar>
+
+    <main class="main">-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item active">Contact Persons</li>
+        </ol>
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-sm-12" > <!--ng-controller="ContactPersonIndexCtrl"-->
+                        <!-- Contact Person Details -->
+                        <div class="card">
+                            <div class="card-header">
+                                <strong><i class="icon-people"></i> Contact Persons</strong>
+                                <a href="#!/contactperson-add" class="btn btn-primary pull-right"><i class="icon-plus"></i> Add Contact Person</a>
+                            </div>
+                            <div class="card-block">
+                                <table class="table table-bordered table-striped" data-toggle="table">
+                                    <thead>
+                                        <tr>
+                                            <th data-sortable="true">
+                                                <div class="dropdown">
+                                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fa fa-filter" ng-class="{'active':SearchModel.searchName!==''}"></i> Name
+                                                    </a>
+                                                    <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='ContactPersonName' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='ContactPersonName' && !pagingInfo.reverse}"></i>
+                                                    <ul class="dropdown-menu filter">
+                                                        <li ng-click="sort('ContactPersonName',false)" class="dropdown-item">
+                                                            <a data-toggle="#">
+                                                                <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                            </a>
+                                                        </li>
+                                                        <li ng-click="sort('ContactPersonName',true)" class="dropdown-item">
+                                                            <a data-toggle="#">
+                                                                <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                            </a>
+                                                        </li>
+                                                        <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchName===''}">
+                                                            <!-- disabled-->
+                                                            <a data-toggle="#" ng-click="clearSearch(1)">
+                                                                <i class="icon-ban"></i> Clear filters
+                                                            </a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <label>Search</label>
+                                                            <div class="input-group form-group mb-0">
+                                                                <input type="text" class="form-control" ng-model="SearchModel.searchName">
+                                                                <button class="input-group-addon" ng-click="search(1)">
+                                                                    <i class="icon-magnifier"></i>
+                                                                </button>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </th>
+                                            <th data-sortable="true">
+                                                <div class="dropdown">
+                                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fa fa-filter" ng-class="{'active':SearchModel.searchAddress!==''}"></i> Address
+                                                    </a>
+                                                    <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='ContactPersonAddress' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='ContactPersonAddress' && !pagingInfo.reverse}"></i>
+                                                    <ul class="dropdown-menu filter">
+                                                        <li ng-click="sort('ContactPersonAddress',false)" class="dropdown-item">
+                                                            <a data-toggle="#">
+                                                                <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                            </a>
+                                                        </li>
+                                                        <li ng-click="sort('ContactPersonAddress',true)" class="dropdown-item">
+                                                            <a data-toggle="#">
+                                                                <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                            </a>
+                                                        </li>
+                                                        <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchAddress===''}">
+                                                            <!-- disabled-->
+                                                            <a data-toggle="#" ng-click="clearSearch(2)">
+                                                                <i class="icon-ban"></i> Clear filters
+                                                            </a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <label>Search</label>
+                                                            <div class="input-group form-group mb-0">
+                                                                <input type="text" class="form-control" ng-model="SearchModel.searchAddress">
+                                                                <button class="input-group-addon" ng-click="search(2)">
+                                                                    <i class="icon-magnifier"></i>
+                                                                </button>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </th>
+                                            <th data-sortable="true">Email</th>
+                                            <th data-sortable="true">Telephone</th>
+                                            <th data-sortable="true"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr dir-paginate="contactPerson in listAllContactPersons | itemsPerPage:pagingInfo.itemsPerPage" total-items="pagingInfo.totalItems">
+                                            <td>{{contactPerson.ContactPersonName}}</td>
+                                            <td>{{contactPerson.ContactPersonAddress}}</td>
+                                            <td>{{contactPerson.ContactPersonEmail}}</td>
+                                            <td>{{contactPerson.ContactPersonNumber}}</td>
+                                            <td class="text-center">
+                                                <!--<a href="admin-shop-view.html" title="View shop details"><i class="icon-eye"></i></a>-->
+                                                <a href="#!/editcontactperson/{{contactPerson.Id}}" title="Edit contact person details"><i class="icon-pencil"></i></a>
+                                                <a href="" title="Delete contact person"><i class="icon-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="hide-if-no-paging text-center">
+                                    <dir-pagination-controls max-size="10"
+                                                             direction-links="true"
+                                                             boundary-links="false"
+                                                             on-page-change="selectPage(newPageNumber)"></dir-pagination-controls>
+                                </div>
+                                <!-- pagination commented
+                                    <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">Prev</a>
+                                        </li>
+                                        <li class="page-item active">
+                                            <a class="page-link" href="#">1</a>
+                                        </li>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav> -->
+                            </div>
+                            <!--  -->
+                        </div>
+                    </div>
+                    <!-- Contact Person Details ends -->
+                </div>
+            </div>
+        </div>
+        <!-- /.conainer-fluid -->
+    <!--</main>
+</div>-->
+
+
+
+

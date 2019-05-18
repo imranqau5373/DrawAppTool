@@ -1,0 +1,113 @@
+﻿
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="Home/CompanyIndex">Customers</a>
+    </li>
+    <li class="breadcrumb-item active">Edit Customer</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Wizard tabs start -->
+                <ul class="nav nav-tabs" role="tablist" style="display:none;">
+                    <li class="nav-item active">
+                        <a class="nav-link " id="company-info-tab" data-toggle="tab" data-target="#company" role="tab" aria-controls="company">Customer information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="evidence-admin-tab" data-toggle="tab" data-target="#evidence" role="tab" aria-controls="admins" style="pointer-events:none;">Customer Evidence</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="company" role="tabpanel">
+                        <!-- Company Setup Tab -->
+                        <form name="companyform" ng-submit="editCustomer()">
+                            <div class="col-sm-12 nopadding">
+                                <div class="card">
+                                    <div class="card-block col-sm-6">
+                                        <div class="form-group">
+                                            <label>Serial Number</label>
+                                            <div class="input-group">
+                                                <input type="number" id="cvr" ng-model="newCustomer.CustomerSerialNo" placeholder="Enter Customer Serial Number" class="form-control" required disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Customer Name</label>
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerName" placeholder="Enter customer name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Father Name</label>
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerFather" placeholder="Enter father name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">ID Card No</label>
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerIdCardNo" placeholder="Enter id card number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-address">Address</label>
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerAddress" placeholder="Enter full address">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Phone Number</label>
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerPhoneNo" placeholder="Enter phone number">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <ul class="steps">
+                                            <li class="active">1</li>
+                                            <li>2</li>
+                                        </ul>
+                                        <button type="submit" class="btn btn-sm btn-primary float-right">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Company Setup Tab ends -->
+                    </div>
+                    <div class="tab-pane" id="evidence" role="tabpanel">
+                        <!-- Company Setup Tab -->
+                        <form name="evidanceform" ng-submit="addEvidence()">
+                            <div class="col-sm-12 nopadding">
+                                <div class="card">
+                                    <div class="card-block col-sm-6">
+                                        <div class="form-group">
+                                            <label for="company-name">Evidence Name</label>
+                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceName" placeholder="Enter customer name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Evidence Father Name</label>
+                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceFatherName" placeholder="Enter father name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Evidence ID Card No</label>
+                                            <input type="number" class="form-control" ng-model="newCustomer.EvidenceIdCardNo" placeholder="Enter id card number" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-address">Evidence Address</label>
+                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceAddress" placeholder="Enter full address">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Evidence Phone Number</label>
+                                            <input type="number" class="form-control" ng-model="newCustomer.EvidencePhoneNo" placeholder="Enter phone number">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <ul class="steps">
+                                            <li>1</li>
+                                            <li class="active">2</li>
+                                        </ul>
+                                        <button type="submit" class="btn btn-sm btn-primary float-right">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Company Setup Tab ends -->
+                    </div>
+                </div>
+                <!-- Wizard tabs ends -->
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+﻿<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="Home/CompanyIndex">Payments</a>
+    </li>
+    <li class="breadcrumb-item active">Payment Index</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Payments</strong>
+                        <small class="text-muted mx-2">[{{filterApplied.length}} filter applied]</small>
+                        <a href="/Home/AddPayment" class="btn btn-primary float-right"><i class="icon-plus"></i> Add Payment</a>
+                    </div>
+                    <div class="card-block" cg-busy="myPromise">
+
+                        <table class="table table-bordered table-striped " data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-sortable="true">Serial Number</th>
+                                    <th data-sortable="true">Customer Name</th>
+                                    <th data-sortable="true">Commite Name</th>
+                                    <th data-sortable="true">Commite Month</th>
+                                    <th data-sortable="true">Recived Amount</th>
+                                    <th data-sortable="true"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--<tr ng-repeat="chain in listAllChains">-->
+                                <tr ng-repeat="payments in listAllPayments">
+                                    <td>{{payments.CustomerSerialNo}} </td>
+                                    <td>{{payments.CustomerName}}</td>
+                                    <td>{{payments.CommiteName}}</td>
+                                    <td>{{payments.CommiteMonth}}</td>
+                                    <td>{{payments.RecivedAmount}}</td>
+
+                                    <td class="text-center">
+                                        <a href="/Home/viewPayments/{{payments.Id}}" title="View payment details"><i class="icon-eye"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

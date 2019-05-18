@@ -1,0 +1,98 @@
+﻿<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="Home/CompanyIndex">Reports</a>
+    </li>
+    <li class="breadcrumb-item active">Reports Index</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Reports</strong>
+                    
+                    </div>
+
+                    <div class="card-block" cg-busy="myPromise">
+                        <div class="row">
+                            <div class="form-group col">
+                                <label>Commite</label>
+                                <select class="form-control" ng-change="getCommiteDetails()" ng-model="reportData.CommiteId"
+                                        ng-options="commite.Id as commite.CommiteName for commite in commiteRecord"
+                                        required>
+                                    <option value="">Choose Commite</option>
+                                </select>
+                            </div>
+                            <div class="form-group col">
+                                <label>Commite Number</label>
+                                <select class="form-control" ng-model="reportData.FK_InstallmentId"
+                                        ng-options="installment.Id as installment.InstallmentNumber for installment in installmentRecord"
+                                        required>
+                                    <option value="">Choose Number</option>
+                                </select>
+                            </div>
+                            <div class="form-group col">
+                                <label>Select Payment</label>
+                                <select class="form-control" ng-model="reportData.PaymentType">
+                                 <option value="" selected>Select Payment</option>
+                                     <option value="1">Paid</option>
+                                     <option value="2">Un Paid</option>
+
+                                </select>
+
+                            </div>
+                            <div class="form-group col">
+                                <label>Click To Search</label>
+     
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-sm btn-primary " ng-click="searchReport()">Search</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <table class="table table-bordered table-striped " data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-sortable="true">Serial Number</th>
+                                    <th data-sortable="true">Customer Name</th>
+                                    <th data-sortable="true">Commite Name</th>
+                                    <th data-sortable="true">Commite Month</th>
+                                    <th data-sortable="true">Recived Amount</th>
+                                    <th data-sortable="true"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--<tr ng-repeat="chain in listAllChains">-->
+                                <tr ng-repeat="payments in listAllPayments">
+                                    <td>{{payments.CustomerSerialNo}} </td>
+                                    <td>{{payments.CustomerName}}</td>
+                                    <td>{{payments.CommiteName}}</td>
+                                    <td>{{payments.CommiteMonth}}</td>
+                                    <td>{{payments.RecivedAmount}}</td>
+
+                                    <td class="text-center">
+                                        <a href="/Home/viewPayments/{{payments.Id}}" title="View payment details"><i class="icon-eye"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="hide-if-no-paging text-center">
+                            <nav class="table-pagination">
+                                <div class="result-summary">
+                                    <span id="current-start">Totla Paid = {{totalPaid}}</span> ,
+                                    <span id="current-end">Total UnPaid = {{totalUnPaid}}</span>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

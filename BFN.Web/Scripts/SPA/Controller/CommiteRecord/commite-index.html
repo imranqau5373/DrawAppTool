@@ -1,0 +1,52 @@
+﻿<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Commites</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Commites</strong>
+                        <small class="text-muted mx-2">[{{filterApplied.length}} filter applied]</small>
+                        <a href="/Home/AddCommite" class="btn btn-primary float-right"><i class="icon-plus"></i> Add Commite</a>
+                    </div>
+                    <div class="card-block" cg-busy="myPromise">
+
+                        <table class="table table-bordered table-striped " data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th data-sortable="true">Commite Name</th>
+                                    <th data-sortable="true">Commite Amount</th>
+                                    <th data-sortable="true">Total Months</th>
+                                    <th data-sortable="true">Start Date</th>
+                                    <th data-sortable="true">End Date</th>
+                                    <th data-sortable="true"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--<tr ng-repeat="chain in listAllChains">-->
+                                <tr ng-repeat="commite in listAllCommites">
+                                    <td>
+                                        <a href="/Home/CommiteView/{{commite.Id}}" title="View commite details">{{commite.CommiteName}}
+</a>
+                                    
+                                     </td>
+                                    <td>{{commite.CommiteAmount}}</td>
+                                    <td>{{commite.CommiteMonths}}</td>
+                                    <td>{{commite.CommiteStartDate}}</td>
+                                    <td>{{commite.CommiteEndDate}}</td>
+
+                                    <td class="text-center">
+                                        <a href="/Home/CommiteView/{{commite.Id}}" title="View commite details"><i class="icon-eye"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

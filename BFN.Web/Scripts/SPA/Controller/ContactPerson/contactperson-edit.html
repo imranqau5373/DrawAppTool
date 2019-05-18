@@ -1,0 +1,65 @@
+﻿<!-- Breadcrumb -->
+
+
+<!--<div class="app-body" ng-show="islogin" ng-click="getClass()">
+     <side-bar></side-bar>
+
+    <main class="main">-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item"><a href="#!/contactperson">Contact Person</a></li>
+            <li class="breadcrumb-item active">Edit Contact Person</li>
+        </ol>
+
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-sm-12">
+
+
+                        <form name="contactpersonform" ng-submit="editContactPersonData()"> <!--ng-controller="ContactPersonEditCtrl"-->
+                            <div class="col-sm-12 nopadding">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong><i class="icon-user"></i> Edit Contact Person</strong>
+                                    </div>
+                                    <div class="card-block col-sm-6">
+                                        <div class="form-group">
+                                            <label for="cp-name">Name</label>
+                                            <input type="text" class="form-control" id="cp-name" ng-model="editContactPerson.ContactPersonName" placeholder="Enter full name" required>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cp-address">Address</label>
+                                            <input type="text" class="form-control" id="cp-address" ng-model="editContactPerson.ContactPersonAddress" placeholder="Enter complete address" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cp-email-address">Email address</label>
+                                            <input type="email" class="form-control" id="cp-email-address" ng-model="editContactPerson.ContactPersonEmail" placeholder="Enter email address" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="cp-contact-no">Contact Nr.</label>
+                                            <input type="text" class="form-control" id="cp-contact-no" ng-model="editContactPerson.ContactPersonNumber" placeholder="Enter contact person" required>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-dot-circle-o"></i> Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.conainer-fluid -->
+    <!--</main>
+</div>-->
+
+
+

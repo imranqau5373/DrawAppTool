@@ -1,0 +1,86 @@
+﻿
+
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="Home/CompanyIndex">Payments</a>
+    </li>
+    <li class="breadcrumb-item active">Add Payment</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                    <!-- Wizard tabs start -->
+                    <ul class="nav nav-tabs" role="tablist" style="display:none;">
+                        <li class="nav-item active">
+                            <a class="nav-link " id="company-info-tab" data-toggle="tab" data-target="#company" role="tab" aria-controls="company">Customer information</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="company" role="tabpanel">
+                            <!-- Company Setup Tab -->
+                            <form name="companyform" ng-submit="addPayment()">
+                                <div class="col-sm-12 nopadding">
+                                    <div class="card">
+
+                                        <div class="card-block col-sm-6">
+                                            <div class="form-group">
+                                                <label>Commite</label>
+                                                <select class="form-control" ng-change="getCommiteDetails()" ng-model="newPayment.CommiteId"
+                                                        ng-options="commite.Id as commite.CommiteName for commite in commiteRecord"
+                                                        required>
+                                                    <option value="">Choose Commite</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Commite Member</label>
+                                                <div class="input-group">
+                                                    <input type="text" id="cvr" ng-model="newPayment.FK_MemberId" class="form-control" required readonly>
+                                                    <button type="button" class="btn btn-sm btn-primary" ng-click="selectMember()"  data-toggle="modal" data-target="#searchMember">Select Member.</button>
+                                                </div>
+                                                <small ng-show="isCommiteError" class="form-text text-muted text-danger">Please Select Commite First!</small>
+                                                <!--<input type="hidden" id="cvr" ng-model="newPayment.FK_MemberId" class="form-control" required readonly>-->
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col">
+                                                    <label>Commite Number</label>
+                                                    <select class="form-control" ng-model="newPayment.FK_InstallmentId"
+                                                            ng-options="installment.Id as installment.InstallmentNumber for installment in installmentRecord"
+                                                            required>
+                                                        <option value="">Choose Number</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="company-name">Recivied Amount</label>
+                                                <input type="number" class="form-control" ng-model="newPayment.PaidAmount" placeholder="Enter commite name" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="company-name">Installment Details</label>
+                                                <input type="text" class="form-control" ng-model="newPayment.InstallmentDetails" placeholder="Enter installment details" >
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-sm btn-primary float-right">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Company Setup Tab ends -->
+                        </div>
+                    </div>
+                    <!-- Wizard tabs ends -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<paymentmember></paymentmember>

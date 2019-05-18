@@ -1,0 +1,71 @@
+﻿
+<div class="modal fade" id="subscriptionupdate" role="dialog">
+    <div class="modal-dialog" style="max-width: 700px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form name="newAdmin" ng-submit="addSubscriptionInfo()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+
+                <div class="modal-header">
+                    <h1>Subscriptions</h1>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="closeSubscriptionDailog()">&times;</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="card-block">
+                        <div class="col-sm-12 nopadding">
+                            <div class="input-group form-group mb-0">
+                                <div class="input-group-addon">
+                                    <input class="form-check-input" type="checkbox"  id="dagblade" ng-model="viewShopSubscriptionData.DailyNewsPaper" ng-checked="viewShopSubscriptionData.DailyNewsPaper">
+                                    <label for="dagblade">Dagblade</label>
+                                </div>
+                                <!--<select class="form-control" ng-model="viewShopSubscriptionData.NewsPaperDeliveryOptionId"  required>
+                                    <option value="">Choose delivery option</option>
+                                    <option value="1">All year</option>
+                                    <option value="2">Only weekends, max 120 days</option>
+                                    <option value="3">Only summer, max 150 days</option>
+                                    <option value="4">All year + magazines and books from BK</option>
+                                    <option value="5">Only weekends, max 120 days + magazines and books from BK</option>
+                                    <option value="6">Only summer, max 150 days + magazines and books from BK</option>
+                                    <option value="7">All year only magazines and books from BK</option>
+                                    <option value="8">Only weekend only magazines and books from BK</option>
+                                </select> <select ng-model="viewShopSubscriptionData.NewsPaperDeliveryOptionId" class="form-control" required> 
+                                    <option ng-repeat="subscriptionOptions in subscriptionOptions" value="{{subscriptionOptions.value}}">{{subscriptionOptions.option}}</option>
+                                </select>-->
+                               
+
+                                <select class="form-control" ng-model="viewShopSubscriptionData.NewsPaperDeliveryOptionId"  ng-disabled="!viewShopSubscriptionData.DailyNewsPaper"
+                                        ng-options="item.value as item.option for item in subscriptionOptions" required="Please Select Option">
+                                    <option value="">Choose delivery option</option>
+                                </select>
+                            </div>
+                            <div class="list-group form-group">
+                                <label class="list-group-item">
+                                    <input class="form-check-input" type="checkbox" ng-model="viewShopSubscriptionData.Magazines" ng-checked="viewShopSubscriptionData.Magazines"> Ugeblade
+                                </label>
+                                <label class="list-group-item">
+                                    <input class="form-check-input" type="checkbox" ng-model="viewShopSubscriptionData.Publisher" ng-checked="viewShopSubscriptionData.Publisher"> Forlag
+                                </label>
+                                <label class="list-group-item">
+                                    <input class="form-check-input" type="checkbox" ng-model="viewShopSubscriptionData.ForeignNewspapers" ng-checked="viewShopSubscriptionData.ForeignNewspapers"> Udenlandske aviser
+                                </label>
+                                <label class="list-group-item">
+                                    <input class="form-check-input" type="checkbox" ng-model="viewShopSubscriptionData.ForeignWeeklyMagazines" ng-checked="viewShopSubscriptionData.ForeignWeeklyMagazines"> Udenlandske ugeblade
+                                </label>
+                                <label class="list-group-item">
+                                    <input class="form-check-input" type="checkbox" ng-model="viewShopSubscriptionData.ForeignPublishers" ng-checked="viewShopSubscriptionData.ForeignPublishers"> Udenlandske forlag
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+
+                <div class="modal-footer"><button type="submit" class="btn btn-primary float-right">{{btnHeading}}</button></div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Reports</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-block col-md-6">
+                        <div class="form-group">
+                            <label for="chain-address">Time Period</label>
+                            <select class="form-control" ng-change="changeOption()" ng-model="report.selectedOption" required ng-options='option.value as option.name for option in typeOptions'>
+                                <option value="" selected="selected">Choose Time Period</option>
+
+                            </select>
+
+
+
+                        </div>
+                        <div class="form-group row" >
+                            <div class="col">
+                                <label>Start date</label>
+                                <input id="startDate" type="date" ng-model="report.startDate" class="form-control" placeholder="Start date" ng-disabled="(report.selectedOption == 'Custom period') ? false : true">
+                            </div>
+                            <div class="col">
+                                <label>End date</label>
+                                <input id="endDate" type="date" ng-model="report.endDate" class="form-control" placeholder="End date" ng-disabled="(report.selectedOption == 'Custom period') ? false : true">
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:none;">
+                            <label for="chain-address">Send to</label>
+                            <select class="form-control">
+                                <option>All</option>
+                                <option>BK</option>
+                                <option>UDB</option>    
+                            </select>
+                        </div>
+                        <div class="form-group" style="display:none;">
+                            <label for="chain-address">Report type</label>
+                            <select class="form-control">
+                                <option>Changes</option>
+                                <option>Regular</option>
+                            </select>
+                        </div>
+                        <div class="list-group">
+                            <label class="mb-1">Changes type</label>
+                            <div class="form-group list-group-item" ng-repeat="event in eventTypes">
+                                <div class="form-check">
+
+
+                                    <label class="form-check-label p-0">
+                                        <input class="form-check-input" ng-model="event.selected" ng-checked="true" type="checkbox" checked> {{event.text}}
+                                    </label>
+                                </div>
+                            </div>
+                            <!--<div class="form-group list-group-item">
+                                <div class="form-check">
+                                    <label class="form-check-label p-0">
+                                        <input class="form-check-input" checklist-model="report.eventTypes" ng-checked="true" type="checkbox" checked> Update/change notifications
+                                    </label>
+                                </div>
+                            </div>-->
+                            <!--<div class="form-group list-group-item">
+                                <div class="form-check">
+                                    <label class="form-check-label p-0">
+                                        <input class="form-check-input" ng-model="report.SelectedEvent.Removal" ng-checked="true" type="checkbox" checked> Removal notifications
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group list-group-item">
+                                <div class="form-check">
+                                    <label class="form-check-label p-0">
+                                        <input class="form-check-input" ng-model="report.SelectedEvent.Ownership" ng-checked="true" type="checkbox" checked> Ownership notifications
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group list-group-item">
+                                <div class="form-check">
+                                    <label class="form-check-label p-0">
+                                        <input class="form-check-input" ng-model="report.SelectedEvent.Creation" ng-checked="true" type="checkbox" checked> Creation notifications
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group list-group-item">
+                                <div class="form-check">
+                                    <label class="form-check-label p-0">
+                                        <input class="form-check-input" ng-model="report.SelectedEvent.Reopening" ng-checked="true" type="checkbox" checked> Reopening notifications
+                                    </label>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-primary float-right" ng-click="generateReport()">
+                            <i class="icon-arrow-down-circle" ></i> Download Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

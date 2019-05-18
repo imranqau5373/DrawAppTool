@@ -1,0 +1,223 @@
+﻿
+
+
+        <!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="Home/companyIndex">Companies</a>
+    </li>
+    <li class="breadcrumb-item active">Edit Company</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Wizard tabs start -->
+                <ul class="nav nav-tabs" role="tablist" style="display:none;">
+                    <li class="nav-item active">
+                        <a class="nav-link " id="company-info-tab" data-toggle="tab" data-target="#company" role="tab" aria-controls="company">Company information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="company-admin-tab" data-toggle="tab" data-target="#admins" role="tab" aria-controls="admins">Company admins</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="company" role="tabpanel">
+                        <!-- Company Setup Tab -->
+                        <form name="companyform" ng-submit="saveCompany()">
+                            <div class="col-sm-12 nopadding">
+                                <div class="card">
+                                    <div class="card-block col-sm-6">
+                                        <div class="form-group">
+                                            <label>CVR Number</label>
+                                            <div class="input-group">
+                                                <input type="number" id="cvr" ng-model="editCompany.CompanyCVR" placeholder="Enter CVR number to verify" class="form-control" required>
+                                                <button type="button" class="btn btn-sm btn-primary" ng-click="verifyCVR()">Verify CVR nr.</button>
+                                            </div>
+                                            <small ng-show="isCVRError" class="form-text text-muted text-danger">The CVR number is not correct. Please try again!</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group-addon" id="selectChain">
+                                                <input class="form-check-input" type="checkbox" ng-checked="editCompany.ParentChain" value="" id="addToChain">
+                                                <label>Add to a chain</label>
+                                                <input type="text" id="ChainName" class="form-control" ng-model="editCompany.ChainName">
+                                                <small ng-show="isChainError" class="form-text text-muted text-danger">Please select valid chain name!</small>
+                                            </div>
+                                            <input type="text" ng-show="false" id="ChainId" ng-model="editCompany.ParentId" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Company Name</label>
+                                            <input type="text" class="form-control" ng-model="editCompany.CompanyName" id="company-name" placeholder="Enter company name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-address">Address</label>
+                                            <input type="text" class="form-control" ng-model="editCompany.CompanyAddress" id="company-address" placeholder="Enter full address" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="chain-address-2">Address 2</label>
+                                            <span class="badge badge-default badge-pill float-right">Optional</span>
+                                            <input type="text" class="form-control" id="chain-address-2" placeholder="Enter address details" ng-model="editCompany.CompanyAddress2">
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label for="chain-postal">Postal code</label>
+                                                <input type="text" class="form-control" id="chain-postal" placeholder="Enter postal code" ng-model="editCompany.CompanyPostCode" required>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label for="chain-city">City</label>
+                                                <input type="text" class="form-control" id="chain-city" placeholder="Enter city" ng-model="editCompany.CompanyCityName" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bank-account-nr">Bank Account Nr.</label>
+                                            <span class="badge badge-default badge-pill float-right">Optional</span>
+                                            <input type="text" id="bank-account-nr" ng-model="editCompany.CompanyBankAccountNo" placeholder="Enter account number" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="chain-email-address">Owner</label>
+                                            <input type="text" class="form-control" id="chain-owner" ng-model="editCompany.OwnerName" placeholder="Enter chain owner name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-email-address">Email Address</label>
+                                            <span class="badge badge-default badge-pill float-right">Optional</span>
+                                            <input type="email" ng-model="editCompany.CompanyEmail" class="form-control" id="company-email-address" placeholder="Enter email address for invoicing">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-sm btn-primary float-right">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Company Setup Tab ends -->
+                    </div>
+                    <div class="tab-pane" id="admins" role="tabpanel">
+                        <div class="col-sm-12 nopadding">
+                            <div class="card">
+                                <div class="card-block">
+                                    <button type="button" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#addChainAdmin"><i class="icon-plus"></i> Add company admin</button>
+                                    <table class="table table-bordered table-striped" data-toggle="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>Contact No.</th>
+                                                <th>Email</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="user in CompanyUsers">
+                                                <td>{{user.Name}} </td>
+                                                <td>{{user.Address}}</td>
+                                                <td>{{user.PhoneNumber}}</td>
+                                                <td>{{user.Email}}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <i class="icon-options-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                                            <a class="dropdown-item" href="" ng-click="deleteCompanyUser(user.Id)">Deactivate User</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <nav>
+                                        <ul class="pagination">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">Prev</a>
+                                            </li>
+                                            <li class="page-item active">
+                                                <a class="page-link" href="#">1</a>
+                                            </li>
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">Next</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-sm btn-primary float-right" href="" ng-click="saveEditCompany()">Save</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Wizard tabs ends -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.conainer -->
+
+<user-add></user-add>
+<user-edit></user-edit>
+<user-view></user-view>
+
+
+<deactive></deactive>
+<active></active>
+<script type="text/javascript">
+    $(document).ready(function () {
+        getAllChainsNames();
+
+        $('input[type=checkbox]').change(function () {
+            if ($("#addToChain").is(':checked'))
+                $("#ChainName").removeAttr("disabled");
+            else
+            {
+                $("#ChainName").attr("disabled", 'disabled');
+                $("#ChainName").val('');
+            }
+        });
+
+    })
+    function getAllChainsNames() {
+        var url = location.href;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        var apiUrl = "api/Chain/getAllChainsNames";
+        //if (id > 0) {
+        //    apiUrl = "api/Company/getAllChainCompanies/?id=" + id;
+        //}
+        //else {
+        //    apiUrl = "api/Chain/getAllChainsNames";
+        //}
+        $.get(apiUrl, function (data) {
+            var options = {
+                data: data,
+                getValue: "CompanyName",
+
+                list: {
+                    maxNumberOfElements: 12,
+                    match: {
+                        enabled: true
+                    },
+                    onSelectItemEvent: function () {
+                        var value = $("#ChainName").getSelectedItemData().Id;
+
+                        $("#ChainId").val(value).trigger("change");
+                    }
+
+                }
+            };
+
+            $("#ChainName").easyAutocomplete(options);
+            var chainId = $("#ChainId").val();
+        });
+    }
+
+
+
+
+</script>
+
+
+
+
+
+
+

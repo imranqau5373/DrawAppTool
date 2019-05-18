@@ -1,0 +1,204 @@
+﻿    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Commite</li>
+        <li class="breadcrumb-item active">{{viewCommite.CommiteName}}</li>
+
+    </ol>
+
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+
+                <div class="col-sm-12 grid-view">
+
+                    <!-- Company Setup Tab -->
+                    <div class="card card-lg">
+                        <div class="card-header">
+                            <strong>Commite Information</strong>
+                            <a href="Home/editCommite/{{viewCommite.Id}}" class="btn btn-outline-primary float-right">
+                                <i class="icon-pencil"></i> Edit commite info
+                            </a>
+                        </div>
+                        <div class="card-block row">
+                            <div class="form-group col-3">
+                                <label for="cvr">Commite Name</label>
+                                <h4>{{viewCommite.CommiteName}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company">Commite Details</label>
+                                <h4>{{viewCommite.CommiteDetails}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Amount</label>
+                                <h4>{{viewCommite.CommiteAmount}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Total Months</label>
+                                <h4>{{viewCommite.CommiteMonths}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">Start Date</label>
+                                <h4>{{viewCommite.CommiteStartDate}}</h4>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="company-address">End Date</label>
+                                <h4>{{viewCommite.CommiteEndDate}}</h4>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="card card-lg">
+                        <div class="card-header">
+                            <strong>Commite Memebers</strong>
+                            <button type="button" class="btn btn-outline-primary float-right" ng-click="addCommiteMember()">Add Member.</button>
+
+                            
+                        </div>
+                        <div class="card-block">
+                            <table class="table table-bordered table-striped " data-toggle="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchCustomerSerialNo!==''}"></i> Serial Number
+                                                </a>
+                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='CustomerSerialNo' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='CustomerSerialNo' && !pagingInfo.reverse}"></i>
+                                                <ul class="dropdown-menu filter">
+                                                    <li ng-click="sort('CustomerSerialNo',false)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                        </a>
+                                                    </li>
+                                                    <li ng-click="sort('CustomerSerialNo',true)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchCustomerSerialNo===''}">
+                                                        <!-- disabled-->
+                                                        <a data-toggle="#" ng-click="clearSearch(2)">
+                                                            <i class="icon-ban"></i> Clear filters
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <label>Search</label>
+                                                        <form ng-submit="search(2)">
+                                                            <div class="input-group form-group mb-0">
+
+                                                                <input type="text" class="form-control" ng-model="SearchModel.searchCustomerSerialNo">
+                                                                <button class="input-group-addon" type="submit">
+                                                                    <i class="icon-magnifier"></i>
+                                                                </button>
+
+                                                            </div>
+                                                        </form>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchCustomerName!==''}"></i> Customer Name
+                                                </a>
+                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='CustomerName' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='CustomerName' && !pagingInfo.reverse}"></i>
+                                                <ul class="dropdown-menu filter">
+                                                    <li ng-click="sort('CustomerName',false)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                        </a>
+                                                    </li>
+                                                    <li ng-click="sort('CustomerName',true)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchCustomerName===''}">
+                                                        <!-- disabled-->
+                                                        <a data-toggle="#" ng-click="clearSearch(1)">
+                                                            <i class="icon-ban"></i> Clear filters
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <label>Search</label>
+                                                        <form ng-submit="search(1)">
+                                                            <div class="input-group form-group mb-0">
+
+                                                                <input type="text" class="form-control" ng-model="SearchModel.searchCustomerName">
+                                                                <button class="input-group-addon" type="submit">
+                                                                    <i class="icon-magnifier"></i>
+                                                                </button>
+
+                                                            </div>
+                                                        </form>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                        </th>
+                                        <th data-sortable="true">Customer Address</th>
+                                        <th data-sortable="true">ID Card No</th>
+                                        <th data-sortable="true">Customer Phone</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--<tr ng-repeat="chain in listAllChains">-->
+                                    <tr dir-paginate="customer in listAllCustomers | itemsPerPage:pagingInfo.itemsPerPage" total-items="pagingInfo.totalItems" >
+                                        <td>
+                                            <a href="" data-toggle="modal" data-target="#addPayment" title="Add Payment Details" ng-click="addNewPayment(customer.Id)">{{customer.CustomerSerialNo}}</a>
+                                        </td>
+                                        <td>
+                                            <a href="" data-toggle="modal" data-target="#addPayment" title="Add Payment Details" ng-click="addNewPayment(customer.Id)">{{customer.CustomerName}}</a>
+
+                                        </td>
+                                        <td>{{customer.CustomerAddress}}</td>
+                                        <td>{{customer.CustomerIdCardNo}}</td>
+                                        <td>{{customer.CustomerPhoneNo}}</td>
+
+                                        <!--<td class="text-center">
+                                            <a href="" data-toggle="modal" data-target="#addPayment" title="Add Payment Details" ng-click="addNewPayment(customer.Id)"><i class="icon-eye"></i></a>
+                                        </td>-->
+
+                                        <td class="text-center">
+                                            <a href="" title="View Customer Details" ng-click="viewCustomerDetails(customer.Id)"><i class="icon-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="hide-if-no-paging text-center">
+                                <nav class="table-pagination">
+                                    <dir-pagination-controls max-size="10"
+                                                             direction-links="true"
+                                                             boundary-links="false"
+                                                             on-page-change="selectPage(newPageNumber)"></dir-pagination-controls>
+                                    <div class="result-summary" ng-show="pagingInfo.totalItems > 0">
+                                        <span id="current-start">{{pagingInfo.startPageRecordNumber}}</span> to
+                                        <span id="current-end">{{pagingInfo.endPageRecordNumber}}</span> of
+                                        <span id="total-result">{{pagingInfo.totalItems}}</span> results.
+                                    </div>
+                                    <div class="result-summary" ng-show="pagingInfo.totalItems == 0">
+                                        No Record Found.
+                                    </div>
+                                </nav>
+                            </div>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<paymentmember></paymentmember>
+
+
+

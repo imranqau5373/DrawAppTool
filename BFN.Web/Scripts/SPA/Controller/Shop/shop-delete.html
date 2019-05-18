@@ -1,0 +1,270 @@
+﻿
+<!--<div class="app-body" ng-show="islogin" ng-click="getClass()">
+     <side-bar></side-bar>
+
+    <main class="main">-->
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">Shops</li>
+            <li class="breadcrumb-item active">Delete Shop</li>
+        </ol>
+
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-sm-12">
+
+
+                        <!-- Wizard tabs start -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active">
+                                <a class="nav-link" data-toggle="tab" href="#shop" role="tab" aria-controls="shop"><i class="icon-bag"></i> Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#cp" role="tab" aria-controls="cp"><i class="icon-user"></i> Contact Person</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#opening-hours" role="tab" aria-controls="opening-hours"><i class="icon-clock"></i> Opening hours</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#delivery-info" role="tab" aria-controls="delivery-info"><i class="icon-clock"></i> Delivery Information</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="shop" role="tabpanel">
+                                <!-- shop Setup Tab -->
+                                <form name="companyform" ng-submit="deleteShop()"> <!--ng-controller="ShopEditCtrl"--> 
+                                    <div class="col-sm-12 nopadding">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <strong><i class="icon-bag"></i> Delete shop</strong>
+                                            </div>
+                                            <div class="card-block col-sm-6">
+                                                <div class="form-group" ng-show="isCompany">
+                                                    Search Company   Name <input class="form-control" id="CompanyName" type="text" disabled ng-model="editShop.Company.CompanyName" />
+                                                </div>
+                                                <input type="text" ng-show="false" id="CompanyId" ng-model="editShop.CompanyId" />
+                                                <div class="form-group">
+                                                    <label for="cvr">Name</label>
+                                                    <input type="text" class="form-control" ng-model="editShop.ShopName" id="shop-name" disabled placeholder="Enter shop name">
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="shop-address">Address</label>
+                                                    <input type="text" class="form-control" ng-model="editShop.ShopAddress" id="shop-address" disabled placeholder="Enter complete address">
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label for="ean">EAN</label>
+                                                        <input type="text" class="form-control" ng-model="editShop.ShopEAN" id="ean" disabled placeholder="Enter EAN">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="cardex">CARDEX</label>
+                                                        <input type="text" class="form-control" ng-model="editShop.ShopCARDEX" id="cardex" disabled placeholder="Enter CARDEX">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="frellationsnummer">Frellationsnummer</label>
+                                                        <input type="text" class="form-control" ng-model="editShop.ShopFrellationsNummer" disabled id="frellationsnummer" placeholder="Enter Frellationsnummer">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-dot-circle-o"></i> Delete Shop</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Company Setup Tab ends -->
+                            </div>
+
+
+                            <div class="tab-pane" id="cp" role="tabpanel">
+                                <!-- Contact person Tab -->
+                                <div class="col-sm-12 nopadding">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong><i class="icon-user"></i> Add Contact Person</strong>
+                                        </div>
+                                        <div class="card-block col-sm-6">
+                                            <div class="form-group">
+                                                <label for="cp-name">Name</label>
+                                                <input type="text" class="form-control" id="cp-name" placeholder="Enter full name">
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cp-address">Address</label>
+                                                <input type="text" class="form-control" id="cp-address" placeholder="Enter complete address">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cp-email-address">Email address</label>
+                                                <input type="email" class="form-control" id="cp-email-address" placeholder="Enter email address">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="cp-contact-no">Contact Nr.</label>
+                                                <input type="text" class="form-control" id="cp-contact-no" placeholder="Enter contact person">
+                                            </div>
+
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-dot-circle-o"></i> Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Contact person Tab ends -->
+                            </div>
+
+                            <div class="tab-pane" id="opening-hours" role="tabpanel">
+                                <!-- Opening hours Tab -->
+                                <div class="col-sm-12 nopadding">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong><i class="icon-clock"></i> Opening Hours</strong>
+                                        </div>
+
+                                        <!-- <div class="card-block col-sm-6">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <div class="radio">
+                                                        <label for="oh-default">
+                                                            <input type="radio" id="oh-default" name="oh-template">Default Opening Hours
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label for="oh-custom">
+                                                            <input type="radio" id="oh-custom" name="oh-template" checked>Custom Opening Hours
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+
+                                        <div class="card-block col-sm-6 custom-template">
+                                            <div class="col-sm-12 nopadding">
+                                                <div class="form-group">
+                                                    <label for="custom-template">Template Name</label>
+                                                    <input type="text" class="form-control" id="custom-template" value="Default" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 nopadding">
+                                                <div class="form-group">
+                                                    <label for="season-start">Seasonal schedule starts from</label>
+                                                    <input type="text" class="form-control" id="season-start" value="01 January" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 ">
+                                                <div class="form-group">
+                                                    <label for="season-end">Seasonal schedule ends at</label>
+                                                    <input type="text" class="form-control" id="season-end" value="31 December" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Day</span>
+                                                    <input type="text" id="oh-monday" name="input3-group1" class="form-control" placeholder="Opening Hour" disabled>
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="text" id="ch-monday" name="input3-group1" class="form-control" placeholder="Closing Hour" disabled>
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Mon</span>
+                                                    <input type="time" id="oh-monday" name="input3-group1" class="form-control">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="time" id="ch-monday" name="input3-group1" class="form-control">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Tue</span>
+                                                    <input type="time" id="oh-monday" name="input3-group1" class="form-control">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="time" id="ch-monday" name="input3-group1" class="form-control">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Wed</span>
+                                                    <input type="time" id="oh-monday" name="input3-group1" class="form-control">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="time" id="ch-monday" name="input3-group1" class="form-control">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Thu</span>
+                                                    <input type="time" id="oh-monday" name="input3-group1" class="form-control">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="time" id="ch-monday" name="input3-group1" class="form-control">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Fri</span>
+                                                    <input type="time" id="oh-monday" name="input3-group1" class="form-control">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="time" id="ch-monday" name="input3-group1" class="form-control">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Sat</span>
+                                                    <input type="time" id="oh-monday" name="input3-group1" class="form-control">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="time" id="ch-monday" name="input3-group1" class="form-control">
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Sun</span>
+                                                    <input type="time" id="oh-monday" name="input3-group1" class="form-control">
+                                                    <span class="input-group-addon">:</span>
+                                                    <input type="time" id="ch-monday" name="input3-group1" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-dot-circle-o"></i> Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Opening Hours Tab ends -->
+                            </div>
+
+                            <div class="tab-pane" id="delivery-info" role="tabpanel">
+                                <!-- Delivery info Tab -->
+                                <div class="col-sm-12 nopadding">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong><i class="icon-user"></i> Delivery Info</strong>
+                                        </div>
+                                        <div class="card-block col-sm-6">
+                                            <div class="form-group">
+                                                <label for="cp-name">Information</label>
+                                                <textarea id="di-details" class="form-control" placeholder="Enter delivery information"></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="cp-name">Code/Lock info</label>
+                                                <textarea id="di-lock" class="form-control" placeholder="Enter delivery information"></textarea>
+                                            </div>
+
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-dot-circle-o"></i> Create Shop</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Delivery info Tab ends -->
+                            </div>
+
+                        </div>
+                        <!-- Wizard tabs ends -->
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.conainer-fluid -->
+    <!--</main>
+</div>-->
+
+

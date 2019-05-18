@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+header{
+	background: bfn-theme-color(white);
+	
+	
+	@include media-breakpoint-up(md){
+		position: sticky;
+		top: 0;
+		z-index: 10;
+	}
+	
+	
+	.header-row{
+		padding: px2rem(15);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		
+		@include media-breakpoint-up(sm){
+			flex-direction: row;
+			justify-content: space-between;			
+		}
+				
+		.logo{
+			max-height: px2rem(60);
+			max-width: px2rem(200);
+			
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+}
+
+.btn{
+	background: bfn-theme-color();
+	color: bfn-theme-color(white) ;
+	padding: px2rem(5) px2rem(35);
+	box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.16);
+	cursor: pointer;
+	font-weight: 600;
+	height: px2rem(45);
+	line-height: 2.5;
+	text-decoration: none;
+	margin: px2rem(10) 0;
+	
+	
+	&.round{
+		border-radius: px2rem(140);
+	}
+	
+	&:hover{
+		background: darken(bfn-theme-color(),7);
+		color: bfn-theme-color(white);
+	}
+}
+
+.dropdown-menu{
+	min-width: px2rem(250);
+	padding: px2rem(20) px2rem(10) px2rem(10);
+	
+	label{
+		margin-bottom: px2rem(2.5);
+	}
+	
+	.btn{
+		padding: px2rem(5) px2rem(15);
+		margin-bottom: 0;
+		height: auto;
+		width: 100%;
+		border: 0;
+		border-radius: px2rem(0);
+	}
+	
+	.form-control{
+		border-radius: px2rem(0);
+	}
+}
+

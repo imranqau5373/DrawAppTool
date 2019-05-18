@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.footer{
+	background: bfn-theme-color();
+	min-height: px2rem(150);
+	color: bfn-theme-color(white);
+	font-size: px2rem(14);
+	font-weight: $font-weight-medium;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	
+	div{
+		padding: px2rem(10);
+		
+		@include media-breakpoint-up(lg){
+			padding: px2rem(10) px2rem(25);
+		}
+	}
+}

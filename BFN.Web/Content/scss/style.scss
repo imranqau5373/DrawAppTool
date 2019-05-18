@@ -1,0 +1,33 @@
+﻿@charset "UTF-8";
+
+// Bootstrap variables need to be overridden before importing bootstrap.scss
+@import "bootstrap-variables-overrides.scss";
+
+// Vendor SCSS/CSS
+@import "vendor/bootstrap/bootstrap.scss";
+
+// Own helpers
+@import "helpers.scss";
+
+// Global styles
+@import "global.scss";
+
+// Modules
+@import "footer.scss";
+@import "header.scss";
+@import "hero-banner.scss";
+@import "tabs.scss";
+
+/* Responsive CSS */
+@media all and (max-width: 480px) {
+
+    .email-field {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .some-class {
+        padding: 0px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,300 @@
+﻿<head>
+    <meta charset="UTF-8">
+    <title>BFN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/Content/layout/css/style.css">
+    <script src="/Content/layout/js/vendor/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- header.njk -->
+    <header>
+        <div class="container-fluid">
+            <div class="row header-row">
+                <div class="logo">
+                    <img src="/Content/layout/img/logo.svg" alt="BFN Logo">
+                </div>
+                <!--<a href="/Login" class="btn round">Log ind</a>-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle btn round" data-toggle="dropdown">
+                        <b>Login</b>
+                        <span class="caret"></span>
+                    </a>
+                    <ul id="login-dp" class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-12"  ng-controller="LoginCtrl" >
+                                    <div class="error-message" ng-show="false">Invalid email/password, please try again!</div>
+                                    <form class="form" role="form" method="post"  ng-submit="userLogin()" accept-charset="UTF-8" id="login-nav">
+                                        <div class="form-group">
+                                            <label for="login-email">Email</label>
+                                            <input type="email" ng-model="loginData.Email" class="form-control" id="login-email" placeholder="Enter email address" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password"  ng-model="loginData.Password" class="form-control" id="password" placeholder="Enter password" required>
+                                            <div class="help-block text-right" ng-show="false">
+                                                <a href="">Forgot password ?</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> keep me logged-in
+                                            </label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </header>
+    <!-- end header.njk -->
+    <!-- hero-banner.njk -->
+    <section class="hero-area">
+        <div class="container-fluid">
+            <div class="row hero-banner">
+                <h1>Velkommen til BFN</h1>
+            </div>
+        </div>
+    </section>
+    <!-- end hero-banner.njk -->
+    <!-- Tabs start -->
+    <section class="container bfn-tabs">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#tab1" data-toggle="tab" class="nav-link active">Hjem</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#tab2" data-toggle="tab" class="nav-link">Nye forhandlere</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#tab3" data-toggle="tab" class="nav-link">Udgivere</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#tab4" data-toggle="tab" class="nav-link">Links</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#tab5" data-toggle="tab" class="nav-link">Kontakt</a>
+                </li>
+            </ul>
+            <div class="tab-content col-12">
+                <div id="tab1" class="tab-pane fade active show">
+                    <div class="row content-block">
+                        <div class="col icon-block">
+                            <a href="/Content/layout/assets/formular.pdf" target="_blank">
+                                <svg>
+                                    <use xlink:href="/Content/layout/img/bfn-icons.svg#file"></use>
+                                </svg>Download registreringsformular
+                            </a>
+                        </div>
+                        <div class="col icon-block">
+                            <a href="/Content/layout/assets/bladkompagnietbestilling.pdf" target="_blank">
+                                <svg>
+                                    <use xlink:href="/Content/layout/img/bfn-icons.svg#bk"></use>
+                                </svg>Download Bladkompagniets bestillingsliste
+                            </a>
+                        </div>
+                        <div class="col icon-block">
+                            <a href="/Content/layout/assets/ubdbestilling.pdf" target="_blank">
+                                <svg>
+                                    <use xlink:href="/Content/layout/img/bfn-icons.svg#udb"></use>
+                                </svg>Download UBD’s bestillingsliste
+                            </a>
+                        </div>
+                        <div class="col icon-block">
+                            <a href="https://get.adobe.com/reader/" target="_blank">
+                                <svg>
+                                    <use xlink:href="/Content/layout/img/bfn-icons.svg#pdf"></use>
+                                </svg>Download Acrobat Reader til læsning af PDF filer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div id="tab2" class="tab-pane fade">
+                    <div class="row content-block">
+                        <div class="col-12 col-md-10 p-0">
+                            <h1>TIL NYE FORHANDLERE AF AVISER, UGEBLADE OG MAGASINER</h1>
+                            <strong>Lov om butikstid</strong>
+                            <p>Forhandleren må selv påse, at bladsalget finder sted efter de gældende love og vedtægter. </p>
+                            <strong>Betaling</strong>
+                            <p>
+                                Der fremsendes hver uge en regning fra Bladkompagniet pa danske og internationale aviser og magasiner og fra UBF (pa ugeblade og magasiner). Betaling sker mest praktisk via PBS, dvs. automatisk træk hver uge fra din bank. Til det brug
+                                bedes du udfylde og underskrive trcektilladelserne pa registreringsformularen side 2.
+                            </p>
+                            <strong>Depositum</strong>
+                            <p>
+                                Der skal stilles sikkerhed for bladleveringerne. Normalt svarende til 4 ugers levering. Den nye ejer vil ved ejerskiftet modtage brev fra Bladkompagniet og fra UBF om størrelsen af den bankgaranti der skal stilles. Den nye ejer skal være
+                                opmærksom på, at sikkerhedsstillelsen skal være etableret, før leverancer kan finde sted.
+                            </p>
+                            <strong>Bladlevering</strong>
+                            <p>
+                                Bladleveringen til forretningen fortsætter uændret. Indehaveren kan til enhver tid give besked om regulering af levering. Ændring af danske aviser meldes til den pågældende udgiver. Ændring af øvrige udgivelser kontaktes distributøren:
+                                Bladkompagniet, UBD. En ny forretning afgiver bestilling ved opstart.
+                            </p>
+                            <strong>Ejerskiftedato </strong>
+                            <p>
+                                Branchen arbejder med hele ugeregninger (mandag – søndag), og det er derfor praktisk, hvis ejerskiftet sker en mandag morgen. Sker det på en anden ugedag, må den tidligere og den nye ejer selv indbyrdes dele den pågældende uges regninger.
+                            </p>
+                            <strong>Ved ejerskifte </strong>
+                            <p>
+                                Ved ejerskifte i en forretning, der sælger aviser og / eller ugeblade, skal ejerskiftet meddeles til Bladudgivernes Forhandler-Nævn 14 dage, før det sker. Den nye ejer skal, senest 8 dage før ejerskiftet, udfylde, underskrive og indsende
+                                registreringsformular til bladsalg til Bladudgivernes Forhandler-Nævn. Papirerne skal være Bladudgivernes Forhandler-Nævn i hænde, før leverancer kan finde sted. Herefter gives der meddelelse om ejerskifte til alle udgivere og distributører.
+                                Der skal underskrives nye registreringformularer ved omdannelse til A/S; ApS eller lign.
+                            </p>
+                            <strong>Afregning mellem gammel og ny ejer </strong>
+                            <p>
+                                Restaviserne fra ugen før ejerskiftet afhentes i begyndelsen af den kommende uge, og bliver krediteret den gamle ejer. De skal således ikke tælles med i varelageret. Det samme gælder de nye mandagsugeblade. Selv om de er leveret i forretningen,
+                                må de jo først sælges fra mandag, og de bliver derfor også debiteret den nye ejer. De ugeblade og magasiner, der forefindes i forretningen ved ejerskiftedagen, skal medtages i varelageret, idet de jo enten bliver solgt af den nye ejer
+                                eller krediteret ham som retur.
+                            </p>
+                            <strong>Ferie</strong>
+                            <p>
+                                Ved ferielukning kan samtlige bladleveringer midlertidigt afbestilles ved opringning til Bladudgivernes Forhandler-Nævn på telefon 4362 6010. Skulle du ønske yderlige oplysninger, er du velkommen til at ringe til Bladudgivernes Forhandler-Nævn
+                                på telefon 4362 6010.
+                            </p>
+                            <p>Med venlig hilsen</p>
+                            <p>
+                                Bladudgivernes Forhandler-Nævn
+                                <br> -bladbranchens fælles registreringskontor
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-2 p-0">
+                            <div class="row sidebar">
+                                <div class="icon-block">
+                                    <a href="/Content/layout/assets/nye2016.pdf" target="_blank">
+                                        <svg>
+                                            <use xlink:href="/Content/layout/img/bfn-icons.svg#rocket"></use>
+                                        </svg>Til nye forhandlere
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab3" class="tab-pane fade">
+                    <div class="row content-block">
+                        <div class="col-12 col-md-10 p-0">
+                            <h1>KONTAKT TIL AVISERNE OG UGEBLADSUDGIVERNE</h1>
+                            <p>I siden kan du download lister i PDF, med de respektive informationer på henholdsvis aviser samt ugebladsudgiverne.</p>
+                            <p>Med venlig hilsen</p>
+                            <p>
+                                Bladudgivernes Forhandler-Nævn
+                                <br> -bladbranchens fælles registreringskontor
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-2 p-0">
+                            <div class="row sidebar">
+                                <div class="icon-block">
+                                    <a href="/Content/layout/assets/kontaktbladkompagniet.pdf" target="_blank">
+                                        <svg>
+                                            <use xlink:href="/Content/layout/img/bfn-icons.svg#bk"></use>
+                                        </svg>Download Bladkompagniets kontaktside
+                                    </a>
+                                </div>
+                                <div class="icon-block">
+                                    <a href="/Content/layout/assets/kontaktubd.pdf" target="_blank">
+                                        <svg>
+                                            <use xlink:href="/Content/layout/img/bfn-icons.svg#udb"></use>
+                                        </svg>Download UBD’s kontaktside
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab4" class="tab-pane fade">
+                    <div class="row content-block">
+                        <div class="col icon-block">
+                            <a href="http://www.bladkompagniet.dk/" target="_blank">
+                                <svg>
+                                    <use xlink:href="/Content/layout/img/bfn-icons.svg#globe"></use>
+                                </svg> Bladkompagniet
+                            </a>
+                        </div>
+                        <div class="col icon-block">
+                            <a href="http://ubd.dk/" target="_blank">
+                                <svg>
+                                    <use xlink:href="/Content/layout/img/bfn-icons.svg#globe"></use>
+                                </svg>UBD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div class="row content-block">
+                                    <div class="col-12 col-md-10 p-0">
+                                        <h1>Links</h1>
+
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                                    </div>
+                                    <div class="col-12 col-md-2 p-0">
+                                        <div class="row sidebar">
+                                            <div class="icon-block"><a href="http://www.bladkompagniet.dk/" target="_blank"><svg ><use xlink:href="img/bfn-icons.svg#globe"></use></svg>Bladkompagniet</a></div>
+                                            <div class="icon-block"><a href="http://ubd.dk/" target="_blank"><svg ><use xlink:href="img/bfn-icons.svg#globe"></use></svg>UBD</a></div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                </div>
+                <div id="tab5" class="tab-pane fade">
+                    <div class="row content-block">
+                        <div class="col-12 p-0">
+                            <h1 class="mb-2">Kontakt os</h1>
+                            <p>Du kan kontakte os, ved at udfylde nedenstående formular.</p>
+                            <form ng-submit="saveMessage()">
+                                <div class="row contact-form">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="telefon">Telefonnummer</label>
+                                            <input type="text" ng-model="contactUs.TelePhoneNumber" class="form-control" id="telefon">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="forhandlernummer">Forhandlernummer</label>
+                                            <input type="text" ng-model="contactUs.MobileNumber" class="form-control" id="forhandlernummer">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">E-mail</label>
+                                            <input type="email" ng-model="contactUs.Email" class="form-control" id="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="besked">Besked</label>
+                                            <textarea class="form-control" ng-model="contactUs.Message" id="besked"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn round float-right">Send</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tabs end -->
+    <!-- footer.njk -->
+    <footer role="contentinfo" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-lg-right">Bladudgivernes forhandlernævn </div>
+                <div class="col-md-6 text-center text-lg-left">Helgeshøj Allé 38, 2630 Tåstrup</div>
+                <div class="col-md-4 text-center text-lg-right">Telefon: 4362 6010 </div>
+                <div class="col-md-4 text-center text-lg-center">Mandag - Torsdag kl. 8.00 - 15.00 </div>
+                <div class="col-md-4 text-center text-lg-left">Fredag kl. 8.00 - 14.00</div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer.njk -->
+   
+    <script src='/Content/layout/js/vendor/jquery-3.2.1.min.js'></script>
+    <script src='/Content/layout/js/vendor/popper.min.js'></script>
+    <script src='/Content/layout/js/vendor/bootstrap.min.js'></script>
+    <script src='/Content/layout/js/tt-custom.js'></script>
+    <script src='/Content/layout/js/tt-caller.js'></script>
+</body>

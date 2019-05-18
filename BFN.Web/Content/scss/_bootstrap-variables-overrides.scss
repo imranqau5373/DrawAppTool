@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+//
+// Text and fonts
+//
+
+$font-family-base: "Roboto", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+//$font-family-display: "CH-web", $font-family-base;
+//$headings-font-family: $font-family-display;
+
+$font-weight-thin:       100;
+$font-weight-extralight: 200;
+$font-weight-light:      300;
+$font-weight-regular:    400;
+$font-weight-medium:     500;
+$font-weight-semibold:   600;
+$font-weight-bold:       700;
+$font-weight-extrabold:  800;
+$font-weight-black:      900;
+
+$headings-font-weight: $font-weight-semibold;
+
+//
+// Colors
+//
+
+
+$body-color: #333;
+
+$bfn-theme-colors: (
+  primary:          #20A7D7,
+  secondary:        #f7f9fa,
+  text:             #333,
+  white:            #ffffff,
+  black:            #000000,
+  gray-dark:        #555,
+  gray-light:       #eee,
+  gray:       		#999
+);
+
+@function bfn-theme-color($key: "primary") {
+    @return map-get($bfn-theme-colors, $key);
+}
+
+

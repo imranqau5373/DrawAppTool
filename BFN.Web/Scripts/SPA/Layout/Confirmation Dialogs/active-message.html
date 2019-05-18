@@ -1,0 +1,24 @@
+﻿
+
+    <div class="modal fade" id="activeDialog" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="max-width: 500px;">
+                <div class="modal-header">
+                    <h1 class="text-danger">Are you sure?</h1>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <p>{{activeMessage}}</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                    <button data-dismiss="modal" ng-click="activeMethod(activeExp)" class="btn btn-primary">Yes, Activate now</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+

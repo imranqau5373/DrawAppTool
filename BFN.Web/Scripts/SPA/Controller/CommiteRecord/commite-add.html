@@ -1,0 +1,65 @@
+﻿
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="Home/CompanyIndex">Commites</a>
+    </li>
+    <li class="breadcrumb-item active">Add Commite</li>
+</ol>
+<div class="container" ng-controller="CustomerAddCtrl">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Wizard tabs start -->
+                <ul class="nav nav-tabs" role="tablist" style="display:none;">
+                    <li class="nav-item active">
+                        <a class="nav-link " id="company-info-tab" data-toggle="tab" data-target="#company" role="tab" aria-controls="company">Customer information</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="company" role="tabpanel">
+                        <!-- Company Setup Tab -->
+                        <form name="companyform" ng-submit="addCommite()">
+                            <div class="col-sm-12 nopadding">
+                                <div class="card">
+                                    <div class="card-block col-sm-6">
+                                        <div class="form-group">
+                                            <label for="company-name">Commite Name</label>
+                                            <input type="text" class="form-control" ng-model="newCommite.CommiteName" placeholder="Enter commite name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Commite Details</label>
+                                            <input type="text" class="form-control" ng-model="newCommite.CommiteDetails" placeholder="Enter commite details" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Commite Amount</label>
+                                            <input type="number" class="form-control" ng-model="newCommite.CommiteAmount" placeholder="Enter commite amount" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-address">Total Months</label>
+                                            <input type="number" class="form-control" ng-model="newCommite.CommiteMonths" placeholder="Enter total months">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Commite Start Date</label>
+                                            <input type="date" class="form-control" ng-model="newCommite.CommiteStartDate" placeholder="Enter start date">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-name">Commite End Date</label>
+                                            <input type="date" class="form-control" ng-model="newCommite.CommiteEndDate" placeholder="Enter start date">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-sm btn-primary float-right">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Company Setup Tab ends -->
+                    </div>
+                </div>
+                <!-- Wizard tabs ends -->
+            </div>
+        </div>
+    </div>
+</div>
+

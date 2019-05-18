@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0FE92A3-E747-44A3-972D-1D3136EC3C13}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BFN.Model</RootNamespace>
+    <AssemblyName>BFN.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BFN.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BFN.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BFN.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BFN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BFN.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessModel\CommiteMember.cs" />
+    <Compile Include="BusinessModel\Company\ChainAdminModel.cs" />
+    <Compile Include="BusinessModel\Company\CompanyAdminModel.cs" />
+    <Compile Include="BusinessModel\Company\CompanyHistoryModel.cs" />
+    <Compile Include="BusinessModel\Company\CompanyModel.cs" />
+    <Compile Include="BusinessModel\Company\CompanyResultModel.cs" />
+    <Compile Include="BusinessModel\Company\CvrApiResult.cs" />
+    <Compile Include="BusinessModel\GridModel.cs" />
+    <Compile Include="BusinessModel\HandOver\HandOverModel.cs" />
+    <Compile Include="BusinessModel\IEntityBase.cs" />
+    <Compile Include="BusinessModel\NewGridModel.cs" />
+    <Compile Include="BusinessModel\PaymentView.cs" />
+    <Compile Include="BusinessModel\Reports\CommiteReportModel.cs" />
+    <Compile Include="BusinessModel\Reports\PublicReportModel.cs" />
+    <Compile Include="BusinessModel\Reports\ReportColumnHeading.cs" />
+    <Compile Include="BusinessModel\Reports\ReportDataModel.cs" />
+    <Compile Include="BusinessModel\Reports\ReportHoursData.cs" />
+    <Compile Include="BusinessModel\Reports\ReportSPView.cs" />
+    <Compile Include="BusinessModel\Reports\ReprotViewModel.cs" />
+    <Compile Include="BusinessModel\ResponseResult.cs" />
+    <Compile Include="BusinessModel\Shop\ContactPersonModel.cs" />
+    <Compile Include="BusinessModel\Shop\OpeningHoursModel.cs" />
+    <Compile Include="BusinessModel\Shop\OpeningHoursModelList.cs" />
+    <Compile Include="BusinessModel\Shop\ShopAdminModel.cs" />
+    <Compile Include="BusinessModel\Shop\ShopHandoverModel.cs" />
+    <Compile Include="BusinessModel\Shop\ShopHistoryModel.cs" />
+    <Compile Include="BusinessModel\Shop\ShopModel.cs" />
+    <Compile Include="BusinessModel\Shop\ShopTimeTemplateHoursModel.cs" />
+    <Compile Include="BusinessModel\Shop\ShopTimeTemplateModel.cs" />
+    <Compile Include="Category.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CityPostCode.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommiteMember.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommiteRecord.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyHistory.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyUser.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactPerson.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactPersonHistory.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerRecord.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryOption.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DrawEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrawEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DrawEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DrawEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrawEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\PagingExtensions.cs" />
+    <Compile Include="InstallmentRec.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentRecord.cs">
+      <DependentUpon>DrawEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shop.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopCompanyHandOver.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopCompanyHandOverHistory.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopContactPerson.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopContactPersonHistory.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopHistory.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopTimeTemplate.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopTimeTemplateHistory.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopTimeTemplateHour.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopTimeTemplateHoursHistory.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShopUser.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserExpertise.cs">
+      <DependentUpon>BFN.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="BFN.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BFN.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="BFN.edmx.diagram">
+      <DependentUpon>BFN.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="DrawEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DrawEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DrawEntities.edmx.diagram">
+      <DependentUpon>DrawEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BFN.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BFN.edmx</DependentUpon>
+      <LastGenOutput>BFN.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BFN.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BFN.edmx</DependentUpon>
+      <LastGenOutput>BFN.cs</LastGenOutput>
+    </Content>
+    <Content Include="DrawEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DrawEntities.edmx</DependentUpon>
+      <LastGenOutput>DrawEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DrawEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DrawEntities.edmx</DependentUpon>
+      <LastGenOutput>DrawEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

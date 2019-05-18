@@ -1,0 +1,250 @@
+﻿
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item active">Shops</li>
+    </ol>
+    <div class="container">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Shops Details -->
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Shops</strong>
+                            <small class="text-muted mx-2">[{{filterApplied.length}} filter applied]</small>
+                            <a href="Home/addShop" class="btn btn-primary float-right">
+                                <i class="icon-plus"></i> Add new shop
+                            </a>
+                        </div>
+                        <div class="card-block" cg-busy="myPromise">
+                            <table class="table table-bordered table-striped" data-toggle="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchShopBFNNumber!==''}"></i> BFN number
+                                                </a>
+                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='ShopBFNNumber' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='ShopBFNNumber' && !pagingInfo.reverse}"></i>
+                                                <ul class="dropdown-menu filter">
+                                                    <li ng-click="sort('ShopBFNNumber',false)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                        </a>
+                                                    </li>
+                                                    <li ng-click="sort('ShopBFNNumber',true)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchShopBFNNumber===''}">
+                                                        <!-- disabled-->
+                                                        <a data-toggle="#" ng-click="clearSearch(1)">
+                                                            <i class="icon-ban"></i> Clear filters
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <label>Search</label>
+                                                        <form ng-submit="search(1)">
+                                                            <div class="input-group form-group mb-0">
+                                                                <input type="text" class="form-control" ng-model="SearchModel.searchShopBFNNumber">
+                                                                <button class="input-group-addon" type="submit">
+                                                                    <i class="icon-magnifier"></i>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchShopName!==''}"></i> Shop name
+                                                </a>
+                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='ShopName' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='ShopName' && !pagingInfo.reverse}"></i>
+                                                <ul class="dropdown-menu filter">
+                                                    <li ng-click="sort('ShopName',false)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                        </a>
+                                                    </li>
+                                                    <li ng-click="sort('ShopName',true)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchShopName===''}">
+                                                        <!-- disabled-->
+                                                        <a data-toggle="#" ng-click="clearSearch(2)">
+                                                            <i class="icon-ban"></i> Clear filters
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <label>Search</label>
+                                                        <form ng-submit="search(2)">
+                                                            <div class="input-group form-group mb-0">
+                                                                <input type="text" class="form-control" ng-model="SearchModel.searchShopName">
+                                                                <button class="input-group-addon" type="submit">
+                                                                    <i class="icon-magnifier"></i>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchShopAddress!==''}"></i> Address
+                                                </a>
+                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='ShopAddress' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='ShopAddress' && !pagingInfo.reverse}"></i>
+                                                <ul class="dropdown-menu filter">
+                                                    <li ng-click="sort('ShopAddress',false)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                        </a>
+                                                    </li>
+                                                    <li ng-click="sort('ShopAddress',true)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchShopAddress===''}">
+                                                        <!-- disabled-->
+                                                        <a data-toggle="#" ng-click="clearSearch(3)">
+                                                            <i class="icon-ban"></i> Clear filters
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <label>Search</label>
+                                                        <form ng-submit="search(3)">
+                                                            <div class="input-group form-group mb-0">
+                                                                <input type="text" class="form-control" ng-model="SearchModel.searchShopAddress">
+                                                                <button class="input-group-addon" type="submit">
+                                                                    <i class="icon-magnifier"></i>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchCompanyName!==''}"></i> Company
+                                                </a>
+                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='CompanyId' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='CompanyId' && !pagingInfo.reverse}"></i>
+                                                <ul class="dropdown-menu filter">
+                                                    <li ng-click="sort('CompanyId',false)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                        </a>
+                                                    </li>
+                                                    <li ng-click="sort('CompanyId',true)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchCompanyName===''}">
+                                                        <!-- disabled-->
+                                                        <a data-toggle="#" ng-click="clearSearch(4)">
+                                                            <i class="icon-ban"></i> Clear filters
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <label>Search</label>
+                                                        <form ng-submit="search(4)">
+                                                            <div class="input-group form-group mb-0">
+                                                                <input type="text" class="form-control" ng-model="SearchModel.searchCompanyName">
+                                                                <button class="input-group-addon" type="submit">
+                                                                    <i class="icon-magnifier"></i>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-filter" ng-class="{'active':SearchModel.searchLastUpdatedDate!==''}"></i> Updated on
+                                                </a>
+                                                <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='LastUpdatedDate' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='LastUpdatedDate' && !pagingInfo.reverse}"></i>
+                                                <ul class="dropdown-menu filter">
+                                                    <li ng-click="sort('LastUpdatedDate',false)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                        </a>
+                                                    </li>
+                                                    <li ng-click="sort('LastUpdatedDate',true)" class="dropdown-item">
+                                                        <a data-toggle="#">
+                                                            <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchLastUpdatedDate===''}">
+                                                        <!-- disabled-->
+                                                        <a data-toggle="#" ng-click="clearSearch(5)">
+                                                            <i class="icon-ban"></i> Clear filters
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="shop in viewAllShops | itemsPerPage:pagingInfo.itemsPerPage" total-items="pagingInfo.totalItems"
+                                        ng-class="{ 'disabled' : shop.IsActive == false }">
+                                        <td>{{shop.ShopBFNNumber}}{{shop.ccif == NULL ? '' : '-'+shop.ccif }}</td>
+                                        <td>{{shop.ShopName}}</td>
+                                        <td>{{shop.ShopAddress}}</td>
+                                        <td>{{shop.CompanyName}}</td>
+                                        <td>{{shop.ViewLastUpdatedDate}}</td>
+                                        <td class="text-center">
+                                            <a href="Home/viewShop/{{shop.Id}}">
+                                                <i class="icon-eye" title="View details"></i>
+                                            </a>
+                                            <a href="" ng-click="viewDefaultTemplate(shop.Id)">
+                                                <i class="icon-event" title="View Opening hours"></i>
+                                            </a>
+
+                                            <a href="" id="view-defaultTemplate" style="display:none;"data-toggle="modal" data-target="#viewDefaultTemplate">
+                                                <i class="icon-event" title="View Opening hours"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="hide-if-no-paging text-center">
+                                <nav class="table-pagination">
+                                    <dir-pagination-controls max-size="10"
+                                                             direction-links="true"
+                                                             boundary-links="false"
+                                                             on-page-change="selectPage(newPageNumber)"></dir-pagination-controls>
+                                    <div class="result-summary" ng-show="pagingInfo.totalItems > 0">
+                                        <span id="current-start">{{pagingInfo.startPageRecordNumber}}</span> to
+                                        <span id="current-end">{{pagingInfo.endPageRecordNumber}}</span> of
+                                        <span id="total-result">{{pagingInfo.totalItems}}</span> results.
+                                    </div>
+                                    <div class="result-summary" ng-show="pagingInfo.totalItems == 0">
+                                        No Record Found.
+                                    </div>
+                                </nav>
+                            </div>
+
+                        </div>
+                        <!--  -->
+                    </div>
+                </div>
+                <!-- Shops Details ends -->
+                <!--  -->
+            </div>
+        </div>
+    </div>
+<timetemplate-view></timetemplate-view>

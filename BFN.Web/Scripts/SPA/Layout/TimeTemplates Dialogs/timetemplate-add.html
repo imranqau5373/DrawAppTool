@@ -1,0 +1,117 @@
+﻿<div class="modal fade" id="addShopTimeTemplate" role="dialog">
+    <div class="modal-dialog" style="max-width: 700px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form name="newAdmin" ng-submit="addShopTimeTemplate()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+
+                <div class="modal-header">
+
+                    <h1>{{TemplateHeading}}</h1>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="closeTemplate()">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="text" ng-show="false" class="form-control" id="id-template" ng-model="newTimeTemplate.Id" style="display:none;">
+                    <div class="col-sm-12 nopadding">
+                        <div class="form-group">
+                            <label for="custom-template">Name</label>
+                            <input type="text" class="form-control" id="custom-template" ng-model="newTimeTemplate.TemplateName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="custom-template">Description</label>
+                            <textarea class="form-control" ng-model="newTimeTemplate.TemplateDescription" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 nopadding">
+                        <div class="form-group">
+                            <label for="season-start">Schedule starts from</label>
+                            <input type="date" class="form-control" id="season-start" ng-model="newTimeTemplate.TemplateDateFrom" ng-disabled="newTimeTemplate.IsDefault" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <div class="form-group">
+                            <label for="season-end">Schedule ends at</label>
+                            <input type="date" class="form-control" id="season-end" ng-model="newTimeTemplate.TemplateDateTo" ng-disabled="newTimeTemplate.IsDefault" required>                            
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="!newTimeTemplate.IsDefault">
+                        <label for="closed">
+                            <input type="checkbox" class="form-check" ng-model="newTimeTemplate.IsHoliday" id="closed"> Shop will be closed
+                        </label>
+                    </div>
+                    <div class="col-sm-12 nopadding" ng-show="!newTimeTemplate.IsHoliday">
+                        <div class="input-group">
+                            <span class="input-group-addon fixed-addon">
+                                Days
+                            </span>
+                            <input type="text" id="oh-monday" name="input3-group1" class="form-control" placeholder="Opening Hour" disabled>
+                            <span class="input-group-addon">:</span>
+                            <input type="text" id="ch-monday" name="input3-group1" class="form-control" placeholder="Closing Hour" disabled>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon fixed-addon">
+                                Mon
+                            </span>
+                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.monStart" >
+                            <span class="input-group-addon">:</span>
+                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.monEnd" >
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon fixed-addon">
+                                Tue
+                            </span>
+                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.tueStart">
+                            <span class="input-group-addon">:</span>
+                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.tueEnd">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon fixed-addon">
+                                Wed
+                            </span>
+                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.wedStart">
+                            <span class="input-group-addon">:</span>
+                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.wedEnd">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon fixed-addon">
+                                Thu
+                            </span>
+                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.thuStart">
+                            <span class="input-group-addon">:</span>
+                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.thuEnd">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon fixed-addon">
+                                Fri
+                            </span>
+                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.friStart">
+                            <span class="input-group-addon">:</span>
+                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.friEnd">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon fixed-addon">
+                                Sat
+                            </span>
+                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.satStart">
+                            <span class="input-group-addon">:</span>
+                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.satEnd">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon fixed-addon">
+                                Sun
+                            </span>
+                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.sunStart">
+                            <span class="input-group-addon">:</span>
+                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="openingHours.sunEnd">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer"><button type="submit" class="btn btn-primary float-right">Save</button></div>
+            </form>
+        </div>
+    </div>
+</div>

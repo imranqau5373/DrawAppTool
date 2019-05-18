@@ -1,0 +1,80 @@
+﻿<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="/Home/userIndex">Users</a>
+    </li>
+    <li class="breadcrumb-item active">{{userHeading}}</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="tab-content">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="user" role="tabpanel">
+                            <!-- Company Setup Tab -->
+                            <form name="companyform" ng-submit="saveUser()">
+                                <div class="col-sm-12 nopadding">
+                                    <div class="card">
+                                        <div class="card-block col-md-6" ng-controller="UserCtrl">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" placeholder="Enter user name" ng-model="newAdmin.Name" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control" placeholder="Enter complete address" ng-model="newAdmin.Address" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="chain-address-2">Address 2</label>
+                                                <span class="badge badge-default badge-pill float-right">Optional</span>
+                                                <input type="text" class="form-control" id="chain-address-2" placeholder="Enter address details" ng-model="newAdmin.Address2">
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col">
+                                                    <label for="chain-postal">Postal code</label>
+                                                    <input type="text" class="form-control" id="chain-postal" placeholder="Enter postal code" ng-model="newAdmin.PostCode" required>
+                                                </div>
+                                                <div class="form-group col">
+                                                    <label for="chain-city">City</label>
+                                                    <input type="text" class="form-control" id="chain-city" placeholder="Enter city" ng-model="newAdmin.CityName" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Contact No</label>
+                                                <input type="text" class="form-control" placeholder="Enter contact no." ng-model="newAdmin.PhoneNumber" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" placeholder="Enter email address" ng-model="newAdmin.Email" required="">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>Expertise</label>
+                                                <select class="form-control" ng-model="newAdmin.ExpertiseId"
+                                                        ng-options="item.id as item.ExpertyTitle for item in userExperties" required="Please Select Option" style="height:auto;">
+                                                    <option value="">Choose expertise</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>Role</label>
+                                                <select class="form-control" ng-model="newAdmin.RoleName"
+                                                        ng-options="role.id as role.roleName for role in userRoles"      
+                                                         required >
+                                                    <option value="" >Choose role</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-sm btn-primary float-right">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

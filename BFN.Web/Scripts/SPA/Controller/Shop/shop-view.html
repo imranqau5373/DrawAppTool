@@ -1,0 +1,884 @@
+﻿<div ng-controller="ShopContactPersonCtrl">
+    <div ng-controller="ShopTimeTemplateCtrl">
+        <div ng-controller="ChainUserCtrl">
+            
+ 
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">
+                    <a href="Home/shop">Shops</a>
+                </li>
+                <li class="breadcrumb-item active">{{viewShop.ShopName}}</li>
+
+                <li>
+                    <a href="" ng-show="DeactivateShop" ng-click="deactiveShopConfirm()" class="btn btn-secondary float-right" data-toggle="modal" data-target="#validate">
+                        <i class="icon-ban"></i> Deactivate Shop
+                    </a>
+                    <a href="" ng-show="ActivateShop" ng-click="activeShopConfirm()" class="btn btn-primary float-right" >
+                        <i class="icon-check"></i> Activate Shop
+                    </a>
+                    <input type="button" style="display:none" id="openActiveShop" data-toggle="modal" data-target="#activeDialog" />
+                </li>
+                <li>
+                    <a href="" ng-click="openHandoverDialog()" ng-show="DeactivateShop && viewShop.isHandoverShop"  data-toggle="modal" data-target="#shopHandover" class="btn btn-secondary float-right">
+                        <i class="icon-shuffle"></i> Handover Shop
+                    </a>
+                    <a href="" ng-click="confirmRepealDialog()" ng-show="DeactivateShop && !viewShop.isHandoverShop" data-toggle="modal" data-target="#confirmRemove" class="btn btn-danger float-right">
+                        <i class="icon-shuffle"></i> Repeal Shop
+                    </a>
+                </li>
+            </ol>
+            <div class="container">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-sm-12 grid-view">
+                            <div class="card card-lg">
+                                <div class="card-header">
+                                    <strong>Shop Info</strong>
+                                    <a  href="/Home/editShop/{{viewShop.Id}}" ng-show="DeactivateShop" class="btn btn-outline-primary float-right">
+                                        <i class="icon-pencil"></i> Edit Shop Info
+                                    </a>
+                                </div>
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <label for="BFN-number">BFN Number</label>
+                                            <h4>{{viewShop.ShopBFNNumber}}{{viewShop.ccif == NULL ? '' : '-'+viewShop.ccif }}</h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="cvr">Name</label>
+                                            <h4>{{viewShop.ShopName}}</h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="company-address">Address</label>
+                                            <h4>{{viewShop.ShopViewAddress}}</h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="company-address">Address 2</label>
+                                            <h4>{{viewShop.ShopAddress2 == (null || "") ? '-' : viewShop.ShopAddress2}}</h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="ean">Company</label>
+                                            <h4><a href="Home/viewCompany/{{viewShop.CompanyId}}">{{viewShop.CompanyName}}</a></h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="ean">Category</label>
+                                            <h4>{{viewShop.CategoryName}}</h4>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="owner-name">Owner</label>
+                                            <h4>{{viewShop.OwnerName == null ? '-' : viewShop.OwnerName}}</h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="email-address">Owner's Email</label>
+                                            <h4>{{viewShop.OwnerEmail}}</h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="ean">EAN</label>
+                                            <h4>{{viewShop.ShopEAN == null ? "-" : viewShop.ShopEAN}}</h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="cardex">CARDEX</label>
+                                            <h4>{{viewShop.ShopCARDEX == null ? "-" : viewShop.ShopCARDEX}}</h4>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label for="frellationsnummer">Gross</label>
+                                            <h4>{{viewShop.Gross == null ? "-" : viewShop.Gross}}</h4>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inauguration-date">Inauguration date</label>
+                                            <h4>{{viewShop.InagurationDate}}</h4>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="termination-date">Termination date</label>
+                                            <h4>{{viewShop.TerminatinonDate}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Delivery Information</strong>
+                                </div>
+                                <div class="card-block row">
+                                    <div class="form-group col-6">
+                                        <label for="cp-name">Information</label>
+                                        <h4>{{viewShop.ShopInformation == null ? "-" : viewShop.ShopInformation}}</h4>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="cp-address">Code/Lock info</label>
+                                        <h4>{{viewShop.ShopCodeLockInfo == null ? "-" : viewShop.ShopCodeLockInfo}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Subscriptions</strong>
+                                    <a href="" data-target="#subscriptionupdate" ng-click="getShopSubscriptionData();" data-toggle="modal" class="btn btn-outline-primary float-right">
+                                        <i class="icon-pencil"></i> Update subscriptions
+                                    </a>
+                                </div>
+                                <div class="card-block">
+                                    <div class="form-group">
+                                        <dl>
+                                            <dd><small>{{viewShop.DeliveryOptionName == null ? "-" : viewShop.DeliveryOptionName}}</small></dd>
+                                            <dd ng-show="viewShop.DailyNewsPaper"><i class="icon-check"></i> Dagblade</dd>
+                                            <dd ng-show="viewShop.Magazines"><i class="icon-check"></i> Ugeblade</dd>
+                                            <dd ng-show="viewShop.Publisher"><i class="icon-check"></i> Forlag</dd>
+                                            <dd ng-show="viewShop.ForeignNewspapers"><i class="icon-check"></i> Udenlandske aviser</dd>
+                                            <dd ng-show="viewShop.ForeignWeeklyMagazines"><i class="icon-check"></i> Udenlandske ugeblade</dd>
+                                            <dd ng-show="viewShop.ForeignPublishers"><i class="icon-check"></i> Udenlandske forlag</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Active opening hours</strong>
+                                </div>
+                                <div class="card-block">
+                                    <div class="col-sm-6 nopadding" style="width:40%">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <h4>{{defaultTimeTemplate.TemplateName}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 nopadding" style="width:30%">
+                                        <div class="form-group">
+                                            <label for="season-start">Starts from</label>
+                                            <h4>{{defaultTimeTemplate.TemplateDateFrom}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 " style="width:30%">
+                                        <div class="form-group">
+                                            <label for="season-end">Ends at</label>
+                                            <h4>{{defaultTimeTemplate.TemplateDateTo}}</h4>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon fixed-addon">
+                                                Mon
+                                            </span>
+                                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.monStart" ng-disabled="true">
+                                            <span class="input-group-addon">:</span>
+                                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.monEnd" ng-disabled="true">
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon fixed-addon">
+                                                Tue
+                                            </span>
+                                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.tueStart" ng-disabled="true" >
+                                            <span class="input-group-addon">:</span>
+                                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.tueEnd" ng-disabled="true">
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon fixed-addon">
+                                                Wed
+                                            </span>
+                                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.wedStart" ng-disabled="true" >
+                                            <span class="input-group-addon">:</span>
+                                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.wedEnd" ng-disabled="true" >
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon fixed-addon">
+                                                Thu
+                                            </span>
+                                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.thuStart" ng-disabled="true">
+                                            <span class="input-group-addon">:</span>
+                                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.thuEnd" ng-disabled="true">
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon fixed-addon">
+                                                Fri
+                                            </span>
+                                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.friStart" ng-disabled="true" >
+                                            <span class="input-group-addon">:</span>
+                                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.friEnd" ng-disabled="true">
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon fixed-addon">
+                                                Sat
+                                            </span>
+                                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.satStart" ng-disabled="true" >
+                                            <span class="input-group-addon">:</span>
+                                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.satEnd" ng-disabled="true" >
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon fixed-addon">
+                                                Sun
+                                            </span>
+                                            <input type="text" id="oh-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.sunStart" ng-disabled="true">
+                                            <span class="input-group-addon">:</span>
+                                            <input type="text" id="ch-monday" name="input3-group1" class="form-control timepicker" placeholder="HH:MM" ng-model="defaultTimeTemplateHours.sunEnd" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Opening hours</strong>
+                                    <a ng-show="DeactivateShop" href="" id="add-shop-template" ng-click="setTemplateHeading()" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#addShopTimeTemplate">
+                                        <i class="icon-plus"></i> Add New
+                                    </a>
+                                    <a href="" style="display:none;" id="edit-shop-template" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#addShopTimeTemplate">
+                                        <i class="icon-plus"></i> Add New
+                                    </a>
+                                </div>
+                                <div class="card-block">
+                                    <table class="table table-bordered table-striped table-sm" data-toggle="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    Active
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchTemplateModel.searchTimeTemplateName!==''}"></i> Name
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':shopTimeTemplatePagingInfo.sortBy=='TemplateName' && shopTimeTemplatePagingInfo.reverse,'fa-sort-desc':shopTimeTemplatePagingInfo.sortBy=='TemplateName' && !shopTimeTemplatePagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sortTimeTemplate('TemplateName',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sortTimeTemplate('TemplateName',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchTemplateModel.searchTimeTemplateName===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearTimeTemplateSearch(2)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="searchShopTimeTemplate(2)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchTemplateModel.searchTimeTemplateName">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchTemplateModel.searchTimeTemplateDesc!==''}"></i> Description
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':shopTimeTemplatePagingInfo.sortBy=='TemplateDescription' && shopTimeTemplatePagingInfo.reverse,'fa-sort-desc':shopTimeTemplatePagingInfo.sortBy=='TemplateDescription' && !shopTimeTemplatePagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sortTimeTemplate('TemplateDescription',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sortTimeTemplate('TemplateDescription',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchTemplateModel.searchTimeTemplateDesc===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearTimeTemplateSearch(3)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="searchShopTimeTemplate(3)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchTemplateModel.searchTimeTemplateDesc">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchTemplateModel.searchTimeTemplateStartDate!==''}"></i> Start Date
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':shopTimeTemplatePagingInfo.sortBy=='TemplateDateFrom' && shopTimeTemplatePagingInfo.reverse,'fa-sort-desc':shopTimeTemplatePagingInfo.sortBy=='TemplateDateFrom' && !shopTimeTemplatePagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sortTimeTemplate('TemplateDateFrom',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sortTimeTemplate('TemplateDateFrom',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchTemplateModel.searchTimeTemplateStartDate===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearTimeTemplateSearch(4)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="searchShopTimeTemplate(4)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchTemplateModel.searchTimeTemplateStartDate">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchTemplateModel.searchTimeTemplateEndDate!==''}"></i> End Date
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':shopTimeTemplatePagingInfo.sortBy=='TemplateDateTo' && shopTimeTemplatePagingInfo.reverse,'fa-sort-desc':shopTimeTemplatePagingInfo.sortBy=='TemplateDateTo' && !shopTimeTemplatePagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sortTimeTemplate('TemplateDateTo',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sortTimeTemplate('TemplateDateTo',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchTemplateModel.searchTimeTemplateEndDate===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearTimeTemplateSearch(5)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="searchShopTimeTemplate(5)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchTemplateModel.searchTimeTemplateEndDate">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr dir-paginate="time in viewTimeTemplate| itemsPerPage:shopTimeTemplatePagingInfo.itemsPerPage" total-items="shopTimeTemplatePagingInfo.totalItems" pagination-id="shopTimeTemplatePaging"
+                                                ng-class="{ 'disabled' : time.IsActive == false ||  viewShop.IsActive == false}">
+                                                <td class="text-center footable-first-visible" style="display: table-cell;">
+                                                    <i ng-show="time.TemplateName == defaultTimeTemplate.TemplateName" class="icon-check text-success"></i>
+                                                </td>
+                                                <td>{{time.TemplateName}}</td>
+                                                <td>{{time.TemplateDescription}}</td>
+                                                <td>{{time.TemplateDateFromView}}</td>
+                                                <td>{{time.TemplateDateToView}}</td>
+                                                <td class="text-center">
+                                                    <div class="dropdown">
+                                                        <i class="icon-options-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" ng-show="DeactivateShop">
+                                                            <a class="dropdown-item" data-target="" ng-show="time.IsActive" ng-click="viewShopTimeTemplate(time.Id)">Edit template</a>
+                                                            <a class="dropdown-item" data-target="" ng-show="time.IsActive" ng-click="deactiveShopTimeTemplate(time.Id)">Deactivate template</a>
+                                                            <a class="dropdown-item" data-target="" ng-show="!time.IsActive" ng-click="activeShopTimeTemplate(time.Id)">Activate template</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="hide-if-no-paging text-center">
+                                        <nav class="table-pagination">
+                                            <dir-pagination-controls max-size="5"
+                                                                     direction-links="true"
+                                                                     boundary-links="false"
+                                                                     on-page-change="selectTimePage(newPageNumber)" pagination-id="shopTimeTemplatePaging"></dir-pagination-controls>
+                                            <div class="result-summary" ng-show="shopTimeTemplatePagingInfo.totalItems > 0">
+                                                <span id="current-start">{{shopTimeTemplatePagingInfo.startPageRecordNumber}}</span> to
+                                                <span id="current-end">{{shopTimeTemplatePagingInfo.endPageRecordNumber}}</span> of
+                                                <span id="total-result">{{shopTimeTemplatePagingInfo.totalItems}}</span> results.
+                                            </div>
+                                            <div class="result-summary" ng-show="shopTimeTemplatePagingInfo.totalItems == 0">
+                                                No Record Found.
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Shop admins</strong>
+                                    <button type="button" id="add-company-admin" ng-show="DeactivateShop"  ng-click="clickAddUserDialog()" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#addChainAdmin"><i class="icon-plus"></i> Add shop admin</button>
+                                    <button type="button" id="edit-admin" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#editChainAdmin" style="display:none"><i class="icon-plus"></i> Add chain admin</button>
+                                    <button type="button" id="view-company-admin" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#viewChainAdmin" style="display:none"><i class="icon-plus"></i> Add chain admin</button>
+
+                                </div>
+                                <div class="card-block">
+                                    <table class="table table-bordered table-striped" data-toggle="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchModel.searchName!==''}"></i> Name
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Name' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Name' && !pagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sort('Name',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sort('Name',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchName===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearSearch(1)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="search(1)">
+                                                                    <div class="input-group form-group mb-0">
+
+                                                                        <input type="text" class="form-control" ng-model="SearchModel.searchName">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchModel.searchUserAddress!==''}"></i> Address
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Address' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Address' && !pagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sort('Address',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sort('Address',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchUserAddress===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearSearch(2)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="search(2)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchModel.searchUserAddress">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchModel.serachUserPhoneNo!==''}"></i> Contact No
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='PhoneNumber' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='PhoneNumber' && !pagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sort('PhoneNumber',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sort('PhoneNumber',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchModel.serachUserPhoneNo===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearSearch(3)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="search(3)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchModel.serachUserPhoneNo">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchModel.serachUserEmail!==''}"></i> Email
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='Email' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='Email' && !pagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sort('Email',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sort('Email',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchModel.serachUserEmail===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearSearch(4)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="search(4)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchModel.serachUserEmail">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr dir-paginate="user in Users| itemsPerPage:pagingInfo.itemsPerPage" total-items="pagingInfo.UsertotalItems" pagination-id="chainUserPaging"
+                                                ng-class="{ 'disabled' : user.IsActive == false }">
+                                                <td>{{user.Name}} </td>
+                                                <td>{{user.Address}}</td>
+                                                <td>{{user.PhoneNumber}}</td>
+                                                <td>{{user.Email}}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <i class="icon-options-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <!--<a class="dropdown-item" data-target="" ng-click="viewChainAdmin(user.Id)">View Chain Admin details</a>-->
+                                                            <a class="dropdown-item" ng-show="user.IsActive" data-target="" ng-click="editChainAdmin(user.Id)">Edit user info</a>
+                                                            <a class="dropdown-item" ng-show="user.IsActive" ng-click="deleteChainUser(user.Id)">Deactivate user</a>
+                                                            <a class="dropdown-item" ng-show="!user.IsActive" ng-click="activateChainUser(user.Id)">Activate user</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="hide-if-no-paging text-center">
+                                        <nav class="table-pagination">
+                                            <dir-pagination-controls max-size="5"
+                                                                     direction-links="true"
+                                                                     boundary-links="false"
+                                                                     on-page-change="selectUserPage(newPageNumber)" pagination-id="chainUserPaging"></dir-pagination-controls>
+                                            <div class="result-summary" ng-show="pagingInfo.UsertotalItems > 0">
+                                                <span id="current-start">{{pagingInfo.startUserPageRecordNumber}}</span> to
+                                                <span id="current-end">{{pagingInfo.endPageUserRecordNumber}}</span> of
+                                                <span id="total-result">{{pagingInfo.UsertotalItems}}</span> results.
+                                            </div>
+                                            <div class="result-summary" ng-show="pagingInfo.UsertotalItems == 0">
+                                                No Record Found.
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Contact Persons</strong>
+
+                                    <button type="button" ng-show="DeactivateShop" id="add-company-admin" ng-click="setAddHeading()" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#addContactPerson"><i class="icon-plus"></i>  Add contact person</button>
+                                    <button type="button" id="view-contact-person" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#addContactPerson" style="display:none"><i class="icon-plus"></i> Add chain admin</button>
+                                    <button type="button" id="view-company-admin" class="btn btn-outline-primary mb-2 float-right" data-toggle="modal" data-target="#viewChainAdmin" style="display:none"><i class="icon-plus"></i> Add chain admin</button>
+
+                                </div>
+                                <div class="card-block">
+
+                                    <table class="table table-bordered table-striped" data-toggle="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchCPModel.searchContactPersonName!==''}"></i> Name
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':shopContactPagingInfo.sortBy=='ContactPersonName' && shopContactPagingInfo.reverse,'fa-sort-desc':shopContactPagingInfo.sortBy=='ContactPersonName' && !shopContactPagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sortCP('ContactPersonName',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sortCP('ContactPersonName',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchCPModel.searchContactPersonName===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearContactPersonSearch(1)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="searchShopContactPerson(1)">
+                                                                    <div class="input-group form-group mb-0">
+
+                                                                        <input type="text" class="form-control" ng-model="SearchCPModel.searchContactPersonName">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchCPModel.searchContactPersonAddress!==''}"></i> Address
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':shopContactPagingInfo.sortBy=='ContactPersonAddress' && shopContactPagingInfo.reverse,'fa-sort-desc':shopContactPagingInfo.sortBy=='ContactPersonAddress' && !shopContactPagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sortCP('ContactPersonAddress',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sortCP('ContactPersonAddress',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchCPModel.searchContactPersonAddress===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearContactPersonSearch(2)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="searchShopContactPerson(2)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchCPModel.searchContactPersonAddress">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchCPModel.searchContactPersonNumber!==''}"></i> Contact No
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':shopContactPagingInfo.sortBy=='ContactPersonNumber' && shopContactPagingInfo.reverse,'fa-sort-desc':shopContactPagingInfo.sortBy=='ContactPersonNumber' && !shopContactPagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sortCP('ContactPersonNumber',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sortCP('ContactPersonNumber',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchCPModel.searchContactPersonNumber===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearContactPersonSearch(3)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="searchShopContactPerson(3)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchCPModel.searchContactPersonNumber">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-filter" ng-class="{'active':SearchCPModel.searchContactPersonEmail!==''}"></i> Email
+                                                        </a>
+                                                        <i class="fa" ng-class="{'fa-sort-asc':shopContactPagingInfo.sortBy=='ContactPersonEmail' && shopContactPagingInfo.reverse,'fa-sort-desc':shopContactPagingInfo.sortBy=='ContactPersonEmail' && !shopContactPagingInfo.reverse}"></i>
+                                                        <ul class="dropdown-menu filter">
+                                                            <li ng-click="sortCP('ContactPersonEmail',false)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="sortCP('ContactPersonEmail',true)" class="dropdown-item">
+                                                                <a data-toggle="#">
+                                                                    <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item" ng-class="{'disabled':SearchCPModel.searchContactPersonEmail===''}">
+                                                                <!-- disabled-->
+                                                                <a data-toggle="#" ng-click="clearContactPersonSearch(4)">
+                                                                    <i class="icon-ban"></i> Clear filters
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-item">
+                                                                <label>Search</label>
+                                                                <form ng-submit="searchShopContactPerson(4)">
+                                                                    <div class="input-group form-group mb-0">
+                                                                        <input type="text" class="form-control" ng-model="SearchCPModel.searchContactPersonEmail">
+                                                                        <button class="input-group-addon" type="submit">
+                                                                            <i class="icon-magnifier"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr dir-paginate="cp in viewContactPerson| itemsPerPage:shopContactPagingInfo.itemsPerPage" total-items="shopContactPagingInfo.totalItems" pagination-id="shopContactPersonPaging"
+                                                ng-class="{ 'disabled' : cp.IsActive == false ||  viewShop.IsActive == false}">
+                                                <td>{{cp.ContactPersonName}}</td>
+                                                <td>{{cp.ContactPersonAddress}}</td>
+                                                <td>{{cp.ContactPersonNumber}}</td>
+                                                <td>{{cp.ContactPersonEmail}}</td>
+                                                <td class="text-center">
+                                                    <div class="dropdown">
+                                                        <i class="icon-options-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" ng-show="DeactivateShop">
+                                                            <a class="dropdown-item" data-target="" ng-show="cp.IsActive" ng-click="viewShopContactPerson(cp.Id)">Edit user info</a>
+                                                            <a class="dropdown-item" data-target="" ng-show="cp.IsActive" ng-click="deactiveShopContactPerson(cp.Id)">Deactivate user</a>
+                                                            <a class="dropdown-item" data-target="" ng-show="!cp.IsActive" ng-click="activeShopContactPerson(cp.Id)">Activate user</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="hide-if-no-paging text-center">
+                                        <nav class="table-pagination">
+                                            <dir-pagination-controls max-size="5"
+                                                                     direction-links="true"
+                                                                     boundary-links="false"
+                                                                     on-page-change="selectCPPage(newPageNumber)" pagination-id="shopContactPersonPaging"></dir-pagination-controls>
+                                            <div class="result-summary" ng-show="shopContactPagingInfo.totalItems > 0">
+                                                <span id="current-start">{{shopContactPagingInfo.startPageRecordNumber}}</span> to
+                                                <span id="current-end">{{shopContactPagingInfo.endPageRecordNumber}}</span> of
+                                                <span id="total-result">{{shopContactPagingInfo.totalItems}}</span> results.
+                                            </div>
+                                            <div class="result-summary" ng-show="shopContactPagingInfo.totalItems == 0">
+                                                No Record Found.
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <timetemplate-add></timetemplate-add>
+            <deactive></deactive>
+            <active></active>
+            <user-add></user-add>
+
+            <user-edit></user-edit>
+
+            <user-view></user-view>
+            <contact-add></contact-add>
+            <shophandover></shophandover>
+            <subscriptionupdate></subscriptionupdate>
+    
+            <div class="modal fade" id="confirmRemove" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="max-width: 500px;">
+                        <div class="modal-header">
+                            <h1 class="text-danger">Are you sure?</h1>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <p>{{shopRemoveMessage}}</p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                            <button data-dismiss="modal" ng-click="reapealHandover(handoverId)" class="btn btn-danger">Yes, Repeal Handover</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+    </div>
+
+
+</div>
+    </div>
+<script src="../../../../Content/js/remodal.js"></script>

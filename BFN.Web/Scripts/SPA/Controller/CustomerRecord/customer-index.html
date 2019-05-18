@@ -1,0 +1,89 @@
+﻿
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Customers</li>
+</ol>
+<div class="container">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Customers</strong>
+                        <small class="text-muted mx-2">[{{filterApplied.length}} filter applied]</small>
+                        <a href="/Home/AddCustomer" class="btn btn-primary float-right"><i class="icon-plus"></i> Add Customer</a>
+                    </div>
+                    <div class="card-block" cg-busy="myPromise">
+
+                        <table class="table table-bordered table-striped " data-toggle="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-filter" ng-class="{'active':SearchModel.searchCustomerSerialNo!==''}"></i> Serial Number
+                                            </a>
+                                            <i class="fa" ng-class="{'fa-sort-asc':pagingInfo.sortBy=='CustomerSerialNo' && pagingInfo.reverse,'fa-sort-desc':pagingInfo.sortBy=='CustomerSerialNo' && !pagingInfo.reverse}"></i>
+                                            <ul class="dropdown-menu filter">
+                                                <li ng-click="sort('CustomerSerialNo',false)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-asc"></i> Sort ascending
+                                                    </a>
+                                                </li>
+                                                <li ng-click="sort('CustomerSerialNo',true)" class="dropdown-item">
+                                                    <a data-toggle="#">
+                                                        <i class="fa fa-sort-amount-desc"></i> Sort descending
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item" ng-class="{'disabled':SearchModel.searchCustomerSerialNo===''}">
+                                                    <!-- disabled-->
+                                                    <a data-toggle="#" ng-click="clearSearch(1)">
+                                                        <i class="icon-ban"></i> Clear filters
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <label>Search</label>
+                                                    <form ng-submit="search(1)">
+                                                        <div class="input-group form-group mb-0">
+
+                                                            <input type="text" class="form-control" ng-model="SearchModel.searchCustomerSerialNo">
+                                                            <button class="input-group-addon" type="submit">
+                                                                <i class="icon-magnifier"></i>
+                                                            </button>
+
+                                                        </div>
+                                                    </form>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th data-sortable="true">Customer Name</th>
+                                    <th data-sortable="true">Customer Address</th>
+                                    <th data-sortable="true">ID Card No</th>
+                                    <th data-sortable="true">Customer Phone</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--<tr ng-repeat="chain in listAllChains">-->
+                                <tr ng-repeat="customer in listAllCustomers">
+                                    <td>{{customer.CustomerSerialNo}} </td>
+                                    <td>{{customer.CustomerName}}</td>
+                                    <td>{{customer.CustomerAddress}}</td>
+                                    <td>{{customer.CustomerIdCardNo}}</td>
+                                    <td>{{customer.CustomerPhoneNo}}</td>
+
+                                    <td class="text-center">
+                                        <a href="/Home/ViewCustomer/{{customer.Id}}" title="View customer details"><i class="icon-eye"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+
