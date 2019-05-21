@@ -38,7 +38,6 @@
         $scope.filterApplied = [];
 
         $scope.search = function (filterType) {
-            debugger;
             switch (filterType) {
                 case 1:
                     $scope.pagingInfo.filterList["CustomerName"] = $scope.SearchModel.searchCustomerName;
@@ -159,7 +158,7 @@
         //Commite Members Start Module
 
         $scope.getCommiteMembers = function () {
-            debugger
+
             var searchData = $httpParamSerializer($scope.pagingInfo);
 
             ApiService.get(BFNConstants.urls.getCommiteMembers + "?commiteId=" + $stateParams.Id+"&searchData"+searchData, null, GetCommiteMembersSucceded, requestFailed);
@@ -180,7 +179,7 @@
 
 
         function GetCommiteMembersSucceded(response) {
-            debugger;
+  
             $scope.listAllCustomers = response.data.Data;
             $scope.pagingInfo.totalItems = response.data.TotalRecords;
             $scope.pagingInfo.startPageRecordNumber = response.data.StartPageRecordNumber + 1;
@@ -194,7 +193,6 @@
 
         $scope.addNewPayment = function (Id) {
 
-            debugger;
             $scope.newPayment.FK_MemberId = Id;
             $scope.newPayment.CommiteId = $stateParams.Id;
 
@@ -202,7 +200,7 @@
 
 
         $scope.addPayment = function () {
-            debugger;
+ 
             $scope.newPayment.LastUpdatedDate = $scope.newPayment.CreatedDate = BFNConstants.getDateTime();
             $scope.newPayment.IsActive = true;
             $scope.newPayment.CreatedBy = $cookies.get('userIdBFN');

@@ -5,10 +5,10 @@
 
     app.controller('CommiteIndexCtrl', CommiteIndexCtrl);
 
-    CommiteIndexCtrl.$inject = ['$scope', '$parse', '$cookies', '$timeout', '$location', '$routeParams', '$rootScope', 'ApiService', 'notificationService', '$stateParams', '$httpParamSerializer'];
+    CommiteIndexCtrl.$inject = ['$scope', '$parse', '$cookies', '$timeout', '$location', '$routeParams', '$rootScope', 'ApiService', 'notificationService', '$stateParams', '$httpParamSerializer', 'moment'];
 
-    function CommiteIndexCtrl($scope, $parse, $cookies, $timeout, $location, $routeParams, $rootScope, ApiService, notificationService, $stateParams, $httpParamSerializer) {
-        debugger;
+    function CommiteIndexCtrl($scope, $parse, $cookies, $timeout, $location, $routeParams, $rootScope, ApiService, notificationService, $stateParams, $httpParamSerializer,moment) {
+
         $scope.listAllCommites = {};
         $scope.listAllMembers = {};
 
@@ -132,7 +132,10 @@
         }
 
         function GetAllCommiteSucceded(response) {
-            debugger;
+            angular.forEach(response.data, function (item) {
+                item.CommiteStartDate = moment(item.CommiteStartDate).format('LL');
+                item.CommiteEndDate = moment(item.CommiteEndDate).format('LL');
+            });
             $scope.listAllCommites = response.data;
 
 

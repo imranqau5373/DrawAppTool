@@ -66,6 +66,13 @@
             controller: "CommiteViewCtrl"
         })
 
+        .state("BFNHome.CommiteEdit", {
+            url: "/CommiteEdit/:Id",
+            title: "Commite View",
+            templateUrl: "Scripts/SPA/Controller/CommiteRecord/Commite-add.html",
+            controller: "CommiteAddCtrl"
+        })
+
         .state("BFNHome.CommiteMember", {
             url: "/CommiteView/:CommiteId/AddMember",
             title: "Add Commite Member",
