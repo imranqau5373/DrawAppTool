@@ -294,6 +294,7 @@
     <Content Include="Scripts\SPA\Controller\CommiteRecord\AddCommiteMemberCtrl.js" />
     <Content Include="Scripts\SPA\Controller\CommiteRecord\commite-add.html" />
     <Content Include="Scripts\SPA\Controller\CommiteRecord\commite-index.html" />
+    <Content Include="Scripts\SPA\Controller\CommiteRecord\commite-member.html" />
     <Content Include="Scripts\SPA\Controller\CommiteRecord\commite-view.html" />
     <Content Include="Scripts\SPA\Controller\CommiteRecord\CommiteAddCtrl.js" />
     <Content Include="Scripts\SPA\Controller\CommiteRecord\CommiteIndexCtrl.js" />

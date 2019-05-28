@@ -90,6 +90,22 @@ namespace BFN.Web.Controllers
 
 
         [HttpGet]
+        [Route("checkCustomerExist")]
+        public IHttpActionResult CheckCustomerExist(string CustomerIdCardNo)
+        {
+            try
+            {
+                var customer = _CustomerService.GetAll().Where(x => x.CustomerIdCardNo == CustomerIdCardNo).FirstOrDefault();
+                return Ok(customer);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        [HttpGet]
         [Route("getAllCustomers")]
         public IHttpActionResult GetAllCustomers()
         {

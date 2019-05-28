@@ -149,9 +149,17 @@ namespace BFN.Web.Controllers
         {
             try
             {
+                var memberExist = _MemberService.GetAll().Where(x => x.FK_CommiteId == objCommiteMemeber.FK_CommiteId && x.FK_CustomerId == objCommiteMemeber.FK_CustomerId).FirstOrDefault();
+                if(memberExist != null)
+                {
+                    _MemberService.Create(objCommiteMemeber);
+                    return Ok(objCommiteMemeber);
+                }
+                else
+                {
+                    return Ok(new { Error = true,Message = "User already Exist"});
+                }
 
-                _MemberService.Create(objCommiteMemeber);
-                return Ok(objCommiteMemeber);
 
             }
             catch(Exception ex)

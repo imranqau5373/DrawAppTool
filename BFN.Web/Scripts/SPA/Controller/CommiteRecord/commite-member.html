@@ -2,9 +2,9 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
-        <a href="Home/CompanyIndex">Customers</a>
+        <a href="Home/CompanyIndex">Commite</a>
     </li>
-    <li class="breadcrumb-item active">Add Customer</li>
+    <li class="breadcrumb-item active">Add Existing Customer</li>
 </ol>
 <div class="container">
     <div class="animated fadeIn">
@@ -22,7 +22,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="company" role="tabpanel">
                         <!-- Company Setup Tab -->
-                        <form name="companyform" ng-submit="addCustomer()">
+                        <form name="companyform" ng-submit="nextPage()">
                             <div class="col-sm-12 nopadding">
                                 <div class="card">
                                     <div class="card-block col-sm-6">
@@ -35,7 +35,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="form-group" style="display:none;">
+                                        <div class="form-group">
                                             <label>Serial Number</label>
                                             <div class="input-group">
                                                 <input type="number" id="cvr" ng-model="newCustomer.CustomerSerialNo" placeholder="Enter Customer Serial Number" class="form-control" required disabled>
@@ -43,20 +43,20 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="company-name">Customer Name</label>
-                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerName"  placeholder="Enter customer name" required>
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerName" placeholder="Enter customer name" required disabled>
                                         </div>
                                         <div class="form-group">
                                             <label for="company-name">Father Name</label>
-                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerFather" placeholder="Enter father name">
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerFather" placeholder="Enter father name" disabled>
                                         </div>
-                       
+
                                         <div class="form-group">
                                             <label for="company-address">Address</label>
-                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerAddress" placeholder="Enter full address" >
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerAddress" placeholder="Enter full address" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label for="company-name">Phone Number</label>
-                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerPhoneNo" placeholder="Enter phone number" >
+                                            <input type="text" class="form-control" ng-model="newCustomer.CustomerPhoneNo" placeholder="Enter phone number" disabled>
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -73,29 +73,29 @@
                     </div>
                     <div class="tab-pane" id="evidence" role="tabpanel">
                         <!-- Company Setup Tab -->
-                        <form name="evidanceform" ng-submit="addEvidence()">
+                        <form name="evidanceform" ng-submit="addExistingMember()">
                             <div class="col-sm-12 nopadding">
                                 <div class="card">
                                     <div class="card-block col-sm-6">
                                         <div class="form-group">
                                             <label for="company-name">Evidence Name</label>
-                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceName" placeholder="Enter customer name" required>
+                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceName" placeholder="Enter customer name" required disabled>
                                         </div>
                                         <div class="form-group">
                                             <label for="company-name">Evidence Father Name</label>
-                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceFatherName" placeholder="Enter father name" required>
+                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceFatherName" placeholder="Enter father name" required disabled>
                                         </div>
                                         <div class="form-group">
                                             <label for="company-name">Evidence ID Card No</label>
-                                            <input type="number" class="form-control" ng-model="newCustomer.EvidenceIdCardNo" placeholder="Enter id card number" required>
+                                            <input type="number" class="form-control" ng-model="newCustomer.EvidenceIdCardNo" placeholder="Enter id card number" required disabled>
                                         </div>
                                         <div class="form-group">
                                             <label for="company-address">Evidence Address</label>
-                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceAddress" placeholder="Enter full address">
+                                            <input type="text" class="form-control" ng-model="newCustomer.EvidenceAddress" placeholder="Enter full address" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label for="company-name">Evidence Phone Number</label>
-                                            <input type="number" class="form-control" ng-model="newCustomer.EvidencePhoneNo" placeholder="Enter phone number">
+                                            <input type="number" class="form-control" ng-model="newCustomer.EvidencePhoneNo" placeholder="Enter phone number" disabled>
                                         </div>
                                     </div>
                                     <div class="card-footer">

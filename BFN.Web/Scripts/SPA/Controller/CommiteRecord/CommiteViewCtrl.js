@@ -158,7 +158,6 @@
         //Commite Members Start Module
 
         $scope.getCommiteMembers = function () {
-
             var searchData = $httpParamSerializer($scope.pagingInfo);
 
             ApiService.get(BFNConstants.urls.getCommiteMembers + "?commiteId=" + $stateParams.Id+"&searchData"+searchData, null, GetCommiteMembersSucceded, requestFailed);

@@ -24,6 +24,7 @@
     BFNConstants.urls.getCommite = BFNConstants.urls.apiBaseUrl + "/CommiteRec/getCommite";
     BFNConstants.urls.getCommiteMembers = BFNConstants.urls.apiBaseUrl + "/CommiteRec/getCommiteMembers";
     BFNConstants.urls.getSerialNumber = BFNConstants.urls.apiBaseUrl + "/CommiteRec/getSerialNumber";
+    BFNConstants.urls.searchIdCard = BFNConstants.urls.apiBaseUrl + "/CustomerRec/checkCustomerExist";
 
     
     BFNConstants.urls.addCommiteMembers = BFNConstants.urls.apiBaseUrl + "/CommiteRec/addCommiteMembers";

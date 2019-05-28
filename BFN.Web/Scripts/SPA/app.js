@@ -76,7 +76,7 @@
         .state("BFNHome.CommiteMember", {
             url: "/CommiteView/:CommiteId/AddMember",
             title: "Add Commite Member",
-            templateUrl: "Scripts/SPA/Controller/CustomerRecord/customer-add.html",
+            templateUrl: "Scripts/SPA/Controller/CommiteRecord/commite-member.html",
             controller: "CustomerAddCtrl"
         })
 
